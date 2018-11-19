@@ -15,6 +15,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{todonotes}
 \usepackage{hyperref}
+\usepackage[T1]{fontenc}
 \hypersetup{colorlinks = true,linkcolor = black,citecolor = black,urlcolor = black,filecolor = black}
 
 \graphicspath{{./figures/}}
@@ -30,7 +31,7 @@
 % Thema
 %\Title[Seminarvorlage]  % Kurztitel für Kopfzeilen
 %      {Seminarvorlage mit Hinweisen zur Erstellung} % Ausführlicher Titel, der etwas mehr Platz braucht
-\Title[Kurztitel für Kopfzeilen]{Ausführlicher Titel, der etwas mehr Platz braucht}
+\Title[Security Considerations for CPS]{Security Considerations for Cyber-Physical Systems}
 \makeTitle
 
 \Author{Maximilian Ammann}
@@ -38,7 +39,7 @@
 \makeAuthor
 
 % Abgabedatum
-\date{Datum des Vortrags}
+\date{Datum des Vortrags \todo}
 
 \subject{Seminar Cyber-Physical Systems}
 
@@ -49,24 +50,129 @@
 Eine kurze Zusammenfassung der Ausarbeitung mit 10-12 Zeilen Text.
 \end{abstract}
 \thispagestyle{empty}
-
 \newpage
-
 \tableofcontents
-
 \newpage
 
-\section{Section}\label{sec:section}
+\section{Einführung}\label{sec:intro}
+% Betriebsblindheit (Gollman)
+Betriebsblindheit beschreibt einen Zustand in dem man sich Aufgrund weitreichendes Prozesswissens nicht über Fehler oder Mängel bewusst ist~\cite[S.~202]{GK16}.
+Ist dieser Zustand einmal erreicht ist es schwer ihm wieder zu entfliehen und die Probleme in beispielsweise der Sicherheit\footnote{Sicherheit wird hier (falls nicht anders hingewiesen) unter dem Begriff der Security verstanden} zu erkennen.
+Deshalb ist ein Ziel der Arbeit zu Motivieren sich mit Sicherheit auseinander zu setzen.
+Besonders in Cyber-Physical Systems ist es wichtig sich mit Sicherheit zu befassen, da diese eine erhöhte Angriffsfläche für Angriffe bereitstellen, um diese Blindheit nicht auftreten zu lassen.
+Gleichzeitig sind die Herausforderungen die ein solches System lösen soll und die damit verbundenen Anforderungen anderer Art als bei klassischen Systemen.
 
-Test
-dfd
+% Anforderungen an CPS: Predictability (Lee08)
+% Challanges (SGL+08)
+% Vision von CPS (RLS+10)
+% IoT Constaint: Battery (YWY+17)
+Bei Cyber-Physical Systems sind oft eingebettete echtzeit Systeme, welche eine hohe Verfügbarkeit, Robustheit, Widerstandsfähigkeit und Berechenbarkeit aufweisen müssen.
+Die physische Welt macht Verfügbarkeit allerdings oft schwierig und ist alles andere als berechenbar~\cite{Lee08,SGL+08};.
+Einsatzorte für diese Systeme könnten intelligente Stromnetze, symbiotische Sensornetzwerke für die Agrarwirtschaft und Katastrophenabwehr, medizinische oder assistierende Geräte, intelligente Verkehrssteuerung und intelligente Gebäude sein~\cite{RLS+10}.
+In all diesen Beispielen spielt zudem ein hohes Maß an Vertrauen eine Rolle~\cite{SGL+08}.
+Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise die die Bindung an eine Batterie oder leichte Bauweise~\cite{YWY+17}.
+Es existiert also ein Unterschied in den Anforderungen an Cyber-Physical Systems zu klassischen Systemen, wie Anwendungsservern oder Heimcomputern.
+
+In Kapitel~\ref{subsec:definition} wird zunächst der Begriff Sicherheit speziell für Cyber-Physical Systems definiert.
+In den Kapiteln~\ref{subsec:angriffsziel},~\ref{subsec:angriffszenarien},~\ref{subsec:angreifergruppen} werden mögliche Angriffsszenarien beleuchtet um im Kapitel~\ref{subsec:gegenmassnahmen} adequate Gegenmaßnahmen darzustellen.
+Zuletzt soll im Kapitel~\ref{sec:evaluation} auf vergangene Vorfälle im Bereich der Security eingegangen werden.
+
+
+
+
+
+% Stuxnet (Langer)
+% Definition (BG11)
+
+
+\section{Aspekte eines Angriffes}\label{sec:aspekte}
+
+% Clickbait bei New im Bereich Security
+
+\subsection{Security Definition f\"ur Cyber-Physical Systems}\label{subsec:definition}
+% computer, information, network, communication, physical security
+% CIA triad (Fink) (WYX+10)
+% Erweiterung von CIA: Veracity, Plausability (Gollman)
+% Fingerprinting, Network Separation, End System Security (Gollman)
+% Erweiterung von CIA: Authenticity (WYX+10, II. A.)
+
+% CPS-Security = Cyber und Physical Security
+
+\subsection{Cyber-Physical Systems als Angriffsziel}\label{subsec:angriffsziel}
+% (Gollman, 1)
+% Survey: medial, IoT, smart grid, power plant (Humayed)
+% IoT (FPA+18) (YWY+17)
+% Security Considerations in Cloud (SPB+16)
+
+\subsection{Angriffszenarien}\label{subsec:angriffszenarien}
+% Sabotage und Spionage
+% Punkte wo angegriffen werden kann (Fink, Figure 1.1) (Cardenas 2008, Figure 3)
+% Migration von Legacy Systemen ist kritisch (Gollman, 1.)
+\subsubsection{Klassische Szenarien}
+% Unterschied zu klassischen Systemen (Cardenas 2008, 3.)
+% IoT Unterschiede zu klassischem (FPA+18)
+% Workflow von CPS (WYX+10, II.)
+\subsubsection{Denial-of-Service Angriff}
+% (WYX+10, II. B.)
+% (Cardenas 2008, 2.1)
+\subsubsection{Man-in-the-Middle Angriff}
+% (WYX+10, II. B.)
+\subsubsection{T\"auschungsangriff (Deception)} % Deception
+% (Cardenas 2008, 2.1)
+\subsubsection{Lauschangriff (Eavesdropping)} % Eavesdropping
+% (WYX+10, II. B.)
+\subsubsection{Compromised-Key Angriff}
+% (WYX+10, II. B.)
+
+\subsection{Angreifergruppen}\label{subsec:angreifergruppen}
+% Cyber-Kriminelle
+% Verärgerte Mitarbeiter/Private Gründe
+% Terroristen, Aktivisten, kriminelle Gruppen
+% Staaten (Cardenas 2009, 2.) (WYX+10, II. C.)
+
+
+\subsection{Gegenmaßnahmen}\label{subsec:gegenmassnahmen}
+% Properties: Safety, Security, Reliability, Resilence (LLZ+14)
+
+% Least Privilege (Gollman)
+% Need-to-Know (Gollman)
+% Separation (Gollman)
+
+% Proactive Mechanisms, Reactive Mechanisms, Design and Analysis Principles (Cardenas 2008)
+
+% Context Aware Security: Sensing, Cyber, Control, Physical Security (WYX+10)
+
+\subsubsection{Modellierung von Cyber-Physical Systems (als Grundlage)}
+% Argument: Neue Grundlage für Embedded Systems/CPS: Modelbasiert anstatt Programm (Lee08)
+Noch nicht sicher.
+
+Um hierbei dem Standard an Sicherheit zu genügen schlägt \citeauthor{Lee08} sogar vor eine neue Grundlage für diese Systeme zu etablieren~\cite{Lee08}.
+
+\subsubsection{Physische Maßnahmen}
+% (Cardenas)
+
+\subsubsection{Organisatorische Maßnahmen}
+% Transdiszipliär (Brazell14)
+
+\subsubsection{Präventive Maßnahmen}
+% (Cardenas 2009, 4.)
+
+\subsubsection{Detektion und Wiederherstellung (Detection and Recovery)}
+% (Cardenas 2009, 4.)
+
+\subsubsection{Widerstandsfähigkeit (Resilience)} % Resilience
+% (Cardenas 2009, 4.)
+
+% End-to-End Security (Fink)
+
+\subsubsection{Abschreckung (Deterrence)} % Deterrence
+% (Cardenas 2009, 4.)
+
+\section{Evaluation aktueller Maßnahmen}\label{sec:evaluation}
 
 \newpage
 \nocite{*}
 \printbibliography
-
 \newpage
-
-\listoftodos
-
+% \listoftodos
 \end{document}
