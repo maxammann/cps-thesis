@@ -18,6 +18,7 @@
 \usepackage[T1]{fontenc}
 \hypersetup{colorlinks = true,linkcolor = black,citecolor = black,urlcolor = black,filecolor = black}
 
+\usepackage[autostyle=true,german=quotes]{csquotes}
 \graphicspath{{./figure/}}
 
 
@@ -56,25 +57,24 @@ Eine kurze Zusammenfassung der Ausarbeitung mit 10-12 Zeilen Text.
 
 \section{Einführung}\label{sec:intro}
 % Betriebsblindheit (Gollman)
-Betriebsblindheit beschreibt einen Zustand in dem man sich Aufgrund weitreichendes Prozesswissens nicht über Fehler oder Mängel bewusst ist~\cite[S.~202]{GK16}.
-Ist dieser Zustand einmal erreicht ist es schwer ihm wieder zu entfliehen und die Probleme in beispielsweise der Sicherheit\footnote{Sicherheit wird hier (falls nicht anders hingewiesen) unter dem Begriff der Security verstanden} zu erkennen.
-Deshalb ist ein Ziel der Arbeit zu Motivieren sich mit Sicherheit auseinander zu setzen.
-Besonders in Cyber-Physical Systems ist es wichtig sich mit Sicherheit zu befassen, da diese eine erhöhte Angriffsfläche für Angriffe bereitstellen, um diese Blindheit nicht auftreten zu lassen.
-Gleichzeitig sind die Herausforderungen die ein solches System lösen soll und die damit verbundenen Anforderungen anderer Art als bei klassischen Systemen.
+Betriebsblindheit beschreibt einen Zustand in dem man sich Aufgrund weitreichendem Prozesswissen nicht über Fehler oder Mängel bewusst ist~\cite[S.~202]{GK16}.
+Ist dieser Zustand einmal erreicht, ist es schwer ihm wieder zu entfliehen und beispielsweise Probleme in der Sicherheit\footnote{Sicherheit wird in dieser Arbeit (falls nicht anders hingewiesen) äquivalent zu dem englischen Begriff \enquote{security} verwendet} eines Systems zu erkennen.
+Deshalb soll es ein Ziel der Arbeit sein zu Motivieren sich mehr mit Sicherheit auseinander zu setzen und keiner Blindheit zu verfallen.
+Besonders in Cyber-Physical Systems ist es wichtig sich mit Sicherheit zu befassen, da diese eine erhöhte Angriffsfläche für Angriffe bereitstellen.
 
 % Anforderungen an CPS: Predictability (Lee08)
 % Challanges (SGL+08)
 % Vision von CPS (RLS+10)
 % IoT Constaint: Battery (YWY+17)
-Bei Cyber-Physical Systems sind oft eingebettete echtzeit Systeme, welche eine hohe Verfügbarkeit, Robustheit, Widerstandsfähigkeit und Berechenbarkeit aufweisen müssen.
-Die physische Welt macht Verfügbarkeit allerdings oft schwierig und ist alles andere als berechenbar~\cite{Lee08,SGL+08};.
+Cyber-Physical Systems sind meist eingebettete echtzeit Systeme, welche eine hohe Verfügbarkeit, Robustheit, Widerstandsfähigkeit und Berechenbarkeit aufweisen müssen.
+Die physische Welt macht hohe Verfügbarkeit allerdings oft schwierig da sie alles andere als berechenbar ist~\cite{Lee08,SGL+08}.
 Einsatzorte für diese Systeme könnten intelligente Stromnetze, symbiotische Sensornetzwerke für die Agrarwirtschaft und Katastrophenabwehr, medizinische oder assistierende Geräte, intelligente Verkehrssteuerung und intelligente Gebäude sein~\cite{RLS+10}.
-In all diesen Beispielen spielt zudem ein hohes Maß an Vertrauen eine Rolle~\cite{SGL+08}.
-Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise die die Bindung an eine Batterie oder leichte Bauweise~\cite{YWY+17}.
-Es existiert also ein Unterschied in den Anforderungen an Cyber-Physical Systems zu klassischen Systemen, wie Anwendungsservern oder Heimcomputern.
+In all diesen Beispielen spielt ein hohes Maß an Vertrauen eine Rolle~\cite{SGL+08}.
+Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise die Bindung an eine Batterie oder eine leichte Bauweise~\cite{YWY+17}.
+Es existiert also ein Unterschied in den Anforderungen an Cyber-Physical Systems und klassischen Systemen, wie Anwendungsservern oder Heimcomputern.
 
 In Kapitel~\ref{subsec:definition} wird zunächst der Begriff Sicherheit speziell für Cyber-Physical Systems definiert.
-In den Kapiteln~\ref{subsec:angriffsziel},~\ref{subsec:angriffszenarien},~\ref{subsec:angreifergruppen} werden mögliche Angriffsszenarien beleuchtet um im Kapitel~\ref{subsec:gegenmassnahmen} adequate Gegenmaßnahmen darzustellen.
+In den Kapiteln~\ref{subsec:angriffsziel},~\ref{subsec:angriffszenarien},~\ref{subsec:angreifergruppen} werden mögliche Angriffsszenarien beleuchtet um im Kapitel~\ref{subsec:gegenmassnahmen} adäquate Gegenmaßnahmen darzustellen.
 Zuletzt soll im Kapitel~\ref{sec:evaluation} auf vergangene Vorfälle im Bereich der Security eingegangen werden.
 
 
@@ -142,7 +142,7 @@ Zuletzt soll im Kapitel~\ref{sec:evaluation} auf vergangene Vorfälle im Bereich
 
 % Context Aware Security: Sensing, Cyber, Control, Physical Security (WYX+10)
 
-\subsubsection{Modellierung von Cyber-Physical Systems (als Grundlage)}
+\subsubsection{Modellierung von Cyber-Physical Systems}
 % Argument: Neue Grundlage für Embedded Systems/CPS: Modelbasiert anstatt Programm (Lee08)
 Noch nicht sicher.
 
@@ -155,6 +155,7 @@ Um hierbei dem Standard an Sicherheit zu genügen schlägt \citeauthor{Lee08} so
 % Transdiszipliär (Brazell14)
 
 \subsubsection{Präventive Maßnahmen}
+% Security by Obscurity (Scarfone2008)
 % (Cardenas 2009, 4.)
 
 \subsubsection{Detektion und Wiederherstellung (Detection and Recovery)}
@@ -172,6 +173,7 @@ Um hierbei dem Standard an Sicherheit zu genügen schlägt \citeauthor{Lee08} so
 
 \newpage
 \nocite{*}
+
 \printbibliography
 \newpage
 % \listoftodos

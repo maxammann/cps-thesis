@@ -27,8 +27,8 @@
 %\RequirePackage{fancyhdr}
 \RequirePackage[headsepline]{scrlayer-scrpage}
 
-\RequirePackage{german}
-%\RequirePackage[german]{babel}
+%\RequirePackage{german}
+\RequirePackage[german]{babel}
 \RequirePackage{bibgerm}
 \RequirePackage{lmodern}
 \RequirePackage{graphicx}
