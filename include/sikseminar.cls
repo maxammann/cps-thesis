@@ -35,7 +35,7 @@
 \RequirePackage{textcomp}
 
 \usepackage[backend=biber,bibencoding=utf-8,style=alphabetic-verb]{biblatex}
-\bibliography{literatur}
+\bibliography{bib/cps}
 
 \makeatletter
 %% Seitenlayout
@@ -80,7 +80,7 @@
 
  %% Schliesslich wird die Klassendatei `sauber' beendet':
  \endinput
- %% End of ``sikseminar.cls''    
+ %% End of ``sikseminar.cls''
 
 
 
