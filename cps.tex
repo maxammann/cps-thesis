@@ -17,6 +17,8 @@
 \usepackage{hyperref}
 \usepackage[T1]{fontenc}
 \hypersetup{colorlinks = true,linkcolor = black,citecolor = black,urlcolor = black,filecolor = black}
+\usepackage[toc,acronyms]{glossaries}
+\include{acronyms}
 
 \usepackage[autostyle=true,german=quotes]{csquotes}
 \graphicspath{{./figure/}}
@@ -56,24 +58,19 @@ Eine kurze Zusammenfassung der Ausarbeitung mit 10-12 Zeilen Text.
 \newpage
 
 \section{Einführung}\label{sec:intro}
-% Betriebsblindheit (Gollman)
-Betriebsblindheit beschreibt einen Zustand in dem man sich Aufgrund weitreichendem Prozesswissen nicht über Fehler oder Mängel bewusst ist~\cite[S.~202]{GK16}.
-Ist dieser Zustand einmal erreicht, ist es schwer ihm wieder zu entfliehen und beispielsweise Probleme in der Sicherheit\footnote{Sicherheit wird in dieser Arbeit (falls nicht anders hingewiesen) äquivalent zu dem englischen Begriff \enquote{security} verwendet} eines Systems zu erkennen.
-Deshalb soll es ein Ziel der Arbeit sein zu Motivieren sich mehr mit Sicherheit auseinander zu setzen und keiner Blindheit zu verfallen.
-Besonders in Cyber-Physical Systems ist es wichtig sich mit Sicherheit zu befassen, da diese eine erhöhte Angriffsfläche für Angriffe bereitstellen.
-
 % Anforderungen an CPS: Predictability (Lee08)
 % Challanges (SGL+08)
 % Vision von CPS (RLS+10)
 % IoT Constaint: Battery (YWY+17)
-Cyber-Physical Systems sind meist eingebettete echtzeit Systeme, welche eine hohe Verfügbarkeit, Robustheit, Widerstandsfähigkeit und Berechenbarkeit aufweisen müssen.
+\glspl{cps} sind meist eingebettete echtzeit Systeme, welche eine hohe Verfügbarkeit, Robustheit,Widerstandsfähigkeit und Berechenbarkeit aufweisen müssen.
 Die physische Welt macht hohe Verfügbarkeit allerdings oft schwierig da sie alles andere als berechenbar ist~\cite{Lee08,SGL+08}.
 Einsatzorte für diese Systeme könnten intelligente Stromnetze, symbiotische Sensornetzwerke für die Agrarwirtschaft und Katastrophenabwehr, medizinische oder assistierende Geräte, intelligente Verkehrssteuerung und intelligente Gebäude sein~\cite{RLS+10}.
-In all diesen Beispielen spielt ein hohes Maß an Vertrauen eine Rolle~\cite{SGL+08}.
+In all diesen Beispielen spielt ein außerordentliches Maß an Vertrauen eine Rolle~\cite{SGL+08}.
+Dieses ist zwar auch bei klassischen Systemen gefordert, allerdings nicht in selbigem Ausmaß, da sie nicht in gleicher Weise an physische Prozesse gekoppelt sind.
 Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise die Bindung an eine Batterie oder eine leichte Bauweise~\cite{YWY+17}.
-Es existiert also ein Unterschied in den Anforderungen an Cyber-Physical Systems und klassischen Systemen, wie Anwendungsservern oder Heimcomputern.
+Es existiert also ein Unterschied in den Anforderungen an \glspl{cps} und klassischen Systemen, wie Anwendungsservern oder Heimcomputern.
 
-In Kapitel~\ref{subsec:definition} wird zunächst der Begriff Sicherheit speziell für Cyber-Physical Systems definiert.
+In Kapitel~\ref{subsec:definition} wird zunächst der Begriff Sicherheit speziell für \glspl{cps} definiert.
 In den Kapiteln~\ref{subsec:angriffsziel},~\ref{subsec:angriffszenarien},~\ref{subsec:angreifergruppen} werden mögliche Angriffsszenarien beleuchtet um im Kapitel~\ref{subsec:gegenmassnahmen} adäquate Gegenmaßnahmen darzustellen.
 Zuletzt soll im Kapitel~\ref{sec:evaluation} auf vergangene Vorfälle im Bereich der Security eingegangen werden.
 
@@ -89,7 +86,7 @@ Zuletzt soll im Kapitel~\ref{sec:evaluation} auf vergangene Vorfälle im Bereich
 
 % Clickbait bei New im Bereich Security
 
-\subsection{Security Definition f\"ur Cyber-Physical Systems}\label{subsec:definition}
+\subsection{Security Definition f\"ur \glspl{cps}}\label{subsec:definition}
 % computer, information, network, communication, physical security
 % CIA triad (Fink) (WYX+10)
 % Erweiterung von CIA: Veracity, Plausability (Gollman)
@@ -98,7 +95,7 @@ Zuletzt soll im Kapitel~\ref{sec:evaluation} auf vergangene Vorfälle im Bereich
 
 % CPS-Security = Cyber und Physical Security
 
-\subsection{Cyber-Physical Systems als Angriffsziel}\label{subsec:angriffsziel}
+\subsection{\glspl{cps} als Angriffsziel}\label{subsec:angriffsziel}
 % (Gollman, 1)
 % Survey: medial, IoT, smart grid, power plant (Humayed)
 % IoT (FPA+18) (YWY+17)
@@ -142,7 +139,7 @@ Zuletzt soll im Kapitel~\ref{sec:evaluation} auf vergangene Vorfälle im Bereich
 
 % Context Aware Security: Sensing, Cyber, Control, Physical Security (WYX+10)
 
-\subsubsection{Modellierung von Cyber-Physical Systems}
+\subsubsection{Modellierung von \glspl{cps}}
 % Argument: Neue Grundlage für Embedded Systems/CPS: Modelbasiert anstatt Programm (Lee08)
 Noch nicht sicher.
 
@@ -153,6 +150,7 @@ Um hierbei dem Standard an Sicherheit zu genügen schlägt \citeauthor{Lee08} so
 
 \subsubsection{Organisatorische Maßnahmen}
 % Transdiszipliär (Brazell14)
+% Betriebsblindheit (Gollman)
 
 \subsubsection{Präventive Maßnahmen}
 % Security by Obscurity (Scarfone2008)
