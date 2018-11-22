@@ -1,9 +1,6 @@
 % Encoding: UTF-8
-
 \documentclass[final,bibliography=totocnumbered]{include/sikseminar}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Packages
 %% Folgende Pakete werden bereits durch die sikseminar-Klasse geladen:
 %\usepackage[german]{babel}
 %\usepackage[headsepline]{scrlayer-scrpage}
@@ -17,8 +14,10 @@
 \usepackage{hyperref}
 \usepackage[T1]{fontenc}
 \hypersetup{colorlinks = true,linkcolor = black,citecolor = black,urlcolor = black,filecolor = black}
-\usepackage[toc,acronyms]{glossaries}
-\include{acronyms}
+\usepackage[acronym,toc,section=section,numberedsection]{glossaries}
+\glstoctrue
+\makeglossaries
+\input{acronyms}
 
 \usepackage[autostyle=true,german=quotes]{csquotes}
 \graphicspath{{./figure/}}
@@ -31,19 +30,13 @@
 \overfullrule=1mm
 \begin{document}
 
-% Thema
-%\Title[Seminarvorlage]  % Kurztitel für Kopfzeilen
-%      {Seminarvorlage mit Hinweisen zur Erstellung} % Ausführlicher Titel, der etwas mehr Platz braucht
-\Title[Security Considerations for CPS]{Security Considerations for Cyber-Physical Systems}
+\Title[Security Considerations for \glsentrytext{cps}]{Security Considerations for Cyber-Physical Systems}
 \makeTitle
 
 \Author{Maximilian Ammann}
 \Studiengang{Bachelor Informatik}
 \makeAuthor
-
-% Abgabedatum
 \date{Datum des Vortrags \todo}
-
 \subject{Seminar Cyber-Physical Systems}
 
 \maketitle
@@ -70,23 +63,19 @@ Dieses ist zwar auch bei klassischen Systemen gefordert, allerdings nicht in sel
 Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise die Bindung an eine Batterie oder eine leichte Bauweise~\cite{YWY+17}.
 Es existiert also ein Unterschied in den Anforderungen an \glspl{cps} und klassischen Systemen, wie Anwendungsservern oder Heimcomputern.
 
-In Kapitel~\ref{subsec:definition} wird zunächst der Begriff Sicherheit speziell für \glspl{cps} definiert.
-In den Kapiteln~\ref{subsec:angriffsziel},~\ref{subsec:angriffszenarien},~\ref{subsec:angreifergruppen} werden mögliche Angriffsszenarien beleuchtet um im Kapitel~\ref{subsec:gegenmassnahmen} adäquate Gegenmaßnahmen darzustellen.
-Zuletzt soll im Kapitel~\ref{sec:evaluation} auf vergangene Vorfälle im Bereich der Security eingegangen werden.
-
-
-
-
-
+In dem Kapitel~\ref{sec:bedeutung-security} wird zunächst das Zusammenspiel von ''cyber'' und ''physical'' im Bezug auch Sicherheit geklärt.
+Zudem werden mögliche Ziele und Angreifergruppen in den Kapitel~\ref{subsec:angriffsziel}~und~\ref{subsec:angreifergruppen} beleuchtet.
+Im Kapitel~\ref{sec:angriffszenarien} werden mögliche Szenarien und im Kapitel ~\ref{subsec:angreifergruppen} dazu Gegenmaßnahmen dargestellt.
+Zuletzt soll im Kapitel~\ref{sec:diskussion} diskutiert werden ob die genannten Gegenmaßnahmen  für die Szenarien ein adäquate Lösung darstellen.
 % Stuxnet (Langer)
-% Definition (BG11)
 
 
-\section{Aspekte eines Angriffes}\label{sec:aspekte}
+\section{Bedeutung von Security in \glsentrytext{cps}}\label{sec:bedeutung-security}
 
 % Clickbait bei New im Bereich Security
 
-\subsection{Security Definition f\"ur \glspl{cps}}\label{subsec:definition}
+\subsection{Security Definition f\"ur \glsentrytext{cps}}\label{subsec:definition}
+% Definition (BG11)
 % computer, information, network, communication, physical security
 % CIA triad (Fink) (WYX+10)
 % Erweiterung von CIA: Veracity, Plausability (Gollman)
@@ -95,31 +84,11 @@ Zuletzt soll im Kapitel~\ref{sec:evaluation} auf vergangene Vorfälle im Bereich
 
 % CPS-Security = Cyber und Physical Security
 
-\subsection{\glspl{cps} als Angriffsziel}\label{subsec:angriffsziel}
+\subsubsection{\glsentrytext{cps} als Angriffsziel}\label{subsec:angriffsziel}
 % (Gollman, 1)
 % Survey: medial, IoT, smart grid, power plant (Humayed)
 % IoT (FPA+18) (YWY+17)
 % Security Considerations in Cloud (SPB+16)
-
-\subsection{Angriffszenarien}\label{subsec:angriffszenarien}
-% Sabotage und Spionage
-% Punkte wo angegriffen werden kann (Fink, Figure 1.1) (Cardenas 2008, Figure 3)
-% Migration von Legacy Systemen ist kritisch (Gollman, 1.)
-\subsubsection{Klassische Szenarien}
-% Unterschied zu klassischen Systemen (Cardenas 2008, 3.)
-% IoT Unterschiede zu klassischem (FPA+18)
-% Workflow von CPS (WYX+10, II.)
-\subsubsection{Denial-of-Service Angriff}
-% (WYX+10, II. B.)
-% (Cardenas 2008, 2.1)
-\subsubsection{Man-in-the-Middle Angriff}
-% (WYX+10, II. B.)
-\subsubsection{T\"auschungsangriff (Deception)} % Deception
-% (Cardenas 2008, 2.1)
-\subsubsection{Lauschangriff (Eavesdropping)} % Eavesdropping
-% (WYX+10, II. B.)
-\subsubsection{Compromised-Key Angriff}
-% (WYX+10, II. B.)
 
 \subsection{Angreifergruppen}\label{subsec:angreifergruppen}
 % Cyber-Kriminelle
@@ -128,7 +97,28 @@ Zuletzt soll im Kapitel~\ref{sec:evaluation} auf vergangene Vorfälle im Bereich
 % Staaten (Cardenas 2009, 2.) (WYX+10, II. C.)
 
 
-\subsection{Gegenmaßnahmen}\label{subsec:gegenmassnahmen}
+\section{Angriffszenarien}\label{sec:angriffszenarien}
+% Sabotage und Spionage
+% Punkte wo angegriffen werden kann (Fink, Figure 1.1) (Cardenas 2008, Figure 3)
+% Migration von Legacy Systemen ist kritisch (Gollman, 1.)
+\subsection{Unterschiede zu klassische Szenarien}\label{subsec:klassisch}
+% Unterschied zu klassischen Systemen (Cardenas 2008, 3.)
+% IoT Unterschiede zu klassischem (FPA+18)
+% Workflow von CPS (WYX+10, II.)
+\subsection{Denial-of-Service Angriff}\label{subsec:dos}
+% (WYX+10, II. B.)
+% (Cardenas 2008, 2.1)
+\subsection{Man-in-the-Middle Angriff}\label{subsec:mitm}
+% (WYX+10, II. B.)
+\subsection{T\"auschungsangriff (Deception)}\label{subsec:tauschung} % Deception
+% (Cardenas 2008, 2.1)
+\subsection{Lauschangriff (Eavesdropping)}\label{subsec:lauschen} % Eavesdropping
+% (WYX+10, II. B.)
+\subsection{Compromised-Key Angriff}\label{subsec:key}
+% (WYX+10, II. B.)
+
+
+\section{Gegenmaßnahmen}\label{sec:gegenmassnahmen}
 % Properties: Safety, Security, Reliability, Resilence (LLZ+14)
 
 % Least Privilege (Gollman)
@@ -139,38 +129,42 @@ Zuletzt soll im Kapitel~\ref{sec:evaluation} auf vergangene Vorfälle im Bereich
 
 % Context Aware Security: Sensing, Cyber, Control, Physical Security (WYX+10)
 
-\subsubsection{Modellierung von \glspl{cps}}
+\subsection{Modellierung von \glsentrytext{cps}}\label{subsec:modellierung}
 % Argument: Neue Grundlage für Embedded Systems/CPS: Modelbasiert anstatt Programm (Lee08)
 Noch nicht sicher.
 
 Um hierbei dem Standard an Sicherheit zu genügen schlägt \citeauthor{Lee08} sogar vor eine neue Grundlage für diese Systeme zu etablieren~\cite{Lee08}.
 
-\subsubsection{Physische Maßnahmen}
+\subsection{Physische Maßnahmen}\label{subsec:physisch}
 % (Cardenas)
 
-\subsubsection{Organisatorische Maßnahmen}
+\subsection{Organisatorische Maßnahmen}\label{subsec:orga}
 % Transdiszipliär (Brazell14)
 % Betriebsblindheit (Gollman)
 
-\subsubsection{Präventive Maßnahmen}
+\subsection{Präventive Maßnahmen}\label{subsec:präventiv}
 % Security by Obscurity (Scarfone2008)
 % (Cardenas 2009, 4.)
 
-\subsubsection{Detektion und Wiederherstellung (Detection and Recovery)}
+\subsection{Detektion und Wiederherstellung (Detection and Recovery)}\label{subsec:detektion}
 % (Cardenas 2009, 4.)
 
-\subsubsection{Widerstandsfähigkeit (Resilience)} % Resilience
+\subsection{Widerstandsfähigkeit (Resilience)}\label{subsec:widerstand} % Resilience
 % (Cardenas 2009, 4.)
 
 % End-to-End Security (Fink)
 
-\subsubsection{Abschreckung (Deterrence)} % Deterrence
+\subsection{Abschreckung (Deterrence)}\label{subsec:abschreckung} % Deterrence
 % (Cardenas 2009, 4.)
 
-\section{Evaluation aktueller Maßnahmen}\label{sec:evaluation}
+\section{Sind die Gegenmaßnahmen für potenzielle Szenarien ausreichen?}\label{sec:diskussion}
+
+Sind sie Notwendig?
+Ja! -> Sind sie Ausreichend?
 
 \newpage
-\nocite{*}
+\printglossary[type=\acronymtype]
+~\nocite{*}
 
 \printbibliography
 \newpage
