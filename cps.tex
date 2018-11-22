@@ -14,12 +14,14 @@
 \usepackage{hyperref}
 \usepackage[T1]{fontenc}
 \hypersetup{colorlinks = true,linkcolor = black,citecolor = black,urlcolor = black,filecolor = black}
+\usepackage{enumitem}
 \usepackage[acronym,toc,section=section,numberedsection]{glossaries}
 \glstoctrue
 \makeglossaries
 \input{acronyms}
 
 \usepackage[autostyle=true,german=quotes]{csquotes}
+%\usepackage{natbib}
 \graphicspath{{./figure/}}
 
 
@@ -28,6 +30,11 @@
 
 
 \overfullrule=1mm
+
+\newcommand{\fb}[1]{\dofb#1}
+\newcommand{\dofb}[1]{\textbf{#1}\nobreak\hspace{0pt}}
+
+
 \begin{document}
 
 \Title[Security Considerations for \glsentrytext{cps}]{Security Considerations for Cyber-Physical Systems}
@@ -58,23 +65,35 @@ Eine kurze Zusammenfassung der Ausarbeitung mit 10-12 Zeilen Text.
 \glspl{cps} sind meist eingebettete echtzeit Systeme, welche eine hohe Verfügbarkeit, Robustheit,Widerstandsfähigkeit und Berechenbarkeit aufweisen müssen.
 Die physische Welt macht hohe Verfügbarkeit allerdings oft schwierig da sie alles andere als berechenbar ist~\cite{Lee08,SGL+08}.
 Einsatzorte für diese Systeme könnten intelligente Stromnetze, symbiotische Sensornetzwerke für die Agrarwirtschaft und Katastrophenabwehr, medizinische oder assistierende Geräte, intelligente Verkehrssteuerung und intelligente Gebäude sein~\cite{RLS+10}.
-In all diesen Beispielen spielt ein außerordentliches Maß an Vertrauen eine Rolle~\cite{SGL+08}.
-Dieses ist zwar auch bei klassischen Systemen gefordert, allerdings nicht in selbigem Ausmaß, da sie nicht in gleicher Weise an physische Prozesse gekoppelt sind.
-Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise die Bindung an eine Batterie oder eine leichte Bauweise~\cite{YWY+17}.
-Es existiert also ein Unterschied in den Anforderungen an \glspl{cps} und klassischen Systemen, wie Anwendungsservern oder Heimcomputern.
 
-In dem Kapitel~\ref{sec:bedeutung-security} wird zunächst das Zusammenspiel von ''cyber'' und ''physical'' im Bezug auch Sicherheit geklärt.
+In all diesen Beispielen spielt ein außerordentliches Maß an Vertrauen eine Rolle~\cite{SGL+08}.
+Dieses ist zwar auch bei klassischen Systemen gefordert, allerdings nicht in gleicher Weise, da sie nicht in gleicher Weise an physische Prozesse gekoppelt sind~\cite{BG11}.
+Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise die Bindung an eine Batterie oder eine leichte Bauweise~\cite{YWY+17}.
+Es existiert also ein Unterschied in den Anforderungen an \glspl{cps} und klassischen Systemen, wie Anwendungsservern oder Heimcomputern, sodass diese beiden in Bezug auf Sicherheit anders betrachtet werden müssen.
+
+In dem Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von ''cyber'' und ''physical'' im Bezug auch Sicherheit geklärt.
 Zudem werden mögliche Ziele und Angreifergruppen in den Kapitel~\ref{subsec:angriffsziel}~und~\ref{subsec:angreifergruppen} beleuchtet.
 Im Kapitel~\ref{sec:angriffszenarien} werden mögliche Szenarien und im Kapitel ~\ref{subsec:angreifergruppen} dazu Gegenmaßnahmen dargestellt.
 Zuletzt soll im Kapitel~\ref{sec:diskussion} diskutiert werden ob die genannten Gegenmaßnahmen  für die Szenarien ein adäquate Lösung darstellen.
 % Stuxnet (Langer)
 
 
-\section{Bedeutung von Security in \glsentrytext{cps}}\label{sec:bedeutung-security}
+\section{Bedeutung von Sicherheit in \glsentrytext{cps}}\label{sec:bedeutung-sicherheit}
+Die Bedeutung von Sicherheit in ''cyber'' Systemen und ''physical'' Systemen unterscheiden sich intrinsisch.
+Um Klarheit zu schaffen wo diese Unterschiede liegen soll Sicherheit für diese beiden zunächst definiert werden, sodass anschließend Sicherheit für \gls{cps} definiert werden kann.
 
-% Clickbait bei New im Bereich Security
+\subsection{Definition für Sicherheit von \glsentrytext{cps}}\label{subsec:definition}
+Unter Cybersicherheit versteht man im Allgemein Informationssicherheit.
+Diese Sicherheit kann man durch drei Grundlegende Prinzipien, dem sog CIA-triad, definieren~\cite[,S.~2]{Cherdantseva2013,SFJ17a}:
+\begin{itemize}[noitemsep,nolistsep]
+\item \fb{Confidiality} - Nur autorisierte Teilnehmer können auf die Infrastruktur zugreifen.
+\item \fb{Integrity} - Die Infrastruktur kann nur von autorisierten Teilnehmer verändert werden.
+\item \fb{Availability} - Die Infrastruktur ist für autorisierte Teilnehmer angemessen verfügbar.
+\end{itemize}
+Zwischen diesen drei Prinzipien muss bei der Entwicklung ein sinnvolles Gleichgewicht gefunden werden.
+\citeauthor{GK16} beschreiben, dass bei klassischen Cybersystemen der Fokus auf \fb{Confidiality}, bei \glspl{cps} bisher allerdings eher auf \fb{Availability} liegt.
+Sie schlagen außerdem vor die Sicherheitsdefinition für \glspl{cps} durch die Prinzipien \fb{Veracity} und \fb{Plausibility} zu ergänzen.
 
-\subsection{Security Definition f\"ur \glsentrytext{cps}}\label{subsec:definition}
 % Definition (BG11)
 % computer, information, network, communication, physical security
 % CIA triad (Fink) (WYX+10)
@@ -84,18 +103,17 @@ Zuletzt soll im Kapitel~\ref{sec:diskussion} diskutiert werden ob die genannten 
 
 % CPS-Security = Cyber und Physical Security
 
-\subsubsection{\glsentrytext{cps} als Angriffsziel}\label{subsec:angriffsziel}
-% (Gollman, 1)
-% Survey: medial, IoT, smart grid, power plant (Humayed)
-% IoT (FPA+18) (YWY+17)
-% Security Considerations in Cloud (SPB+16)
-
 \subsection{Angreifergruppen}\label{subsec:angreifergruppen}
 % Cyber-Kriminelle
 % Verärgerte Mitarbeiter/Private Gründe
 % Terroristen, Aktivisten, kriminelle Gruppen
 % Staaten (Cardenas 2009, 2.) (WYX+10, II. C.)
 
+\subsection{\glsentrytext{cps} als Angriffsziel}\label{subsec:angriffsziel}
+% (Gollman, 1)
+% Survey: medial, IoT, smart grid, power plant (Humayed)
+% IoT (FPA+18) (YWY+17)
+% Security Considerations in Cloud (SPB+16)
 
 \section{Angriffszenarien}\label{sec:angriffszenarien}
 % Sabotage und Spionage
