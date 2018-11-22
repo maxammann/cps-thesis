@@ -67,8 +67,8 @@
 \titlehead{
   \parbox{7cm}{
     Prof. Dr. Theo Ungerer\vspace{1ex}\\
-    Lehrstuhl f"ur Systemnahe Informatik\\und
-    Kommunikationssysteme\vspace{1ex}\\Universit"at Augsburg
+    Lehrstuhl f\"ur Systemnahe Informatik\\und
+    Kommunikationssysteme\vspace{1ex}\\Universit\"at Augsburg
   }
   \hfill
   \parbox{2.2cm}{
