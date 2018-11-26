@@ -21,9 +21,10 @@
 \input{acronyms}
 
 \usepackage[autostyle=true,german=quotes]{csquotes}
-%\usepackage{natbib}
+
 \graphicspath{{./figure/}}
 
+\usetikzlibrary{shapes.geometric}
 
 \clubpenalty=10000
 \widowpenalty=10000
@@ -80,28 +81,50 @@ Zuletzt soll im Kapitel~\ref{sec:diskussion} diskutiert werden ob die genannten 
 
 \section{Bedeutung von Sicherheit in \glsentrytext{cps}}\label{sec:bedeutung-sicherheit}
 Die Bedeutung von Sicherheit in ''cyber'' Systemen und ''physical'' Systemen unterscheiden sich intrinsisch.
-Um Klarheit zu schaffen wo diese Unterschiede liegen soll Sicherheit für diese beiden zunächst definiert werden, sodass anschließend Sicherheit für \gls{cps} definiert werden kann.
+Um Klarheit zu schaffen wo diese Unterschiede liegen soll Sicherheit zunächst für beide Arten von Systemen, anschließend für \gls{cps}, definiert werden.
 
 \subsection{Definition für Sicherheit von \glsentrytext{cps}}\label{subsec:definition}
+% CIA triad (Fink) (WYX+10)
+% Erweiterung von CIA: Veracity, Plausability (Gollman)
 Unter Cybersicherheit versteht man im Allgemeinen Informationssicherheit.
-Informationssicherheit kann man durch drei Prinzipien definieren~\cite[,S.~2]{Cherdantseva2013,SFJ17a}:
+Informationssicherheit kann man durch drei Prinzipien charakterisieren~\cite[,S.~2]{Cherdantseva2013,SFJ2017}:
 \begin{itemize}[noitemsep,nolistsep]
-\item \fb{Confidiality} - Nur autorisierte Teilnehmer können auf die Infrastruktur zugreifen.
+\item \fb{Confidentiality} - Nur autorisierte Teilnehmer können auf die Infrastruktur zugreifen.
 \item \fb{Integrity} - Die Infrastruktur kann nur von autorisierten Teilnehmer verändert werden.
 \item \fb{Availability} - Die Infrastruktur ist für autorisierte Teilnehmer angemessen verfügbar.
 \end{itemize}
 Zwischen diesen drei Prinzipien muss bei der Entwicklung ein sinnvolles Gleichgewicht gefunden werden.
-\citeauthor{GK16} beschreiben, dass bei klassischen Cybersystemen der Fokus auf \fb{Confidiality} und bei \glspl{cps} eher auf \fb{Availability} liegt.
-Sie schlagen außerdem vor die Sicherheitsdefinition für \glspl{cps} durch die Prinzipien \fb{Veracity} und \fb{Plausibility} zu ergänzen.
+\citeauthor{GK16} beschreiben, dass bei klassischen Cybersystemen der Fokus auf Confidentiality und bei \glspl{cps} eher auf Availability liegt.
+Dieser Fokus ist kritisch zu betrachten, wenn man die diversen Einsatzorte und Anforderungen von \glspl{cps} betrachtet.
+
+Sie schlagen außerdem vor das CIA-Dreieck im hinblick auf \glspl{cps} durch zwei Prinzipien zu erweitern.
+Das erste Prinzip ist Veracity (dt.~Richtigkeit).
+Ein System hat diese Eigenschaft genau dann, wenn Aussagen des Systems die Wahrhaftigkeit der vorliegenden Informationen reflektieren.
+Es muss also beispielsweise sichergestellt werden, dass Sensoren durch Physische Maßnahmen (siehe Kapitel~\ref{subsec:physisch}) geschützt sind.
+Confidentiality und Integrity sind nicht ausreichend um die Richtigkeit von Informationen zu garantieren.
+Veracity ist eine relativ starke Eigenschaft.
+Deshalb kann man in Fällen, in denen diese nicht erreichbar ist, zunächst auf Plausibility setzen.
+Herbei hat ein System genau dann diese Eigenschaft, wenn Aussagen des Systems nicht zu weit von allgemeinen Aussagen in Konflikt stehen.
+Liefert ein Sensor beispielweise für physikalische Modelle unmögliche Werte, so sind diese nicht mehr plausibel und man erreicht einen Fehlerzustand. \cite{GK16}
+
+\citeauthor{WYX+10} und \citeauthor{SFJ2017} stimmen zu, dass eine überprüfung auf die Richtigkeit von Informationen wichtig sind und erweitern das CIA-Dreieck um eine weitere Eigenschaft, der Authentizität zwischen mehreren Kommunikationspartnern.
+Es ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
+Die Richtigkeit beinhaltet auch, dass es nicht geleugnet werden darf bestimmte Aktionen ausgeführt zu haben \cite{NIST2013}.\todo{Wie zitiert man NIST?}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{figure/triad}
+    \caption{Erweitertes CIA-Dreieck}
+    \label{fig:triad}
+\end{figure}
+
+Zusammenfassend kann man sagen, dass die Prinzipien aus klassische Informationssicherheit also nicht ausreichen um das oft komplexe Zusammenspiel von ''physical''- und ''cyber''-Einheiten abzusichern.
+Es sind weitere Prinzipien nötig um die erweiterten Eigenschaften von \glpl{cps} abzudecken.
+Das erweiterte Dreieck ist in Abbildung~\ref{fig:triad} zu sehen.
 
 % Definition (BG11)
 % computer, information, network, communication, physical security
-% CIA triad (Fink) (WYX+10)
-% Erweiterung von CIA: Veracity, Plausability (Gollman)
 % Fingerprinting, Network Separation, End System Security (Gollman)
-% Erweiterung von CIA: Authenticity (WYX+10, II. A.)
-
-% CPS-Security = Cyber und Physical Security
 
 \subsection{Angreifergruppen}\label{subsec:angreifergruppen}
 % Cyber-Kriminelle
@@ -115,7 +138,7 @@ Sie schlagen außerdem vor die Sicherheitsdefinition für \glspl{cps} durch die 
 % IoT (FPA+18) (YWY+17)
 % Security Considerations in Cloud (SPB+16)
 
-\section{Angriffszenarien}\label{sec:angriffszenarien}
+\section{Angriffsszenarien}\label{sec:angriffszenarien}
 % Sabotage und Spionage
 % Punkte wo angegriffen werden kann (Fink, Figure 1.1) (Cardenas 2008, Figure 3)
 % Migration von Legacy Systemen ist kritisch (Gollman, 1.)
