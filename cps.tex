@@ -131,6 +131,14 @@ Deshalb sind Prinzipien wie Veracity und Authenticity, wie in Abbildung~\ref{fig
 % computer, information, network, communication, physical security
 % Fingerprinting, Network Separation, End System Security (Gollman)
 
+
+\subsection{\glsentrytext{cps} als Angriffsziel}\label{subsec:angriffsziel}
+% (Gollman, 1)
+% Survey: medial, IoT, smart grid, power plant (Humayed)
+% IoT (FPA+18) (YWY+17)
+% Security Considerations in Cloud (SPB+16)
+
+
 \subsection{Angreifergruppen}\label{subsec:angreifergruppen}
 % Cyber-Kriminelle
 % Verärgerte Mitarbeiter/Private Gründe
@@ -139,30 +147,27 @@ Deshalb sind Prinzipien wie Veracity und Authenticity, wie in Abbildung~\ref{fig
 
 Angriffe können von unterschiedlichen Gruppen aus unterschiedlichen Gründen ausgehen.
 
+% Welche Gruppe? Warum? Auf welche Art? (falls speziell)
 \begin{compactenum}[(a)]
     \item Kriminelle Gruppen haben oft Erpressung als Ziel \cite{CAS+09,WYX+10}.
-    Dabei sind Cyberangriffe nur ein logischer Schritt der Kriminellen, da diese weitaus günstiger, weniger riskant, nicht durch Entfernungen eingeschränkt und einfacher zu koordinieren und wiederholen sind \cite{CAS+09}.
+    Dabei sind Cyberangriffe nur ein logischer nächster Schritt der Kriminellen, da diese weitaus günstiger, weniger riskant, nicht durch Entfernungen eingeschränkt und einfacher zu koordinieren und wiederholen sind \cite{CAS+09}.
     \item Erfahrene Forensiker/Hacker haben nicht unbedingt als Ziel selbst ein System zu beschädigen.
     Dabei gibt es zwei Gründe für die Entwicklung von Schadsoftware.
     Zum einen können diese an beispielsweise Staaten verkauft werden (siehe dazu (\ref{group:staaten})). \todo{Zitat fehlt}
     Zum anderen kann die Entwicklung aber auch als Ziel haben die Lücken unter bestimmten Auflagen offen zulegen um diese zu schließen. \todo{Zitat fehlt}
     \item Unzufriedene (ehemalige) Mitarbeiter eines Unternehmens haben viel Wissen über dessen Infrastruktur.
-    Zudem existiert eventuell schon oder noch Zugriff auf das System, sodass kein Umgehen von Sicherheitsmechanismen notwendig ist. \cite{CAS+09,WYX+10}
-    \item Aktivistische Gruppierungen zielen oft auf kritische \glspl{cps} ab, wie beispielsweise Kernkraftwerke oder \gls{scada} Systemen in Fabriken um diese zu manipulieren \cite{CAS+09,WYX+10}. \todo{Spionage?}
+    Zudem existiert eventuell schon oder noch Zugriff auf das System, sodass überhaupt kein Umgehen von Sicherheitsmechanismen notwendig ist. \cite{CAS+09,WYX+10}
+    \item Aktivistische Gruppierungen zielen oft auf kritische \glspl{cps}, wie beispielsweise Kernkraftwerke oder \gls{scada} Systemen in Fabriken, ab, um diese zu manipulieren \cite{CAS+09,WYX+10}. \todo{Spionage?}
     Damit dies erreicht werden kann existiert die Möglichkeit erfahrene Forensiker/Hacker oder Insider einzusetzen \cite{WYX+10}.
     % Terroristisch
-    \item Staaten können militärisches Interesse dabei haben Infrastruktur innerhalb oder außerhalb des Staatsgebiets anzugreifen \cite{CAS+09}.
-    Die Ziele können dabei Spionage oder Sabotage sein.
+    \item Staaten können militärisches Interesse daran haben Infrastruktur innerhalb oder außerhalb des Staatsgebiets anzugreifen \cite{CAS+09}, um diese zu zu sabotieren oder auszuspionieren.
+    Auch hier werden erfahrene Forensiker/Hacker oder Insider eingesetzt.
     \label{group:staaten}
 \end{compactenum}
 
-Das Wissen über den Angreifer und dessen Motivation kann maßgeblich bei der Wahl und der Strategie der Gegenmaßnahmen helfen. \todo{Game Theory?}
+Das Wissen über den Angreifer und dessen Motivation kann maßgeblich bei der Wahl und der Strategie der Gegenmaßnahmen helfen.
+Zudem können Gefahrenmodelle und detailliertere Angriffsszenarien entworfen werden.
 
-\subsection{\glsentrytext{cps} als Angriffsziel}\label{subsec:angriffsziel}
-% (Gollman, 1)
-% Survey: medial, IoT, smart grid, power plant (Humayed)
-% IoT (FPA+18) (YWY+17)
-% Security Considerations in Cloud (SPB+16)
 
 \section{Angriffsszenarien}\label{sec:angriffszenarien}
 % Sabotage und Spionage
