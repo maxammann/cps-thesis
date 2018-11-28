@@ -6,7 +6,7 @@
       <compiler-arguments>-pvc</compiler-arguments>
       <main-file>$PROJECT_DIR$/cps.tex</main-file>
       <aux-dir>false</aux-dir>
-      <out-dir>true</out-dir>
+      <out-dir>false</out-dir>
       <output-format>PDF</output-format>
       <bib-run-config />
     </texify>

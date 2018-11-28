@@ -15,7 +15,8 @@
 \usepackage[T1]{fontenc}
 \hypersetup{colorlinks = true,linkcolor = black,citecolor = black,urlcolor = black,filecolor = black}
 \usepackage{enumitem}
-\usepackage[acronym,toc,section=section,numberedsection]{glossaries}
+\usepackage[acronym,toc,section=section,numberedsection,nomain]{glossaries}
+\usepackage{paralist}
 \glstoctrue
 \makeglossaries
 \input{acronyms}
@@ -84,7 +85,7 @@ Zuletzt soll im Kapitel~\ref{sec:diskussion} diskutiert werden ob die genannten 
 
 \section{Bedeutung von Sicherheit in \glsentrytext{cps}}\label{sec:bedeutung-sicherheit}
 Die Bedeutung von Sicherheit in ''cyber'' Systemen und ''physical'' Systemen unterscheiden sich intrinsisch.
-Um Klarheit zu schaffen wo diese Unterschiede liegen soll Sicherheit zunächst für beide Arten von Systemen, anschließend für \gls{cps}, definiert werden.
+Um Klarheit zu schaffen wo diese Unterschiede liegen soll Sicherheit speziell für \gls{cps} definiert werden.
 
 \subsection{Definition für Sicherheit von \glsentrytext{cps}}\label{subsec:definition}
 % CIA triad (Fink) (WYX+10)
@@ -100,18 +101,20 @@ Zwischen diesen drei Prinzipien muss bei der Entwicklung ein sinnvolles Gleichge
 \citeauthor{GK16} beschreiben, dass bei klassischen Cybersystemen der Fokus auf Confidentiality und bei \glspl{cps} eher auf Availability liegt.
 Dieser Fokus ist kritisch zu betrachten, wenn man die diversen Einsatzorte und Anforderungen von \glspl{cps} betrachtet.
 
-Sie schlagen außerdem vor das CIA-Dreieck im hinblick auf \glspl{cps} durch zwei Prinzipien zu erweitern.
+Sie schlagen außerdem vor das CIA-Dreieck im Hinblick auf \glspl{cps} durch zwei Prinzipien zu erweitern.
 Das erste Prinzip ist Veracity (dt.~Richtigkeit).
 Ein System hat diese Eigenschaft genau dann, wenn Aussagen des Systems die Wahrhaftigkeit der vorliegenden Informationen reflektieren.
-Es muss also beispielsweise sichergestellt werden, dass Sensoren durch Physische Maßnahmen (siehe Kapitel~\ref{subsec:physisch}) geschützt sind.
+Es muss also beispielsweise sichergestellt werden, dass Sensoren durch physische Maßnahmen (siehe Kapitel~\ref{subsec:physisch}) geschützt sind.
 Confidentiality und Integrity sind nicht ausreichend um die Richtigkeit von Informationen zu garantieren.
 Veracity ist eine relativ starke Eigenschaft.
-Deshalb kann man in Fällen, in denen diese schwer erreichbar ist, zunächst auf Plausibility setzen.
-Herbei hat ein System genau dann diese Eigenschaft, wenn Aussagen des Systems nicht zu weit von allgemeinen Aussagen in Konflikt stehen.
-Liefert ein Sensor beispielweise für physikalische Modelle unmögliche Werte, so sind diese nicht mehr plausibel und man erreicht einen Fehlerzustand. \cite{GK16}
+Deshalb kann man in Fällen, in denen diese nur schwer zu erreichen ist, zunächst auf Plausibility setzen.
+Herbei hat ein System genau dann diese Eigenschaft, wenn Aussagen des Systems nicht zu weit von erwartbaren Werten abweichen.
+Liefert ein Sensor beispielweise einen für physikalische Modelle unmögliche Wert, so ist dieser nicht plausibel und das System erreicht kann einen möglichen Angriff erkennen. \cite{GK16}
 
-\citeauthor{WYX+10} und \citeauthor{SFJ2017} stimmen zu, dass eine überprüfung auf die Richtigkeit von Informationen wichtig sind und erweitern das CIA-Dreieck um eine weitere Eigenschaft, der Authentizität zwischen mehreren Kommunikationspartnern.
-Es ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
+\citeauthor{WYX+10} und \citeauthor{SFJ2017} stimmen zu, dass eine Überprüfung auf die Richtigkeit von Informationen wichtig sind.
+Sie erweitern das CIA-Dreieck zudem um die Eigenschaft der Authentizität zwischen mehreren Kommunikationspartnern.
+
+Bei \glspl{cps} ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
 Die Richtigkeit beinhaltet auch, dass es nicht geleugnet werden darf bestimmte Aktionen ausgeführt zu haben \cite{NIST2013}.\todo{Wie zitiert man NIST?}
 
 \begin{figure}
@@ -121,9 +124,8 @@ Die Richtigkeit beinhaltet auch, dass es nicht geleugnet werden darf bestimmte A
     \label{fig:triad}
 \end{figure}
 
-Zusammenfassend kann man sagen, dass die Prinzipien aus klassische Informationssicherheit also nicht ausreichen um das oft komplexe Zusammenspiel von ''physical''- und ''cyber''-Einheiten abzusichern.
-Es sind weitere Prinzipien nötig um die erweiterten Eigenschaften von \glpl{cps} abzudecken.
-Das erweiterte Dreieck ist in Abbildung~\ref{fig:triad} zu sehen.
+Zusammenfassend kann man sagen, dass die Prinzipien aus der klassische Informationssicherheit nicht ausreichen um das oft komplexe Zusammenspiel von ''physical''- und ''cyber''-Einheiten abzusichern.
+Deshalb sind Prinzipien wie Veracity und Authenticity, wie in Abbildung~\ref{fig:triad} zu sehen ust, nötig um die Aspekte von \glspl{cps} abzudecken.
 
 % Definition (BG11)
 % computer, information, network, communication, physical security
@@ -134,6 +136,18 @@ Das erweiterte Dreieck ist in Abbildung~\ref{fig:triad} zu sehen.
 % Verärgerte Mitarbeiter/Private Gründe
 % Terroristen, Aktivisten, kriminelle Gruppen
 % Staaten (Cardenas 2009, 2.) (WYX+10, II. C.)
+
+Angriffe können von unterschiedlichen Gruppen aus unterschiedlichen Gründen ausgehen.
+
+\begin{compactenum}[(1)]
+    \item Kriminelle Gruppen \cite{CAS+09,WYX+10}
+    \item Erfahrene Forensiker/Hacker \cite{WYX+10}
+    \item Unzufriedene Mitarbeiter \cite{CAS+09,WYX+10}
+    \item Terroristische/Aktivistische Gruppierungen \cite{CAS+09,WYX+10}
+    \item Staaten \cite{CAS+09}
+\end{compactenum}
+
+Das Ziel muss nicht unbedingt eine beschädigung des Systems sein.
 
 \subsection{\glsentrytext{cps} als Angriffsziel}\label{subsec:angriffsziel}
 % (Gollman, 1)
