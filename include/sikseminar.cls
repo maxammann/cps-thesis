@@ -28,7 +28,7 @@
 \RequirePackage[headsepline]{scrlayer-scrpage}
 
 %\RequirePackage{german}
-\RequirePackage[german]{babel}
+\RequirePackage[ngerman]{babel}
 \RequirePackage{bibgerm}
 \RequirePackage{lmodern}
 \RequirePackage{graphicx}
