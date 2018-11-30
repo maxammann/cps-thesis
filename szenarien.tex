@@ -1,6 +1,9 @@
 % Encoding: UTF-8
 
 \section{Angriffsszenarien}\label{sec:angriffszenarien}
+Im folgenden Kapitel sollen verschiedene Angriffe auf \cps dargestellt werden.
+
+
 % Sabotage und Spionage
 % Punkte wo angegriffen werden kann (Fink, Figure 1.1) (Cardenas 2008, Figure 3)
 % Migration von Legacy Systemen ist kritisch (Gollman, 1.)
@@ -8,11 +11,37 @@
 % Unterschied zu klassischen Systemen (Cardenas 2008, 3.)
 % IoT Unterschiede zu klassischem (FPA+18)
 % Workflow von CPS (WYX+10, II.)
-\subsection{Denial-of-Service Angriff}\label{subsec:dos}
+\subsection{\glsentrytext{dos} Angriff}\label{subsec:dos}
+\gls{dos} Angriffe Zielen darauf ab das \enquote{cyber}-System mit einer großen Flut an Netzwerkpaketen zu lähmen.
+Diese Pakete haben ein angeschlossenes Netzwerk oder das \enquote{physical}-System als Quelle.
+Dadurch werden der Informationsfluss von Steuer und Nutzdaten unterbrochen, wie in Abbildung~\ref{fig:attack_points} an den Punkten A4 und A2 zu sehen ist.
+
+Diese Angriffe sind beispielsweise bei CAN-Bussen in Autos realistisch, da Nachrichten mit vielen Empfängern gesendet werden und auch die Fehlerbehebung angreifbar ist~\cite{HUM 81,26}.% HUM 81: Konkret wurde der Tacho auf 0 gesetzt
+Folgen können sein, dass sich Fenster nicht mehr schließen lassen, Warnlichter oder die Diebstahlsicherung deaktiviert werden können~\cite{HUM 68}.
+
+Auch in echtzeit-kritischen intelligenten Stromnetzen kann ein ein massives Überfluten dazu führen, dass der Normalbetrieb nicht mehr möglich ist~\cite{HUM 98}.
+Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotential~\cite{HUM 99}, da diese allgemein eine geringere Bandbreite aufweisen.
 % (WYX+10, II. B.)
 % (Cardenas 2008, 2.1)
-\subsection{Man-in-the-Middle Angriff}\label{subsec:mitm}
+\subsection{\glsentrytext{mitm} Angriff}\label{subsec:mitm}
 % (WYX+10, II. B.)
+Bei \gls{mitm} Angriffe kann man zwischen aktiven und passiven Angriffen unterscheiden~\cite{WYX+10}.%Cite http://www.security-science.com/pdf/active-man-in-the-middle.pdf ??
+Passive verändern den Netzwerkverkehr nicht, sondern lauschen nur um an Informationen zu gelangen.
+Diese Art von Angriff soll in Kapitel~\ref{subsec:lauschen} behandelt werden.
+Bei aktiven hingegen wird der Verkehr zwischen zwei Kommunikationspartnern verändert um das Opfer zu kontrollieren.
+Beide Arten nutzen allerdings die selben initialen Angriffsvektoren.
+In der Abbildung~\ref{fig:attack_points} stellt A1 einen aktiven \gls{mitm} Angriff dar.
+Ein Controller kommuniziert über ein Netzwerk mit einem physischen System über die Verbindungen y und u.
+Ziel eines Angreifers ist es den Netzwerkverkehr zwischen den beiden anderen Hosts über sich zu leiten~\cite{WYX+10,FPA+18}.
+
+Dies ist in IEEE 802.11 Netzwerken beispielweise über ARP-Poisoning möglich~\cite{FIT+2012}.
+Aber auch bei Ethernet Verbindungen sind \gls{mitm} Angriffe gängig~\cite{HLL+17}.
+
+Ein weiteres Beispiel für diese Art von Angriffen sind offline Relay Angriffe.
+Dabei werden langwellige Signale, welche von Autos an den Schlüssel des Besitzers gesendet werden, um festzustellen ob dieser in der Nähe ist, abgefangen und aufgezeichnet.
+Beim Abspielen dieses Signals in der nähe des Besitzers sendet der Schlüssel ein Hochfrequenzsignal, welches wiederum aufgezeichnet wird.
+Das Abspielen dieses HF-Signals kann dann genutzt werden um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
+
 \subsection{T\"auschungsangriff (Deception)}\label{subsec:tauschung} % Deception
 % (Cardenas 2008, 2.1)
 \subsection{Lauschangriff (Eavesdropping)}\label{subsec:lauschen} % Eavesdropping
