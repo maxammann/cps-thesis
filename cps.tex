@@ -13,7 +13,7 @@
 \usepackage{todonotes}
 \usepackage{hyperref}
 \usepackage[T1]{fontenc}
-\hypersetup{colorlinks = true,linkcolor = black,citecolor = black,urlcolor = black,filecolor = black}
+\hypersetup{colorlinks = false,linkcolor = black,citecolor = black,urlcolor = black,filecolor = black}
 \usepackage[inline]{enumitem}
 \usepackage[acronym,toc,section=section,numberedsection,nomain]{glossaries}
 \glstoctrue
@@ -70,11 +70,11 @@ Die physische Welt macht hohe Verfügbarkeit allerdings oft schwierig da sie all
 Einsatzorte für diese Systeme könnten intelligente Stromnetze, symbiotische Sensornetzwerke für die Agrarwirtschaft und Katastrophenabwehr, medizinische oder assistierende Geräte, intelligente Verkehrssteuerung und intelligente Gebäude sein~\cite{RLS+10}.
 
 In all diesen Beispielen spielt ein außerordentliches Maß an Vertrauen eine Rolle~\cite{SGL+08}.
-Dieses ist zwar auch bei klassischen Systemen gefordert, allerdings nicht in gleicher Weise, da sie nicht in gleicher Weise an physische Prozesse gekoppelt sind~\cite{BG11}.
+Dieses ist zwar auch bei Cybersystemen gefordert, allerdings ohne die Koppelung an physische Prozesse~\cite{BG11}.
 Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise die Bindung an eine Batterie oder eine leichte Bauweise~\cite{YWY+17}.
-Es existiert also ein Unterschied in den Anforderungen an \cps und klassischen Systemen, wie Anwendungsservern oder Heimcomputern, sodass diese beiden in Bezug auf Sicherheit anders betrachtet werden müssen.
+Es existiert also ein Unterschied in den Anforderungen an \cps und Cybersystemen, wie Anwendungsservern oder Heimcomputern, sodass man diese in Bezug auf Sicherheit anders betrachtet muss.
 
-In dem Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von \enquote{cyber} und \enquote{physical} im Bezug auch Sicherheit geklärt.
+In dem Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von physischen und Cybersystemen im Bezug auch Sicherheit geklärt.
 Zudem werden mögliche Ziele und Angreifergruppen in den Kapitel~\ref{subsec:angriffsziel}~und~\ref{subsec:angreifergruppen} beleuchtet.
 Im Kapitel~\ref{sec:angriffszenarien} werden mögliche Szenarien und im Kapitel ~\ref{subsec:angreifergruppen} dazu Gegenmaßnahmen dargestellt.
 Zuletzt soll im Kapitel~\ref{sec:diskussion} diskutiert werden ob die genannten Gegenmaßnahmen  für die Szenarien ein adäquate Lösung darstellen.
@@ -84,7 +84,6 @@ Zuletzt soll im Kapitel~\ref{sec:diskussion} diskutiert werden ob die genannten 
 % EU: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=JOIN:2017:0450:FIN https://ec.europa.eu/transport/sites/transport/files/3rd-mobility-pack/com20180283_en.pdf
 
 
-\section{Bedeutung von Sicherheit in \glsentrytext{cps}}\label{sec:bedeutung-sicherheit}
 \input{bedeutung-von-sicherheit-in-cps}
 \input{szenarien}
 

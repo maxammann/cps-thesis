@@ -1,20 +1,42 @@
 % Encoding: UTF-8
 
 \section{Angriffsszenarien}\label{sec:angriffszenarien}
-Im folgenden Kapitel sollen verschiedene Angriffe auf \cps dargestellt werden.
 
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{abstrakt}
+        \caption{Ohne Angriffspunkte}
+        \label{fig:abstrakt}
+    \end{subfigure}
+    \qquad
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{attack_points}
+        \caption{Mit Angriffspunkten}
+        \label{fig:attack_points}
+    \end{subfigure}
+    \caption{Abstraktion eines \cps~\cite{CAS08}}
+\end{figure}
+
+In Abbildung~\ref{fig:abstrakt} ist eine abstrakte Darstellung eines \cps zu sehen.
+Der \enquote{Controller} sendet Befehle über u an das \enquote{Physical System}.
+Dieses wiederum schickt Resultate oder Sensorwerte über y an den \enquote{Controller}.
+In Abbildung~\ref{fig:attack_points} sind mögliche Angriffspunkte dargestellt.
+Hierbei stellen A1 und A2 Täuschungsangriffe dar, A4 und A2 \gls{dos} und A5 einen physischen Angriff.
+Im folgenden Kapitel sollen Angriffe an den verschiedenen Punkten des \cps dargestellt werden.
 
 % Sabotage und Spionage
 % Punkte wo angegriffen werden kann (Fink, Figure 1.1) (Cardenas 2008, Figure 3)
 % Migration von Legacy Systemen ist kritisch (Gollman, 1.)
-%\subsection{Unterschiede zu klassische Szenarien}\label{subsec:klassisch}
-% Unterschied zu klassischen Systemen (Cardenas 2008, 3.)
-% IoT Unterschiede zu klassischem (FPA+18)
+% Unterschied zu Cybersystemen (Cardenas 2008, 3.)
+% IoT Unterschiede zu Cybersystemen (FPA+18)
 % Workflow von CPS (WYX+10, II.)
 \subsection{\glsentrytext{dos} Angriff}\label{subsec:dos}
-\gls{dos} Angriffe Zielen darauf ab das \enquote{cyber}-System mit einer großen Flut an Netzwerkpaketen zu lähmen.
-Diese Pakete haben ein angeschlossenes Netzwerk oder das \enquote{physical}-System als Quelle.
-Dadurch werden der Informationsfluss von Steuer und Nutzdaten unterbrochen, wie in Abbildung~\ref{fig:attack_points} an den Punkten A4 und A2 zu sehen ist.
+% Availability
+
+\gls{dos} Angriffe Zielen darauf ab das Cybersystem mit einer großen Flut an Informationen zu lähmen.
+Diese können von einem angeschlossenes Netzwerk oder dem physisches System ausgehen.
+Dadurch wird der Informationsfluss von Steuer- und Nutzdaten, wie in Abbildung~\ref{fig:attack_points} an den Punkten A4 und A2 zu sehen ist, unterbrochen und die \hyperref[def:availability]{Availability} des \cps eingeschränkt.
 
 Diese Angriffe sind beispielsweise bei CAN-Bussen in Autos realistisch, da Nachrichten mit vielen Empfängern gesendet werden und auch die Fehlerbehebung angreifbar ist~\cite{HUM 81,26}.% HUM 81: Konkret wurde der Tacho auf 0 gesetzt
 Folgen können sein, dass sich Fenster nicht mehr schließen lassen, Warnlichter oder die Diebstahlsicherung deaktiviert werden können~\cite{HUM 68}.
@@ -24,15 +46,16 @@ Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotential~\ci
 % (WYX+10, II. B.)
 % (Cardenas 2008, 2.1)
 \subsection{\glsentrytext{mitm} Angriff}\label{subsec:mitm}
+% no Authenticity -> Confidentiality, Integrity
 % (WYX+10, II. B.)
 Bei \gls{mitm} Angriffe kann man zwischen aktiven und passiven Angriffen unterscheiden~\cite{WYX+10}.%Cite http://www.security-science.com/pdf/active-man-in-the-middle.pdf ??
-Passive verändern den Netzwerkverkehr nicht, sondern lauschen nur um an Informationen zu gelangen.
-Diese Art von Angriff soll in Kapitel~\ref{subsec:lauschen} behandelt werden.
-Bei aktiven hingegen wird der Verkehr zwischen zwei Kommunikationspartnern verändert um das Opfer zu kontrollieren.
+Passive verändern den Netzwerkverkehr nicht, sondern lauschen nur um an Informationen zu gelangen (siehe Kapitel~\ref{subsec:lauschen}).
+Bei aktiven hingegen wird der Verkehr zwischen zwei Kommunikationspartnern zudem noch verändert.
 Beide Arten nutzen allerdings die selben initialen Angriffsvektoren.
 In der Abbildung~\ref{fig:attack_points} stellt A1 einen aktiven \gls{mitm} Angriff dar.
 Ein Controller kommuniziert über ein Netzwerk mit einem physischen System über die Verbindungen y und u.
 Ziel eines Angreifers ist es den Netzwerkverkehr zwischen den beiden anderen Hosts über sich zu leiten~\cite{WYX+10,FPA+18}.
+Diese Angriffe können also aufgrund von fehlender \hyperref[def:authenticity]{Authenticity} zu einem Verlust von \hyperref[def:confidentiality]{Confidentiality} und \hyperref[def:integrity]{Integrity}.
 
 Dies ist in IEEE 802.11 Netzwerken beispielweise über ARP-Poisoning möglich~\cite{FIT+2012}.
 Aber auch bei Ethernet Verbindungen sind \gls{mitm} Angriffe gängig~\cite{HLL+17}.
@@ -42,9 +65,18 @@ Dabei werden langwellige Signale, welche von Autos an den Schlüssel des Besitze
 Beim Abspielen dieses Signals in der nähe des Besitzers sendet der Schlüssel ein Hochfrequenzsignal, welches wiederum aufgezeichnet wird.
 Das Abspielen dieses HF-Signals kann dann genutzt werden um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
 
-\subsection{T\"auschungsangriff (Deception)}\label{subsec:tauschung} % Deception
-% (Cardenas 2008, 2.1)
 \subsection{Lauschangriff (Eavesdropping)}\label{subsec:lauschen} % Eavesdropping
+% no Authenticity -> Confidentiality
 % (WYX+10, II. B.)
+
+\subsection{T\"auschungsangriff (Deception)}\label{subsec:tauschung} % Deception
+% no Authenticity -> Integrity
+% no Authenticity -> Veracity
+% (Cardenas 2008, 2.1)
+
+
+
+
 \subsection{Compromised-Key Angriff}\label{subsec:key}
+% Diebstahl ->
 % (WYX+10, II. B.)

@@ -1,28 +1,30 @@
 % Encoding: UTF-8
 
-Die Bedeutung von Sicherheit in \enquote{cyber} Systemen und \enquote{physical} Systemen unterscheiden sich intrinsisch.
-Um Klarheit zu schaffen wo diese Unterschiede liegen soll Sicherheit speziell für \gls{cps} definiert werden.
+\section{Bedeutung von Sicherheit in \glsentrytext{cps}}\label{sec:bedeutung-sicherheit}
+
+Die Eigenschaften Cybersystemen und physischen Systemen in Bezug auf Sicherheit unterscheiden sich.
+Um Klarheit zu schaffen wo diese Unterschiede liegen soll Sicherheit speziell für \cps definiert werden.
 
 \subsection{Sicherheitsrelevante Eigenschaften von \glsentrytext{cps}}\label{subsec:definition}
 % CIA triad (Fink) (WYX+10)
 % Erweiterung von CIA: Veracity, Plausability (Gollman)
-Unter Cybersicherheit versteht man im Allgemeinen Informationssicherheit.
+Unter Sicherheit bei Cybersystemen versteht man im Allgemeinen Informationssicherheit.
 Informationssicherheit kann man durch drei Eigenschaften von Systemen charakterisieren~\cite[,S.~2]{Cherdantseva2013,SFJ2017}:
 \begin{itemize}[noitemsep,wide=0pt]
-    \item \fb{Confidentiality} - Nur autorisierte Teilnehmer können auf die Infrastruktur zugreifen.
-    \item \fb{Integrity} - Die Infrastruktur kann nur von autorisierten Teilnehmer verändert werden.
-    \item \fb{Availability} - Die Infrastruktur ist für autorisierte Teilnehmer angemessen verfügbar.
+    \item \fb{Confidentiality} - Nur autorisierte Teilnehmer können auf die Infrastruktur zugreifen.\label{def:confidentiality}
+    \item \fb{Integrity} - Die Infrastruktur kann nur von autorisierten Teilnehmer verändert werden.\label{def:integrity}
+    \item \fb{Availability} - Die Infrastruktur ist für autorisierte Teilnehmer angemessen verfügbar.\label{def:availability}
 \end{itemize}
 
 Zwischen diesen drei Eigenschaften muss bei der Entwicklung ein sinnvolles Gleichgewicht gefunden werden.
-\citeauthor{GK16} beschreiben, dass bei klassischen Cybersystemen der Fokus auf Confidentiality und bei \cps eher auf Availability liegt.
+\citeauthor{GK16} beschreiben, dass bei Cybersystemen der Fokus auf Confidentiality und bei \cps eher auf Availability liegt.
 Dieser Fokus ist kritisch zu betrachten, wenn man die diversen Einsatzorte und sicherheitskritischen Anforderungen von \cps betrachtet.
 
-Sie schlagen außerdem vor das CIA-Dreieck im Hinblick auf \cps durch die Eigenschaft ist Veracity (dt.~Richtigkeit) zu erweitern.
+Sie schlagen außerdem vor das CIA-Dreieck im Hinblick auf \cps durch die Eigenschaft Veracity (dt.~Richtigkeit) zu erweitern.
 Ein System hat diese Eigenschaft genau dann, wenn Aussagen des Systems die Wahrhaftigkeit der  Wirklichkeit reflektieren.
 Es muss also sichergestellt werden, dass Sensoren durch beispielsweise physische Maßnahmen (siehe Kapitel~\ref{subsec:physisch}) fälschungssicher sind.
 Confidentiality und Integrity sind nicht ausreichend um die Richtigkeit von Informationen zu garantieren.
-Die Richtigkeit beinhaltet auch, dass es nicht geleugnet werden darf bestimmte Aktionen ausgeführt zu haben \cite{NIST2013}.\todo{Wie zitiert man NIST?}
+Die Richtigkeit soll auch beinhalten, dass es nicht geleugnet werden darf bestimmte Aktionen ausgeführt zu haben \cite{NIST2013}.\todo{Wie zitiert man NIST?}
 Veracity ist eine relativ starke Eigenschaft.
 Deshalb kann man in Fällen, in denen diese nur schwer zu erreichen ist, zunächst auf Plausibility setzen.
 Herbei hat ein System genau dann diese Eigenschaft, wenn Aussagen des Systems nicht zu weit von erwartbaren Werten abweichen.
@@ -30,6 +32,7 @@ Liefert ein Sensor beispielweise einen für physikalische Modelle unmögliche We
 
 \citeauthor{WYX+10} und \citeauthor{SFJ2017} stimmen zu, dass eine Überprüfung auf die Richtigkeit von Informationen wichtig sind.
 Sie erweitern das CIA-Dreieck zudem um die Eigenschaft der Authentizität zwischen Kommunikationspartnern.
+Authentizität kann hergestellt werden, wenn sich beide Kommunikationspartner einig über die Identität des Gegenübers sind.\label{def:authenticity}
 
 \begin{figure}
     \centering
@@ -38,9 +41,16 @@ Sie erweitern das CIA-Dreieck zudem um die Eigenschaft der Authentizität zwisch
     \label{fig:triad}
 \end{figure}
 
-Zusammenfassend kann man sagen, dass die Eigenschaften von Systemen aus der klassische Informationssicherheit nicht ausreichen um das oft komplexe Zusammenspiel von \enquote{physical} - und \enquote{cyber}-Einheiten abzusichern.
+Zusammenfassend kann man sagen, dass die Eigenschaften von Systemen aus der klassischen Informationssicherheit nicht ausreichen um das oft komplexe Zusammenspiel von physischen- und Cybersystemen abzusichern.
 Bei \cps ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
-Deshalb sind Eigenschaften wie Veracity und Authenticity, wie in Abbildung~\ref{fig:triad} zu sehen ust, nötig um die Aspekte von \cps abzudecken.
+Deshalb sind zusätzliche Eigenschaften wie Veracity und Authenticity, wie in Abbildung~\ref{fig:triad} zu sehen ust, nötig um die Aspekte von \cps abzudecken.
+
+\todo{Begriffe noch klar definieren}
+\begin{itemize}[noitemsep,wide=0pt]
+    \item \fb{Veracity} - Daten von autorisierte Teilnehmer entsprechen der Wahrheit. % D.h. die Daten sind nicht quatsch und wurden schon vor dem absenden verändert.
+    \item \fb{Authenticity} - Daten von autorisierte Teilnehmer stammen auch wirklich von Ihm. % Authentifity ermöglicht Integrity?
+    \item Nonrepudiateion
+\end{itemize}
 
 % Definition (BG11)
 % computer, information, network, communication, physical security
@@ -81,50 +91,3 @@ Auch hier werden Forensiker oder Insider zu engagieren~\ref{factor:methode}.
 
 Das Wissen über den Angreifer und dessen Motivation kann maßgeblich bei der Wahl und der Strategie der Gegenmaßnahmen helfen.
 Zudem können Gefahrenmodelle und detailliertere Angriffsszenarien entworfen werden (siehe Kapitel~\ref{sec:angriffszenarien}).
-
-
-\subsection{\glsentrytext{cps} als Angriffsziel}\label{subsec:angriffsziel}
-\todo{Noch sehr unzufrieden mit diesem Kapitel, Eventuell anderer Aufbau: Problem -> Beispiel}
-Es gibt eine Vielzahl von Anwendungen für \cps, wie beispielsweise industrielle Kontrollsysteme, intelligente Stromnetze, medizinische Geräte und intelligente Autos~\cite{HLL+17}.
-\todo{Acronym ICS, ICCP, DNP3, Modbus}
-Hierbei sind die unterschiedlichsten Protokolle und Busse zur Kommunikation.
-ICCP, Modbus oder auch DNP3, die Verwendung bei Industrial Control Systems und intelligenten Stromnetze finden~\cite{HLL+17}, implementieren keine Verschlüsselung oder Authentifizierung \cite{HUM 124,HUM 38,HUM 69}, wodurch Lauschangriffe (siehe Kapitel~\ref{subsec:lauschen}) möglich sind.
-Es ist also wichtig offene Protokolle, wie ICCP oder TCP/IP, zu verwenden, sodass man Grundlegende Eigenschaften der Confidentiality und Authenticity bei einem \cps bestimmen kann und falls nötig diese nachrüsten kann.
-
-Bei medizinischen Geräten ist eine kabellose Verbindung oft notwendig~\cite{HLL+17}, da Aktualisierungen über ein Kabel nur schwer umzusetzen sind.
-Besonders in diesem Bereich sollte das Bewusstsein für Sicherheit wachsen, da direkt Menschenleben und deren Privatsphäre, davon abhängen wie sicher diese Systeme sind.
-
-Durch diese Vielfalt an Kommunikationsmöglichkeiten und der Heterogenität der einzelnen Komponenten gibt es auch eine dementsprechend große Angriffsfläche~\cite{HLL+17}.
-Zudem wird bei der Entwicklung oft versucht durch proprietäre Protokolle und deren Obskurität Sicherheit zu gewährleiten~\cite{HLL+17,SJT2008}\todo{cite NIST}.
-
-% Die Umgebung des \cps ist meist vor der Entwicklung noch nicht bekannt oder wird ignoriert~\cite{CAS08,Ericsson2010}.
-
-% IoT (FPA+18) (YWY+17)
-% Security Considerations in Cloud (SPB+16)
-
-\begin{figure}
-    \centering
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{abstrakt}
-        \caption{Ohne Angriffspunkte}
-        \label{fig:abstrakt}
-    \end{subfigure}
-    \qquad
-    \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{attack_points}
-        \caption{Mit Angriffspunkten}
-        \label{fig:attack_points}
-    \end{subfigure}
-    \caption{Abstraktion eines \cps~\cite{CAS08}}
-\end{figure}
-
-In Abbildung~\ref{fig:abstrakt} ist eine abstrakte Darstellung eines \cps zu sehen.
-Der Controller sendet Befehle über u and das \enquote{physical}-System.
-Dieses wiederum schickt Resultate oder Sensorwerte an das \enquote{cyber}-System.
-In Abbildung~\ref{fig:attack_points} sind mögliche Angriffspunkte dargestellt.
-Hierbei stellen A1 und A2 Täuschungsangriffe dar (siehe Kapitel~\ref{subsec:tauschung}), A4 und A2 \gls{dos} (siehe Kapitel ~\ref{subsec:dos}) und A5 einen physischen Angriff (siehe Kapitel~\ref{subsec:tauschung}).
-Diese und noch weitere Szenarien sollen im folgenden Kapitel genauer ausgeführt werden.
-
-
-
-% Survey: medial, IoT, smart grid, power plant (Humayed)
