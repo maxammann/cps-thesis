@@ -36,7 +36,7 @@ Im folgenden Kapitel sollen Angriffe an den verschiedenen Punkten des \cps darge
 
 \gls{dos} Angriffe Zielen darauf ab das Cybersystem mit einer großen Flut an Informationen zu lähmen.
 Diese können von einem angeschlossenes Netzwerk oder dem physisches System ausgehen.
-Dadurch wird der Informationsfluss von Steuer- und Nutzdaten, wie in Abbildung~\ref{fig:attack_points} an den Punkten A4 und A2 zu sehen ist, unterbrochen und die \hyperref[def:availability]{Availability} des \cps eingeschränkt.
+Dadurch wird der Informationsfluss von Steuer- und Nutzdaten, wie in Abbildung~\ref{fig:attack_points} an den Punkten A4 und A2 zu sehen ist, unterbrochen und die Availability des \cps eingeschränkt.
 
 Diese Angriffe sind beispielsweise bei CAN-Bussen in Autos realistisch, da Nachrichten mit vielen Empfängern gesendet werden und auch die Fehlerbehebung angreifbar ist~\cite{HUM 81,26}.% HUM 81: Konkret wurde der Tacho auf 0 gesetzt
 Folgen können sein, dass sich Fenster nicht mehr schließen lassen, Warnlichter oder die Diebstahlsicherung deaktiviert werden können~\cite{HUM 68}.
@@ -46,7 +46,7 @@ Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotential~\ci
 % (WYX+10, II. B.)
 % (Cardenas 2008, 2.1)
 \subsection{\glsentrytext{mitm} Angriff}\label{subsec:mitm}
-% no Authenticity -> Confidentiality, Integrity
+% no Authentizität -> Confidentiality, Integrity
 % (WYX+10, II. B.)
 Bei \gls{mitm} Angriffe kann man zwischen aktiven und passiven Angriffen unterscheiden~\cite{WYX+10}.%Cite http://www.security-science.com/pdf/active-man-in-the-middle.pdf ??
 Passive verändern den Netzwerkverkehr nicht, sondern lauschen nur um an Informationen zu gelangen (siehe Kapitel~\ref{subsec:lauschen}).
@@ -55,7 +55,7 @@ Beide Arten nutzen allerdings die selben initialen Angriffsvektoren.
 In der Abbildung~\ref{fig:attack_points} stellt A1 einen aktiven \gls{mitm} Angriff dar.
 Ein Controller kommuniziert über ein Netzwerk mit einem physischen System über die Verbindungen y und u.
 Ziel eines Angreifers ist es den Netzwerkverkehr zwischen den beiden anderen Hosts über sich zu leiten~\cite{WYX+10,FPA+18}.
-Diese Angriffe können also aufgrund von fehlender \hyperref[def:authenticity]{Authenticity} zu einem Verlust von \hyperref[def:confidentiality]{Confidentiality} und \hyperref[def:integrity]{Integrity}.
+Diese Angriffe können also aufgrund von fehlender Authentizität zu einem Verlust von Confidentiality und Integrity.
 
 Dies ist in IEEE 802.11 Netzwerken beispielweise über ARP-Poisoning möglich~\cite{FIT+2012}.
 Aber auch bei Ethernet Verbindungen sind \gls{mitm} Angriffe gängig~\cite{HLL+17}.
@@ -66,12 +66,12 @@ Beim Abspielen dieses Signals in der nähe des Besitzers sendet der Schlüssel e
 Das Abspielen dieses HF-Signals kann dann genutzt werden um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
 
 \subsection{Lauschangriff (Eavesdropping)}\label{subsec:lauschen} % Eavesdropping
-% no Authenticity -> Confidentiality
+% no Authentizität -> Confidentiality
 % (WYX+10, II. B.)
 
 \subsection{T\"auschungsangriff (Deception)}\label{subsec:tauschung} % Deception
-% no Authenticity -> Integrity
-% no Authenticity -> Veracity
+% no Authentizität -> Integrity
+% no Authentizität -> Veracity
 % (Cardenas 2008, 2.1)
 
 

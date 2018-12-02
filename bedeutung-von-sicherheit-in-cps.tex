@@ -9,11 +9,11 @@ Um Klarheit zu schaffen wo diese Unterschiede liegen soll Sicherheit speziell f�
 % CIA triad (Fink) (WYX+10)
 % Erweiterung von CIA: Veracity, Plausability (Gollman)
 Unter Sicherheit bei Cybersystemen versteht man im Allgemeinen Informationssicherheit.
-Informationssicherheit kann man durch drei Eigenschaften von Systemen charakterisieren~\cite[,S.~2]{Cherdantseva2013,SFJ2017}:
+Informationssicherheit kann man durch drei Eigenschaften von Systemen charakterisieren~\cite{Cherdantseva2013}:
 \begin{itemize}[noitemsep,wide=0pt]
-    \item \fb{Confidentiality} - Nur autorisierte Teilnehmer können auf die Infrastruktur zugreifen.\label{def:confidentiality}
-    \item \fb{Integrity} - Die Infrastruktur kann nur von autorisierten Teilnehmer verändert werden.\label{def:integrity}
-    \item \fb{Availability} - Die Infrastruktur ist für autorisierte Teilnehmer angemessen verfügbar.\label{def:availability}
+    \item \fb{Confidentiality} - Nur autorisierte Teilnehmer können auf Daten und Ressourcen zugreifen.\label{def:confidentiality}
+    \item \fb{Integrity} - Daten und Ressourcen können nur von autorisierten Teilnehmern verändert werden.\label{def:integrity}
+    \item \fb{Availability} - Daten und Ressourcen ist für autorisierte Teilnehmer angemessen verfügbar.\label{def:availability}
 \end{itemize}
 
 Zwischen diesen drei Eigenschaften muss bei der Entwicklung ein sinnvolles Gleichgewicht gefunden werden.
@@ -24,15 +24,24 @@ Sie schlagen außerdem vor das CIA-Dreieck im Hinblick auf \cps durch die Eigens
 Ein System hat diese Eigenschaft genau dann, wenn Aussagen des Systems die Wahrhaftigkeit der  Wirklichkeit reflektieren.
 Es muss also sichergestellt werden, dass Sensoren durch beispielsweise physische Maßnahmen (siehe Kapitel~\ref{subsec:physisch}) fälschungssicher sind.
 Confidentiality und Integrity sind nicht ausreichend um die Richtigkeit von Informationen zu garantieren.
-Die Richtigkeit soll auch beinhalten, dass es nicht geleugnet werden darf bestimmte Aktionen ausgeführt zu haben \cite{NIST2013}.\todo{Wie zitiert man NIST?}
 Veracity ist eine relativ starke Eigenschaft.
 Deshalb kann man in Fällen, in denen diese nur schwer zu erreichen ist, zunächst auf Plausibility setzen.
 Herbei hat ein System genau dann diese Eigenschaft, wenn Aussagen des Systems nicht zu weit von erwartbaren Werten abweichen.
 Liefert ein Sensor beispielweise einen für physikalische Modelle unmögliche Wert, so ist dieser nicht plausibel und das System erreicht kann einen möglichen Angriff erkennen. \cite{GK16}
+Diese Eigenschaft kann nicht durch Integrity gewährleistet werden, da die Werte eines Sensors von außerhalb beeinflusst werden können.
+Veracity stellt also eine grundsätzlich andere Eigenschaft bereit.
 
 \citeauthor{WYX+10} und \citeauthor{SFJ2017} stimmen zu, dass eine Überprüfung auf die Richtigkeit von Informationen wichtig sind.
 Sie erweitern das CIA-Dreieck zudem um die Eigenschaft der Authentizität zwischen Kommunikationspartnern.
-Authentizität kann hergestellt werden, wenn sich beide Kommunikationspartner einig über die Identität des Gegenübers sind.\label{def:authenticity}
+Authentizität kann hergestellt werden genau dann, wenn sich beide Kommunikationspartner einig über die Identität des Gegenübers sind.\label{def:authenticity}
+Obwohl bei der Definition von \citeauthor{Cherdantseva2013} die Authentizität bereits in der definition beinhaltet ist, soll diese hier dennoch zusätzlich aufgeführt werden.
+Es könnte behauptet werden, dass sich Integrity and Authentizität decken.
+Daten können allerdings Integrity durch z.B.\ Checksummen und gleichzeitig keine Authentizität besitzen.
+In der Realität bringt Authentizität aber oftmals Integrity mit sich.
+
+Ein weiteres wichtiges Konzept ist die Non-repudiation.
+Hierbei darf es nicht möglich sein aufgezeichnete Aktion zu leugnen \cite{NIST2013}.\todo{Wie zitiert man NIST?}
+Ein System hat diese Eigenschaft also genau dann, wenn jegliche Aktionen, die das System beeinflussen, nachvollzogen werden können. \label{def:nonrepudiation}
 
 \begin{figure}
     \centering
@@ -43,14 +52,7 @@ Authentizität kann hergestellt werden, wenn sich beide Kommunikationspartner ei
 
 Zusammenfassend kann man sagen, dass die Eigenschaften von Systemen aus der klassischen Informationssicherheit nicht ausreichen um das oft komplexe Zusammenspiel von physischen- und Cybersystemen abzusichern.
 Bei \cps ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
-Deshalb sind zusätzliche Eigenschaften wie Veracity und Authenticity, wie in Abbildung~\ref{fig:triad} zu sehen ust, nötig um die Aspekte von \cps abzudecken.
-
-\todo{Begriffe noch klar definieren}
-\begin{itemize}[noitemsep,wide=0pt]
-    \item \fb{Veracity} - Daten von autorisierte Teilnehmer entsprechen der Wahrheit. % D.h. die Daten sind nicht quatsch und wurden schon vor dem absenden verändert.
-    \item \fb{Authenticity} - Daten von autorisierte Teilnehmer stammen auch wirklich von Ihm. % Authentifity ermöglicht Integrity?
-    \item Nonrepudiateion
-\end{itemize}
+Deshalb sind zusätzliche Eigenschaften wie Veracity und Authentizität, wie in Abbildung~\ref{fig:triad} zu sehen ust, nötig um die Aspekte von \cps abzudecken.
 
 % Definition (BG11)
 % computer, information, network, communication, physical security
