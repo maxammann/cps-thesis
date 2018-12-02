@@ -13,7 +13,7 @@
 \usepackage{todonotes}
 \usepackage{hyperref}
 \usepackage[T1]{fontenc}
-\hypersetup{colorlinks = false,linkcolor = black,citecolor = black,urlcolor = black,filecolor = black}
+\hypersetup{colorlinks = true,linkcolor = black,citecolor = black,urlcolor = black,filecolor = black}
 \usepackage[inline]{enumitem}
 \usepackage[acronym,toc,section=section,numberedsection,nomain]{glossaries}
 \glstoctrue
@@ -164,8 +164,8 @@ Kriminelle Gruppen \ref{factor:angreifergruppe} haben oft Erpressung \ref{factor
 Dabei sind Cyberangriffe nur ein logischer nächster Schritt der Kriminellen, da diese weitaus günstiger, weniger riskant, nicht durch Entfernungen eingeschränkt und einfacher zu koordinieren und wiederholen sind. \cite{CAS+09}
 
 Computerforensiker~\ref{factor:angreifergruppe} haben nicht unbedingt als Ziel selbst ein System zu beschädigen.
-Zum einen kann das Finden von Lücken aber auch als Ziel haben, diese unter bestimmten Auflagen offen zulegen oder schließen zu können~\ref{factor:motiv}. \todo{Zitat fehlt}
-Zum anderen kann eine Schadsoftware verkaufen werden~\ref{factor:motiv}. \todo{Zitat fehlt}
+Zum einen kann das Finden von Lücken als Ziel haben, diese unter bestimmten Auflagen offen zulegen oder schließen zu können~\ref{factor:motiv}. \todo{Zitat fehlt}
+Zum anderen können diese aber auch als Schadsoftware verkaufen werden~\ref{factor:motiv}. \todo{Zitat fehlt}
 
 Unzufriedene Mitarbeiter~\ref{factor:angreifergruppe} eines Unternehmens haben viel Wissen über dessen Infrastruktur.
 Das Motiv kann liegt hierbei bei der Schädigung des Unternehmens~\ref{factor:motiv}.
@@ -178,7 +178,7 @@ Staaten~\ref{factor:angreifergruppe} können politisches und militärisches Inte
 Auch hier werden Forensiker oder Insider zu engagieren~\ref{factor:methode}.
 
 Das Wissen über den Angreifer und dessen Motivation kann maßgeblich bei der Wahl und der Strategie der Gegenmaßnahmen helfen.
-Zudem können Gefahrenmodelle und detailliertere Angriffsszenarien entworfen werden (siehe Kapitel~\ref{sec:angriffszenarien}).
+Zudem können dadurch Gefahrenmodelle und detailliertere Angriffsszenarien entworfen werden (siehe Kapitel~\ref{sec:angriffszenarien}).
 
 % Encoding: UTF-8
 
@@ -201,11 +201,11 @@ Zudem können Gefahrenmodelle und detailliertere Angriffsszenarien entworfen wer
 \end{figure}
 
 In Abbildung~\ref{fig:abstrakt} ist eine abstrakte Darstellung eines \cps zu sehen.
-Der \enquote{Controller} sendet Befehle über u an das \enquote{Physical System}.
-Dieses wiederum schickt Resultate oder Sensorwerte über y an den \enquote{Controller}.
+Der \enquote{Controller} sendet Befehle über $u$ an das \enquote{Physical System}.
+Dieses wiederum schickt Resultate oder Sensorwerte über $y$ an den \enquote{Controller}.
 In Abbildung~\ref{fig:attack_points} sind mögliche Angriffspunkte dargestellt.
 Hierbei stellen A1 und A2 Täuschungsangriffe dar, A4 und A2 \gls{dos} und A5 einen physischen Angriff.
-Im folgenden Kapitel sollen Angriffe an den verschiedenen Punkten des \cps dargestellt werden.
+Im folgenden Kapitel sollen Angriffe an verschiedenen Punkten eines \cps dargestellt werden.
 
 % Sabotage und Spionage
 % Punkte wo angegriffen werden kann (Fink, Figure 1.1) (Cardenas 2008, Figure 3)
@@ -230,14 +230,15 @@ Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotential~\ci
 \subsection{\glsentrytext{mitm} Angriff}\label{subsec:mitm}
 % no Authentizität -> Confidentiality, Integrity
 % (WYX+10, II. B.)
-Bei \gls{mitm} Angriffe kann man zwischen aktiven und passiven Angriffen unterscheiden~\cite{WYX+10}.%Cite http://www.security-science.com/pdf/active-man-in-the-middle.pdf ??
+%Cite http://www.security-science.com/pdf/active-man-in-the-middle.pdf ??
+Bei \gls{mitm} Angriffe kann man zwischen aktiven und passiven Angriffen unterscheiden~\cite{WYX+10}.
 Passive verändern den Netzwerkverkehr nicht, sondern lauschen nur um an Informationen zu gelangen (siehe Kapitel~\ref{subsec:lauschen}).
 Bei aktiven hingegen wird der Verkehr zwischen zwei Kommunikationspartnern zudem noch verändert.
 Beide Arten nutzen allerdings dieselben initialen Angriffsvektoren.
 In der Abbildung~\ref{fig:attack_points} stellt A1 einen aktiven \gls{mitm} Angriff dar.
 Ein Controller kommuniziert über ein Netzwerk mit einem physischen System über die Verbindungen y und u.
 Ziel eines Angreifers ist es den Netzwerkverkehr zwischen den beiden anderen Hosts über sich zu leiten~\cite{WYX+10,FPA+18}.
-Diese Angriffe können also aufgrund von fehlender Authentizität zu einem Verlust von Confidentiality und Integrity.
+Diese Angriffe können also aufgrund von fehlender Authentizität zu einem Verlust von Confidentiality und Integrity führen.
 
 Dies ist in IEEE 802.11 Netzwerken beispielsweise über ARP-Poisoning möglich~\cite{FIT+2012}.
 Aber auch bei Ethernet Verbindungen sind \gls{mitm} Angriffe gängig~\cite{HLL+17}.
