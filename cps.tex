@@ -125,7 +125,7 @@ Es könnte behauptet werden, dass sich Integrity und Authentizität decken.
 Daten können allerdings Integrity durch z.B.\ Checksummen und gleichzeitig keine Authentizität besitzen.
 In der Realität bringt Authentizität aber oftmals Integrity mit sich.
 
-Ein weiteres wichtiges Konzept ist die Non-repudiation.
+Ein weiteres wichtiges Konzept ist die Nonrepudiation.
 Hierbei darf es nicht möglich sein aufgezeichnete Aktionen zu leugnen \cite{NIST2013}.\todo{Wie zitiert man NIST?}
 Ein System hat diese Eigenschaft also genau dann, wenn jegliche Aktionen, die das System beeinflussen, nachvollzogen werden können. \label{def:nonrepudiation}
 
@@ -216,7 +216,7 @@ Im folgenden Kapitel sollen Angriffe an den verschiedenen Punkten des \cps darge
 \subsection{\glsentrytext{dos} Angriff}\label{subsec:dos}
 % Availability
 
-\gls{dos} Angriffe Zielen darauf ab das Cybersystem mit einer großen Flut an Informationen zu lähmen.
+\gls{dos} Angriffe zielen darauf ab das Cybersystem mit einer großen Flut an Informationen zu stören.
 Diese können von einem angeschlossenes Netzwerk oder dem physischen System ausgehen.
 Dadurch wird der Informationsfluss von Steuer- und Nutzdaten, wie in Abbildung~\ref{fig:attack_points} an den Punkten A4 und A2 zu sehen ist, unterbrochen und die Availability des \cps eingeschränkt.
 
@@ -260,9 +260,13 @@ Das Abspielen dieses HF-Signals kann dann genutzt werden, um das Auto aufzuschli
 
 
 \subsection{Compromised-Key Angriff}\label{subsec:key}
-% Diebstahl ->
+% Diebstahl -> Nonrepudiation
 % (WYX+10, II. B.)
 
+Nonrepudiation kann Aufschluss auf eine solche Attacke geben, da Aktionen getätigt wurden, welche aber nicht von der eigentlich berechtigten Person getätigt wurden.
+
+
+\todo{Tabelle mit Angriffen und Eigenschaften}
 
 \section{Gegenmaßnahmen}\label{sec:gegenmassnahmen}
 % Properties: Safety, Security, Reliability, Resilence (LLZ+14)
