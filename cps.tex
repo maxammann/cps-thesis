@@ -204,7 +204,7 @@ In Abbildung~\ref{fig:abstrakt} ist eine abstrakte Darstellung eines \cps zu seh
 Der \enquote{Controller} sendet Befehle über $u$ an das \enquote{Physical System}.
 Dieses wiederum schickt Resultate oder Sensorwerte über $y$ an den \enquote{Controller}.
 In Abbildung~\ref{fig:attack_points} sind mögliche Angriffspunkte dargestellt.
-Hierbei stellen A1 und A2 Täuschungsangriffe dar, A4 und A2 \gls{dos} und A5 einen physischen Angriff.
+Hierbei stellen A1 und A3 Täuschungsangriffe dar, A4 und A2 \gls{dos} und A5 einen physischen Angriff.
 Im folgenden Kapitel sollen Angriffe an verschiedenen Punkten eines \cps dargestellt werden.
 
 % Sabotage und Spionage
@@ -232,32 +232,43 @@ Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotential~\ci
 % (WYX+10, II. B.)
 %Cite http://www.security-science.com/pdf/active-man-in-the-middle.pdf ??
 Bei \gls{mitm} Angriffe kann man zwischen aktiven und passiven Angriffen unterscheiden~\cite{WYX+10}.
-Passive verändern den Netzwerkverkehr nicht, sondern lauschen nur um an Informationen zu gelangen (siehe Kapitel~\ref{subsec:lauschen}).
+Passive verändern den Netzwerkverkehr nicht, sondern lauschen nur um an Informationen zu gelangen\footnote{sog.\ Lauschangriff (Eavesdropping)}.
+Hierbei wird die Confidentiality von Daten missachtet.
+
 Bei aktiven hingegen wird der Verkehr zwischen zwei Kommunikationspartnern zudem noch verändert.
 Beide Arten nutzen allerdings dieselben initialen Angriffsvektoren.
 In der Abbildung~\ref{fig:attack_points} stellt A1 einen aktiven \gls{mitm} Angriff dar.
 Ein Controller kommuniziert über ein Netzwerk mit einem physischen System über die Verbindungen y und u.
 Ziel eines Angreifers ist es den Netzwerkverkehr zwischen den beiden anderen Hosts über sich zu leiten~\cite{WYX+10,FPA+18}.
-Diese Angriffe können also aufgrund von fehlender Authentizität zu einem Verlust von Confidentiality und Integrity führen.
+Diese Angriffe können also aufgrund von fehlender Authentizität zu einem Verlust von Integrity führen.
 
-Dies ist in IEEE 802.11 Netzwerken beispielsweise über ARP-Poisoning möglich~\cite{FIT+2012}.
-Aber auch bei Ethernet Verbindungen sind \gls{mitm} Angriffe gängig~\cite{HLL+17}.
+Dies ist in IEEE 802.11 und LAN Netzwerken beispielsweise über ARP-Poisoning möglich~\cite{Francia2012}, wodurch die Identität eines anderen Netzwerkteilnehmers eingenommen werden kann~\cite{Ramachandran2005}.
 
 Ein weiteres Beispiel für diese Art von Angriffen sind offline Relay Angriffe.
 Dabei werden langwellige Signale, welche von Autos an den Schlüssel des Besitzers gesendet werden, um festzustellen, ob dieser in der Nähe ist, abgefangen und aufgezeichnet.
 Beim Abspielen dieses Signals, in der Nähe des Besitzers sendet der Schlüssel ein Hochfrequenzsignal, welches wiederum aufgezeichnet wird.
 Das Abspielen dieses HF-Signals kann dann genutzt werden, um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
 
-\subsection{Lauschangriff (Eavesdropping)}\label{subsec:lauschen} % Eavesdropping
-% no Authentizität -> Confidentiality
-% (WYX+10, II. B.)
-
-\subsection{T\"auschungsangriff (Deception)}\label{subsec:tauschung} % Deception
-% no Authentizität -> Integrity
+\subsection{Täuschungsangriff (Deception)}\label{subsec:tauschung} % Deception
 % no Authentizität -> Veracity
 % (Cardenas 2008, 2.1)
 
+Täuschungsangriffe zielen darauf ab die Daten, welche von Sensoren aus gesendet werden zu fälschen.
+Dabei können die Daten zwischen dem physischen und Cybersystem zwar Authentizität vorweisen, aber dennoch nicht plausibel sein~\cite{SFJ2017}.
+In einem solchen Fall wird die Eigenschaft Veracity von \cps verletzt.
 
+Zum einen können physische Prozesse manipuliert werden, sodass Wechselwirkungen zwischen Sensoren stattfinden können, obwohl diese nicht elektronisch miteinander verbunden sind.
+Beispielsweise können zwei benachbarte Knoten in einem Stromnetzwerk gegensätzliche Störungen hervorrufen, sodass residuale Fehler in der Zustandsberechnung nicht erkannt werden können~\cite{Krotofil2015}.
+Manipulationen nutzen hier also die Zustandsberechnung und deren Datenquelle aus.
+
+Zum anderen können Sensoren manipuliert werden.
+Üblicherweise messen Sensoren die physische Welt indem sie ein analoges Signal ausgeben, welches elektronisch abgetastet werden muss um die Daten weiterzubearbeiten.
+Dazu ist eine Kalibrierung nötig um die analogen Werte auf binäre Werte abzubilden.
+Ungültige Kalibrierungen können zu falschen Messwerten und zu katastrophalen Unfällen führen.
+Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage Mikrocontroller eingesetzt werden, wodurch es möglich ist Sensortests zu bestehen, im Produktionsbetrieb allerdings nicht wie Erwartet funktionieren.~\cite{Krotofil2015}
+
+Bei der Automatisierung werden Sensoren und deren Daten als Vertrauenswürdig eingestuft.
+Eine Manipulation vor dem Einsatz verletzt also die Veracity von \cps.
 
 
 \subsection{Compromised-Key Angriff}\label{subsec:key}
@@ -266,6 +277,8 @@ Das Abspielen dieses HF-Signals kann dann genutzt werden, um das Auto aufzuschli
 
 Nonrepudiation kann Aufschluss auf eine solche Attacke geben, da Aktionen getätigt wurden, welche aber nicht von der eigentlich berechtigten Person getätigt wurden.
 
+
+\todo{NOnrepudability}
 
 \todo{Tabelle mit Angriffen und Eigenschaften}
 
