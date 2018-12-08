@@ -1,14 +1,6 @@
 % Encoding: UTF-8
 \documentclass[final,bibliography=totocnumbered]{include/sikseminar}
 
-%% Folgende Pakete werden bereits durch die sikseminar-Klasse geladen:
-%\usepackage[german]{babel}
-%\usepackage[headsepline]{scrlayer-scrpage}
-%\usepackage{german}
-%\usepackage{graphicx}
-%\usepackage{textcomp}
-%\usepackage{bibgerm}
-
 \usepackage[utf8]{inputenc}
 \usepackage{todonotes}
 \usepackage{hyperref}
@@ -61,10 +53,6 @@ Eine kurze Zusammenfassung der Ausarbeitung mit 10-12 Zeilen Text.
 \newpage
 
 \section{Einführung}\label{sec:intro}
-% Anforderungen an CPS: Predictability (Lee08)
-% Challanges (SGL+08)
-% Vision von CPS (RLS+10)
-% IoT Constaint: Battery (YWY+17)
 \cps sind meist eingebettete Echtzeitsysteme, welche eine hohe Verfügbarkeit, Robustheit, Widerstandsfähigkeit und Berechenbarkeit aufweisen müssen.
 Die physische Welt macht hohe Verfügbarkeit allerdings oft schwierig, da sie alles andere als berechenbar ist~\cite{Lee08,SGL+08}.
 Einsatzorte für diese Systeme könnten intelligente Stromnetze, symbiotische Sensornetzwerke für die Agrarwirtschaft und Katastrophenabwehr, medizinische oder assistierende Geräte, intelligente Verkehrssteuerung und intelligente Gebäude sein~\cite{RLS+10}.
@@ -75,16 +63,13 @@ Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispi
 Es existiert also ein Unterschied in den Anforderungen an \cps und Cybersystemen, wie Anwendungsservern oder Heimcomputern, sodass man diese in Bezug auf Sicherheit anders betrachten muss.
 
 In dem Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von physischen und Cybersystemen im Bezug auch Sicherheit geklärt.
-Zudem werden mögliche Ziele und Angreifer in den Kapitel~\ref{subsec:angriffsziel}~und~\ref{subsec:angreifergruppen} beleuchtet.
+Zudem werden mögliche Angreifer im Kapitel~\ref{subsec:angreifergruppen} beleuchtet.
 Im Kapitel~\ref{sec:angriffszenarien} werden mögliche Szenarien und im Kapitel ~\ref{subsec:angreifergruppen} dazu Gegenmaßnahmen dargestellt.
 Zuletzt soll im Kapitel~\ref{sec:diskussion} diskutiert werden, ob die genannten Gegenmaßnahmen  für die Szenarien ein adäquate Lösung darstellen.
-% Stuxnet (Langer)
-
-% Spectre: https://arxiv.org/pdf/1811.05441.pdf
-% EU: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=JOIN:2017:0450:FIN https://ec.europa.eu/transport/sites/transport/files/3rd-mobility-pack/com20180283_en.pdf
-
-
-% Encoding: UTF-8
+% Beispiele:
+%   Stuxnet (Langer)
+%   Spectre: https://arxiv.org/pdf/1811.05441.pdf
+%   EU: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=JOIN:2017:0450:FIN https://ec.europa.eu/transport/sites/transport/files/3rd-mobility-pack/com20180283_en.pdf
 
 \section{Bedeutung von Sicherheit in \glsentrytext{cps}}\label{sec:bedeutung-sicherheit}
 
@@ -92,8 +77,6 @@ Die Eigenschaften von Cybersystemen und physischen Systemen in Bezug auf Sicherh
 Um Klarheit zu schaffen, wo diese Unterschiede liegen soll Sicherheit speziell für \cps definiert werden.
 
 \subsection{Sicherheitsrelevante Eigenschaften von \glsentrytext{cps}}\label{subsec:definition}
-% CIA triad (Fink) (WYX+10)
-% Erweiterung von CIA: Veracity, Plausability (Gollman)
 Unter Sicherheit bei Cybersystemen versteht man im allgemeinen Informationssicherheit.
 Informationssicherheit kann man durch drei Eigenschaften von Systemen charakterisieren~\cite{Cherdantseva2013}:
 \begin{itemize}[noitemsep,wide=0pt]
@@ -125,7 +108,7 @@ Es könnte behauptet werden, dass sich Integrity und Authentizität decken.
 Daten können allerdings Integrity durch z.B.\ Checksummen und gleichzeitig keine Authentizität besitzen.
 In der Realität bringt Authentizität aber oftmals Integrity mit sich.
 
-Ein weiteres wichtiges Konzept ist die Nonrepudiation.
+Ein weiteres wichtiges Konzept ist die Nonrepudiation. % de: Revisionssicherheit
 Hierbei darf es nicht möglich sein aufgezeichnete Aktionen zu leugnen \cite{NIST2013}.\todo{Wie zitiert man NIST?}
 Ein System hat diese Eigenschaft also genau dann, wenn jegliche Aktionen, die das System beeinflussen, nachvollzogen werden können. \label{def:nonrepudiation}
 
@@ -139,16 +122,10 @@ Ein System hat diese Eigenschaft also genau dann, wenn jegliche Aktionen, die da
 Zusammenfassend kann man sagen, dass die Eigenschaften von Systemen aus der klassischen Informationssicherheit nicht ausreichen um das oft komplexe Zusammenspiel von physischen- und Cybersystemen\todo{physischen- richtig?} abzusichern.
 Bei \cps ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
 Deshalb sind zusätzliche Eigenschaften wie Veracity und Authentizität, wie in Abbildung~\ref{fig:triad} zu sehen ist, nötig um die Aspekte von \cps abzudecken.
+% Begriffe: computer, information, network, communication, physical security
 
-% Definition (BG11)
-% computer, information, network, communication, physical security
-% Fingerprinting, Network Separation, End System Security (Gollman)
 
 \subsection{Angreifergruppen}\label{subsec:angreifergruppen}
-% Cyber-Kriminelle
-% Verärgerte Mitarbeiter/Private Gründe
-% Terroristen, Aktivisten, kriminelle Gruppen
-% Staaten (Cardenas 2009, 2.) (WYX+10, II. C.)
 
 Angriffe können von unterschiedlichen Gruppen aus unterschiedlichen Gründen ausgehen.
 Im Folgenden sollen verschiedene Gruppen nach den Faktoren
@@ -180,10 +157,8 @@ Auch hier werden Forensiker oder Insider zu engagieren~\ref{factor:methode}.
 Das Wissen über den Angreifer und dessen Motivation kann maßgeblich bei der Wahl und der Strategie der Gegenmaßnahmen helfen.
 Zudem können dadurch Gefahrenmodelle und detailliertere Angriffsszenarien entworfen werden (siehe Kapitel~\ref{sec:angriffszenarien}).
 
-% Encoding: UTF-8
-
 \section{Angriffsszenarien}\label{sec:angriffszenarien}
-
+% Confidentiality, Integrity, Availability, Veracity
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
@@ -208,14 +183,12 @@ Hierbei stellen A1 und A3 Täuschungsangriffe dar, A4 und A2 \gls{dos} und A5 ei
 Im folgenden Kapitel sollen Angriffe an verschiedenen Punkten eines \cps dargestellt werden.
 
 % Sabotage und Spionage
-% Punkte wo angegriffen werden kann (Fink, Figure 1.1) (Cardenas 2008, Figure 3)
 % Migration von Legacy Systemen ist kritisch (Gollman, 1.)
 % Unterschied zu Cybersystemen (Cardenas 2008, 3.)
 % IoT Unterschiede zu Cybersystemen (FPA+18)
 % Workflow von CPS (WYX+10, II.)
-\subsection{\glsentrytext{dos} Angriff}\label{subsec:dos}
-% Availability
 
+\subsection{\glsentrytext{dos} Angriff}\label{subsec:dos}
 \gls{dos} Angriffe zielen darauf ab das Cybersystem mit einer großen Flut an Informationen zu stören.
 Diese können von einem angeschlossenes Netzwerk oder dem physischen System ausgehen.
 Dadurch wird der Informationsfluss von Steuer- und Nutzdaten, wie in Abbildung~\ref{fig:attack_points} an den Punkten A4 und A2 zu sehen ist, unterbrochen und die Availability des \cps eingeschränkt.
@@ -225,12 +198,9 @@ Folgen können sein, dass sich Fenster nicht mehr schließen lassen, Warnlichter
 
 Auch in echtzeitkritischen intelligenten Stromnetzen kann ein massives Überfluten dazu führen, dass der Normalbetrieb nicht mehr möglich ist~\cite{Lu2010}.
 Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotential~\cite{Lu2011}, da diese allgemein eine geringere Bandbreite aufweisen.
-% (WYX+10, II. B.)
-% (Cardenas 2008, 2.1)
+
 \subsection{\glsentrytext{mitm} Angriff}\label{subsec:mitm}
-% no Authentizität -> Confidentiality, Integrity
-% (WYX+10, II. B.)
-%Cite http://www.security-science.com/pdf/active-man-in-the-middle.pdf ??
+% Unterschied Active vs Passive: http://www.security-science.com/pdf/active-man-in-the-middle.pdf
 Bei \gls{mitm} Angriffe kann man zwischen aktiven und passiven Angriffen unterscheiden~\cite{WYX+10}.
 Passive verändern den Netzwerkverkehr nicht, sondern lauschen nur um an Informationen zu gelangen\footnote{sog.\ Lauschangriff (Eavesdropping)}.
 Hierbei wird die Confidentiality von Daten missachtet.
@@ -250,9 +220,6 @@ Beim Abspielen dieses Signals, in der Nähe des Besitzers sendet der Schlüssel 
 Das Abspielen dieses HF-Signals kann dann genutzt werden, um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
 
 \subsection{Täuschungsangriff (Deception)}\label{subsec:tauschung} % Deception
-% no Authentizität -> Veracity
-% (Cardenas 2008, 2.1)
-
 Täuschungsangriffe zielen darauf ab die Daten, welche von Sensoren aus gesendet werden zu fälschen.
 Dabei können die Daten zwischen dem physischen und Cybersystem zwar Authentizität vorweisen, aber dennoch nicht plausibel sein~\cite{SFJ2017}.
 In einem solchen Fall wird die Eigenschaft Veracity von \cps verletzt.
@@ -271,18 +238,18 @@ Bei der Automatisierung werden Sensoren und deren Daten als Vertrauenswürdig ei
 Eine Manipulation vor dem Einsatz verletzt also die Veracity von \cps.
 
 
-\subsection{Compromised-Key Angriff}\label{subsec:key}
-% Diebstahl -> Nonrepudiation
-% (WYX+10, II. B.)
+%\subsection{Compromised-Credentials Angriff}\label{subsec:key}
+%% (WYX+10, II. B.)
+%
+%Nonrepudiation kann Aufschluss auf eine solche Attacke geben, da Aktionen getätigt wurden, welche aber nicht von der eigentlich berechtigten Person getätigt wurden.
 
-Nonrepudiation kann Aufschluss auf eine solche Attacke geben, da Aktionen getätigt wurden, welche aber nicht von der eigentlich berechtigten Person getätigt wurden.
-
-
-\todo{NOnrepudability}
 
 \todo{Tabelle mit Angriffen und Eigenschaften}
 
 \section{Gegenmaßnahmen}\label{sec:gegenmassnahmen}
+% Authenticity, Nonrepudiability
+
+% Fingerprinting, Network Separation, End System Security (Gollman)
 % Properties: Safety, Security, Reliability, Resilence (LLZ+14)
 
 % Least Privilege (Gollman)
@@ -293,11 +260,11 @@ Nonrepudiation kann Aufschluss auf eine solche Attacke geben, da Aktionen getät
 
 % Context Aware Security: Sensing, Cyber, Control, Physical Security (WYX+10)
 
-\subsection{Modellierung von \glsentrytext{cps}}\label{subsec:modellierung}
-% Argument: Neue Grundlage für Embedded Systems/CPS: Modelbasiert anstatt Programm (Lee08)
-Noch nicht sicher.
-
-Um hierbei dem Standard an Sicherheit zu genügen, schlägt \citeauthor{Lee08} sogar vor eine neue Grundlage für diese Systeme zu etablieren~\cite{Lee08}.
+% \subsection{Modellierung von \glsentrytext{cps}}\label{subsec:modellierung}
+% % Argument: Neue Grundlage für Embedded Systems/CPS: Modelbasiert anstatt Programm (Lee08)
+% Noch nicht sicher.
+%
+% Um hierbei dem Standard an Sicherheit zu genügen, schlägt \citeauthor{Lee08} sogar vor eine neue Grundlage für diese Systeme zu etablieren~\cite{Lee08}.
 
 \subsection{Physische Maßnahmen}\label{subsec:physisch}
 % (Cardenas)
@@ -333,9 +300,8 @@ Ja! -> Sind sie Ausreichend?
 
 \newpage
 \printglossary[type=\acronymtype]
-~\nocite{*}
+% ~\nocite{*}
 
 \printbibliography
 \newpage
-% \listoftodos
 \end{document}
