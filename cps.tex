@@ -238,6 +238,9 @@ Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage
 Bei der Automatisierung werden Sensoren und deren Daten als Vertrauenswürdig eingestuft.
 Eine Manipulation vor dem Einsatz verletzt also die Veracity von \cps.
 
+\subsection{Physisches Auslesen/Manipulieren}
+% Confidentiality, Integrity
+
 
 %\subsection{Compromised-Credentials Angriff}\label{subsec:key}
 %% (WYX+10, II. B.)
@@ -271,12 +274,12 @@ Lorem Ipsum.
 
 \subsection{Physische Maßnahmen}\label{subsec:physisch}
 % (Cardenas)
-Physischer Zugriff auf \cps sollte für unautorisierte Personen möglichst verhindert werden, da dieser viele Cybergegenmaßnahmen unwirksam machen.
+Physischer Zugriff auf \cps sollte für unautorisierte Personen möglichst verhindert werden, da dieser viele Cybergegenmaßnahmen unwirksam macht und sehr leicht die Availability des Systems stören kann, indem dieses physisch beschädigt wird.
 Physische Angriffe können nicht algorithmisch verhindert werden, sodass durch physische Zugriffseinschränkungen, wie etwa Wachpersonal oder Kameras Sicherheit geschaffen werden kann.
 \citeauthor{CAS08} sind allerdings der Meinung, dass nicht-physische Angriffe potentiell attraktiver sind, da diese im allgemeinen schwieriger zu verfolgen, nicht physisch gefährlich für den Angreifer und keine Ortseinschränkungen existieren.
 
-Für Industrial Control Systems schlägt NIST in \cite{HUM 153} beispielsweise Sicherheitskonzepte vor wie den Schutz von physischen Standorten, Zugangskontrollen oder Überwachung von Mitarbeitern und Ressourcen.
-Für Zähler in Stromnetzen gibt NIST in \cite{HUM 127} vor, dass diese gegen Modifikationen kryptografische Module nutzen, versiegelt und geschützt sein müssen.
+Für \glspl{ics} schlägt das \gls{nist} in \cite{HUM 153} beispielsweise Sicherheitskonzepte vor wie den Schutz von physischen Standorten, Zugangskontrollen oder Überwachung von Mitarbeitern und Ressourcen.
+Für Zähler in Stromnetzen gibt das \gls{nist} in \cite{HUM 127} vor, dass diese gegen Modifikationen kryptografische Module nutzen, versiegelt und geschützt sein müssen.
 Auch medizinische Geräte und bei Autos ermöglicht ein physischer Eingriff Manipulationen oder das Auslesen von sensiblen Daten wie beispielsweise Seriennummern~\cite{HLL+17}.
 
 
@@ -284,26 +287,56 @@ Auch medizinische Geräte und bei Autos ermöglicht ein physischer Eingriff Mani
 % Transdiszipliär (Brazell14)
 % Betriebsblindheit (Gollman)
 
-\subsection{Präventive Maßnahmen}\label{subsec:präventiv}
+\subsection{Proaktive Maßnahmen}\label{subsec:proactive}
 % Security by Obscurity (Scarfone2008)
-% (Cardenas 2009, 4.)
-
-MITM Angriffen kann mithilfe von Verschlüsselung und Authentizität am besten entgegengewirkt werden.
-
-\subsection{Detektion und Wiederherstellung (Detection and Recovery)}\label{subsec:detektion}
-% (Cardenas 2009, 4.)
-DoS: rate limiting
-
-\subsection{Widerstandsfähigkeit (Resilience)}\label{subsec:widerstand} % Resilience
-% (Cardenas 2009, 4.)
-
 % End-to-End Security (Fink)
-DoS: rate limiting
+Proaktive Maßnahmen versuchen das Eintreten eines Angriffs zu verhindern.
+Ein wichtiges Mittel bei dem Verhindern von Angriffen ist Authentizität, welche durch Authentifizierung erreicht werden kann.
 
-\subsection{Abschreckung (Deterrence)}\label{subsec:abschreckung} % Deterrence
+Mithilfe von Verschlüsselung kann die Confidentiality im Fall von einem \gls{mitm} Angriff sichergestellt werden~\cite{HLL+17}.
+Verschlüsselung allein erlaubt es allerdings immer noch einen Replay-Angriff auszuführen, da auch die Verschlüsselten Daten aufgezeichnet und erneut gesendet werden können.
+
+Mithilfe von digitalen Signaturen kann festgestellt werden, ob eine Nachricht von Dritten manipuliert wurde und beispielsweise ein \gls{mitm} Angriff stattgefunden hat~\cite{CAS08}.
+Aktualität der Daten kann durch einen in den zu signierenden Daten beinhalteten Zeitstempel oder durch Challenge-Response-Mechanismen bestätigt werden~\cite{CAS08}.
+Bei ersterem ist eine sichere Synchronisation der Zeit notwendig~\cite{CAS08}.
+Durch eine Überprüfung auf Aktualität werden Replay-Angriffe verhindert, da alte Nachrichten als invalide angesehen werden können.
+
+Autorisierung ist der nächste Schritt nachdem eine Authentifizierung stattgefunden hat.
+Autorisierung stellt die Integrity des Systems sicher, indem von bestimmten Nachrichtensendern nur bestimmte Aktionen ausgeführt werden dürfen.
+
+Je nachdem welche Kommunikationswege abgesichert werden soll gibt es verschiedene Ansätze.
+Die Verbindungen $u$ und $y$ in Abbildung~\ref{fig:abstrakt} könnten beispielweise CAN oder LIN Bussen darstellen.
+Diese stellen keine Verschlüsselung, Authentifizierung oder Autorisierung zur Verfügung~\cite{HLL+17}.
+Da effiziente Lösungen aufgrund von begrenzten Ressourcen in Autos wichtig sind, schlagen \citeauthor{HLL 167,41} die Verwendung von Hardware-basierten Lösungen, wie etwa Hardware Security Module, vor.
+
+% Sicherheit in Senor Netzwerken CAS08
+
+Soll eine sichere Kommunikation in das Internet gewährleistet werden, so stellt \gls{tls} eine standardisierte Lösung vor.
+Hierbei wird ein abhörsicherer Kanal gewährleistet, welcher Confidentiality und Integrity gewährleistet~\cite{SPB+16}.
+Weitere Protokoll abseits des TCP/IP Stacks, welche \gls{tls} verwenden, sind \gls{dtls}, welches eine Sicherung über UPD ermöglicht und \gls{llcps}, welches eine Sicherung über \gls{nfc} ermöglicht~\cite{SPB+16}.
+Besonders in der Entwicklung von Geräten für das IoT findet \gls{dtls} verwendet~\cite{YWY+17,FPA+18}.
+
+
+% Verification
+Eine Verifikation des Programmcodes von Software stellt eine Möglichkeit dar die Anzahl Sicherheitslücken zu reduzieren~\cite{CAS08}.
+Formale Methoden und das Testen von \cps sollten stärker miteinander integriert werden~\cite{RLS+10}.
+Zudem argumentieren \citeauthor{SGL+08}, dass Verifikation und Validierung von \cps kein einmaliges Ereignis ist, sondern stets in einen Prozess integriert sein sollten.
+
+% Widerstandsfähigkeit: Resilience
+% CAS09: Redundancy, Diversity, principle of least privlege, separation of privilege
+
+%Abschreckung: Deterrence
+ % CAS09
+
+
+% Überleitung: nicht verhinderbar -> reaktive
+
+\subsection{Reaktive Maßnahmen: Detektion und Wiederherstellung}\label{subsec:reactive}
 % (Cardenas 2009, 4.)
+% DoS: rate limiting
 
-
+Reaktive Maßnahmen versuchen Angriffe zu erkennen und einen sicheren Zustand wiederherzustellen.
+Im Gegensatz zu proaktiven Maßnahmen von Kapitel~\ref{subsec:proactive} wird also der Angriff zunächst nicht verhindert, sondern gewährleistet, dass die Einflüssen eines Angriffs bewältigt werden können.
 
 % Nonrepudablity: Blockchain als source of trust
 
