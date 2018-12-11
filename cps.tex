@@ -79,7 +79,7 @@ Deshalb soll im Folgenden Sicherheit speziell für \cps definiert werden.
 
 \subsection{Sicherheitsrelevante Eigenschaften von \glsentrytext{cps}}\label{subsec:definition}
 Unter Sicherheit bei Cybersystemen versteht man im allgemeinen Informationssicherheit.
-Informationssicherheit kann man durch drei Eigenschaften von Systemen charakterisieren~\cite{Cherdantseva2013}:
+Informationssicherheit kann man durch drei Eigenschaften von Systemen charakterisieren~\cite{CH13}:
 \begin{itemize}[noitemsep,wide=0pt]
     \item \fb{Confidentiality} - Nur autorisierte Teilnehmer können auf Daten und Ressourcen zugreifen.\label{def:confidentiality}
     \item \fb{Integrity} - Daten und Ressourcen können nur von autorisierten Teilnehmern verändert werden.\label{def:integrity}
@@ -101,16 +101,16 @@ Liefert ein Sensor beispielsweise einen für physikalische Modelle unmögliche W
 Diese Eigenschaft kann nicht durch Integrity gewährleistet werden, da die Werte eines Sensors von außerhalb beeinflusst werden können.
 Veracity stellt also eine grundsätzlich andere Eigenschaft bereit.
 
-\citeauthor{WYX+10} und \citeauthor{SFJ2017} stimmen zu, dass eine Überprüfung auf die Richtigkeit von Informationen wichtig sind.
+\citeauthor{WYX+10} und \citeauthor{SFJ17} stimmen zu, dass eine Überprüfung auf die Richtigkeit von Informationen wichtig sind.
 Sie erweitern das CIA-Dreieck zudem um die Eigenschaft der Authentizität zwischen Kommunikationspartnern.
 Authentizität kann hergestellt werden genau dann, wenn sich beide Kommunikationspartner einig über die Identität des Gegenübers sind.\label{def:authenticity}
-Obwohl bei der Definition von \citeauthor{Cherdantseva2013} die Authentizität bereits in der Definition beinhaltet ist, soll diese hier dennoch zusätzlich aufgeführt werden.
+Obwohl bei der Definition von \citeauthor{CH13} die Authentizität bereits in der Definition beinhaltet ist, soll diese hier dennoch zusätzlich aufgeführt werden.
 Es könnte behauptet werden, dass sich Integrity und Authentizität decken.
 Daten können allerdings Integrity durch z.B.\ Checksummen und gleichzeitig keine Authentizität besitzen.
 In der Realität bringt Authentizität aber oftmals Integrity mit sich.
 
 Ein weiteres wichtiges Konzept ist die Nonrepudiation. % de: Revisionssicherheit
-Hierbei darf es nicht möglich sein aufgezeichnete Aktionen zu leugnen \cite{NIST2013}.\todo{Wie zitiert man NIST?}
+Hierbei darf es nicht möglich sein aufgezeichnete Aktionen zu leugnen \cite{NIST13}.\todo{Wie zitiert man NIST?}
 Ein System hat diese Eigenschaft also genau dann, wenn jegliche Aktionen, die das System beeinflussen, nachvollzogen werden können. \label{def:nonrepudiation}
 
 \begin{figure}
@@ -194,11 +194,11 @@ Im folgenden Kapitel sollen Angriffe an verschiedenen Punkten eines \cps dargest
 Diese können von einem angeschlossenes Netzwerk oder dem physischen System ausgehen.
 Dadurch wird der Informationsfluss von Steuer- und Nutzdaten, wie in Abbildung~\ref{fig:attack_points} an den Punkten A4 und A2 zu sehen ist, unterbrochen und die Availability des \cps eingeschränkt.
 
-Diese Angriffe sind beispielsweise bei CAN Bussen in Autos realistisch, da Nachrichten mit vielen Empfängern gesendet werden und auch die Fehlerbehebung angreifbar ist~\cite{Koscher2010,Cheminod2013}.% Koscher2010: Konkret wurde der Tacho auf 0 gesetzt
-Folgen können sein, dass sich Fenster nicht mehr schließen lassen, Warnlichter oder die Diebstahlsicherung deaktiviert werden können~\cite{Hoppe2008}.
+Diese Angriffe sind beispielsweise bei CAN Bussen in Autos realistisch, da Nachrichten mit vielen Empfängern gesendet werden und auch die Fehlerbehebung angreifbar ist~\cite{KCR+10,CDV13}.% Koscher2010: Konkret wurde der Tacho auf 0 gesetzt
+Folgen können sein, dass sich Fenster nicht mehr schließen lassen, Warnlichter oder die Diebstahlsicherung deaktiviert werden können~\cite{HKD08}.
 
-Auch in echtzeitkritischen intelligenten Stromnetzen kann ein massives Überfluten dazu führen, dass der Normalbetrieb nicht mehr möglich ist~\cite{Lu2010}.
-Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotential~\cite{Lu2011}, da diese allgemein eine geringere Bandbreite aufweisen.
+Auch in echtzeitkritischen intelligenten Stromnetzen kann ein massives Überfluten dazu führen, dass der Normalbetrieb nicht mehr möglich ist~\cite{LLW+10}.
+Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotential~\cite{LWW11}\todo{check cite}, da diese allgemein eine geringere Bandbreite aufweisen.
 
 \subsection{\glsentrytext{mitm} Angriff}\label{subsec:mitm}
 % Unterschied Active vs Passive: http://www.security-science.com/pdf/active-man-in-the-middle.pdf
@@ -213,7 +213,7 @@ Ein Controller kommuniziert über ein Netzwerk mit einem physischen System über
 Ziel eines Angreifers ist es den Netzwerkverkehr zwischen den beiden anderen Hosts über sich zu leiten~\cite{WYX+10,FPA+18}.
 Diese Angriffe können also aufgrund von fehlender Authentizität zu einem Verlust von Integrity führen.
 
-Dies ist in IEEE 802.11 und LAN Netzwerken beispielsweise über ARP-Poisoning möglich~\cite{Francia2012}, wodurch die Identität eines anderen Netzwerkteilnehmers eingenommen werden kann~\cite{Ramachandran2005}.
+Dies ist in IEEE 802.11 und LAN Netzwerken beispielsweise über ARP-Poisoning möglich~\cite{FIT+12}, wodurch die Identität eines anderen Netzwerkteilnehmers eingenommen werden kann~\cite{RN05}.
 
 Ein weiteres Beispiel für diese Art von Angriffen sind offline Relay Angriffe.
 Dabei werden langwellige Signale, welche von Autos an den Schlüssel des Besitzers gesendet werden, um festzustellen, ob dieser in der Nähe ist, abgefangen und aufgezeichnet.
@@ -222,18 +222,18 @@ Das Abspielen dieses HF-Signals kann dann genutzt werden, um das Auto aufzuschli
 
 \subsection{Täuschungsangriff (Deception)}\label{subsec:tauschung} % Deception
 Täuschungsangriffe zielen darauf ab die Daten, welche von Sensoren aus gesendet werden zu fälschen.
-Dabei können die Daten zwischen dem physischen und Cybersystem zwar Authentizität vorweisen, aber dennoch nicht plausibel sein~\cite{SFJ2017}.
+Dabei können die Daten zwischen dem physischen und Cybersystem zwar Authentizität vorweisen, aber dennoch nicht plausibel sein~\cite{SFJ17}.
 In einem solchen Fall wird die Eigenschaft Veracity von \cps verletzt.
 
 Zum einen können physische Prozesse manipuliert werden, sodass Wechselwirkungen zwischen Sensoren stattfinden können, obwohl diese nicht elektronisch miteinander verbunden sind.
-Beispielsweise können zwei benachbarte Knoten in einem Stromnetzwerk gegensätzliche Störungen hervorrufen, sodass residuale Fehler in der Zustandsberechnung nicht erkannt werden können~\cite{Krotofil2015}.
+Beispielsweise können zwei benachbarte Knoten in einem Stromnetzwerk gegensätzliche Störungen hervorrufen, sodass residuale Fehler in der Zustandsberechnung nicht erkannt werden können~\cite{KLG15}.
 Manipulationen nutzen hier also die Zustandsberechnung und deren Datenquelle aus.
 
 Zum anderen können Sensoren manipuliert werden.
 Üblicherweise messen Sensoren die physische Welt indem sie ein analoges Signal ausgeben, welches elektronisch abgetastet werden muss um die Daten weiterzubearbeiten.
 Dazu ist eine Kalibrierung nötig um die analogen Werte auf binäre Werte abzubilden.
 Ungültige Kalibrierungen können zu falschen Messwerten und zu katastrophalen Unfällen führen.
-Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage Mikrocontroller eingesetzt werden, wodurch es möglich ist Sensortests zu bestehen, im Produktionsbetrieb allerdings nicht wie Erwartet funktionieren.~\cite{Krotofil2015}
+Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage Mikrocontroller eingesetzt werden, wodurch es möglich ist Sensortests zu bestehen, im Produktionsbetrieb allerdings nicht wie Erwartet funktionieren.~\cite{KLG15}
 
 Bei der Automatisierung werden Sensoren und deren Daten als Vertrauenswürdig eingestuft.
 Eine Manipulation vor dem Einsatz verletzt also die Veracity von \cps.
