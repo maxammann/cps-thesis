@@ -57,14 +57,14 @@ Eine kurze Zusammenfassung der Ausarbeitung mit 10-12 Zeilen Text.
 Die physische Welt macht hohe Verfügbarkeit allerdings oft schwierig, da sie alles andere als berechenbar ist~\cite{Lee08,SGL+08}.
 Einsatzorte für diese Systeme könnten intelligente Stromnetze, symbiotische Sensornetzwerke für die Agrarwirtschaft und Katastrophenabwehr, medizinische oder assistierende Geräte, intelligente Verkehrssteuerung und intelligente Gebäude sein~\cite{RLS+10}.
 
-In all diesen Beispielen spielt ein außerordentliches Maß an Vertrauen eine Rolle~\cite{SGL+08}.
+In diesen Beispielen spielt ein außerordentliches Maß an Vertrauen eine Rolle~\cite{SGL+08}.
 Dieses ist zwar auch bei Cybersystemen gefordert, allerdings ohne die Koppelung an physische Prozesse~\cite{BG11}.
 Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise die Bindung an eine Batterie oder eine leichte Bauweise~\cite{YWY+17}.
 Es existiert also ein Unterschied in den Anforderungen an \cps und Cybersystemen, wie Anwendungsservern oder Heimcomputern, sodass man diese in Bezug auf Sicherheit anders betrachten muss.
 
 In dem Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von physischen und Cybersystemen im Bezug auch Sicherheit geklärt.
 Zudem werden mögliche Angreifer im Kapitel~\ref{subsec:angreifergruppen} beleuchtet.
-Im Kapitel~\ref{sec:angriffszenarien} werden mögliche Szenarien und im Kapitel~\ref{subsec:angreifergruppen} Gegenmaßnahmen dargestellt.
+Im Kapitel~\ref{sec:angriffszenarien} werden mögliche Szenarien und im Kapitel~\ref{sec:gegenmassnahmen} Gegenmaßnahmen dargestellt.
 Zuletzt soll im Kapitel~\ref{sec:diskussion} diskutiert werden, ob die genannten Gegenmaßnahmen für die Szenarien ein adäquate Lösung darstellen.
 % Beispiele:
 %   Stuxnet (Langer)
@@ -81,9 +81,9 @@ Deshalb soll im Folgenden Sicherheit speziell für \cps definiert werden.
 Unter Sicherheit bei Cybersystemen versteht man im allgemeinen Informationssicherheit.
 Informationssicherheit kann man durch drei Eigenschaften von Systemen charakterisieren~\cite{CH13}:
 \begin{itemize}[noitemsep,wide=0pt]
-    \item \fb{Confidentiality} - Nur autorisierte Teilnehmer können auf Daten und Ressourcen zugreifen.\label{def:confidentiality}
-    \item \fb{Integrity} - Daten und Ressourcen können nur von autorisierten Teilnehmern verändert werden.\label{def:integrity}
-    \item \fb{Availability} - Daten und Ressourcen ist für autorisierte Teilnehmer angemessen verfügbar.\label{def:availability}
+    \item \fb{Confidentiality} - Nur autorisierte Teilnehmer können auf Ressourcen zugreifen.\label{def:confidentiality}
+    \item \fb{Integrity} - Ressourcen können nur von autorisierten Teilnehmern verändert werden.\label{def:integrity}
+    \item \fb{Availability} - Ressourcen ist für autorisierte Teilnehmer angemessen verfügbar.\label{def:availability}
 \end{itemize}
 
 Zwischen diesen drei Eigenschaften muss bei der Entwicklung ein sinnvolles Gleichgewicht gefunden werden.
@@ -92,19 +92,20 @@ Dieser Fokus ist kritisch zu betrachten, wenn man die diversen Einsatzorte und s
 
 Sie schlagen außerdem vor das CIA-Dreieck im Hinblick auf \cps durch die Eigenschaft Veracity (dt.~Richtigkeit) zu erweitern.
 Ein System hat diese Eigenschaft genau dann, wenn Aussagen des Systems die Wahrhaftigkeit der  Wirklichkeit reflektieren.
-Es muss also sichergestellt werden, dass Sensoren durch beispielsweise physische Maßnahmen (siehe Kapitel~\ref{subsec:physisch}) fälschungssicher sind.
+Es muss also sichergestellt werden, dass Sensoren, durch beispielsweise physische Maßnahmen (siehe Kapitel~\ref{subsec:physisch}) fälschungssicher sind.
 Confidentiality und Integrity sind nicht ausreichend um die Richtigkeit von Informationen zu garantieren.
 Veracity ist eine relativ starke Eigenschaft.
 Deshalb kann man in Fällen, in denen diese nur schwer zu erreichen ist, zunächst auf Plausibility setzen.
 Herbei hat ein System genau dann diese Eigenschaft, wenn Aussagen des Systems nicht zu weit von erwartbaren Werten abweichen.
-Liefert ein Sensor beispielsweise einen für physikalische Modelle unmögliche Wert, so ist dieser nicht plausibel und das System erreicht kann einen möglichen Angriff erkennen. \cite{GK16}
+Liefert ein Sensor beispielsweise einen für physikalische Modelle unmögliche Wert, so ist dieser nicht plausibel und das System erreicht kann einen möglichen Angriff erkennen.~\cite{GK16}
+
 Diese Eigenschaft kann nicht durch Integrity gewährleistet werden, da die Werte eines Sensors von außerhalb beeinflusst werden können.
 Veracity stellt also eine grundsätzlich andere Eigenschaft bereit.
 
 \citeauthor{WYX+10} und \citeauthor{SFJ17} stimmen zu, dass eine Überprüfung auf die Richtigkeit von Informationen wichtig sind.
 Sie erweitern das CIA-Dreieck zudem um die Eigenschaft der Authentizität zwischen Kommunikationspartnern.
-Authentizität kann hergestellt werden genau dann, wenn sich beide Kommunikationspartner einig über die Identität des Gegenübers sind.\label{def:authenticity}
-Obwohl bei der Definition von \citeauthor{CH13} die Authentizität bereits in der Definition beinhaltet ist, soll diese hier dennoch zusätzlich aufgeführt werden.
+Authentizität kann genau dann hergestellt werden, wenn sich beide Kommunikationspartner einig über die Identität des Gegenübers sind.
+%Obwohl bei der Definition von \citeauthor{CH13} die Authentizität bereits in der Definition beinhaltet ist, soll diese hier dennoch zusätzlich aufgeführt werden.
 Es könnte behauptet werden, dass sich Integrity und Authentizität decken.
 Daten können allerdings Integrity durch z.B.\ Checksummen und gleichzeitig keine Authentizität besitzen.
 In der Realität bringt Authentizität aber oftmals Integrity mit sich.
@@ -113,6 +114,11 @@ Ein weiteres wichtiges Konzept ist die Nonrepudiation. % de: Revisionssicherheit
 Hierbei darf es nicht möglich sein aufgezeichnete Aktionen zu leugnen \cite{NIST13}.\todo{Wie zitiert man NIST?}
 Ein System hat diese Eigenschaft also genau dann, wenn jegliche Aktionen, die das System beeinflussen, nachvollzogen werden können. \label{def:nonrepudiation}
 
+Zusammenfassend kann man sagen, dass die Eigenschaften von Systemen aus der klassischen Informationssicherheit nicht ausreichen um das oft komplexe Zusammenspiel von physischen- und Cybersystemen\todo{physischen- richtig?} abzusichern.
+Bei \cps ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
+Deshalb sind zusätzliche Eigenschaften wie Veracity und Authentizität, wie in Abbildung~\ref{fig:triad} zu sehen ist, nötig um die Aspekte von \cps abzudecken.
+\citeauthor{CH13} führt noch weitere Eigenschaften wie Accountability, Auditability und Privacy auf, welche allerdings in dieser Arbeit nicht weiter untersucht werden sollen.
+
 \begin{figure}
     \centering
     \includegraphics[width=0.5\textwidth]{triad}
@@ -120,9 +126,6 @@ Ein System hat diese Eigenschaft also genau dann, wenn jegliche Aktionen, die da
     \label{fig:triad}
 \end{figure}
 
-Zusammenfassend kann man sagen, dass die Eigenschaften von Systemen aus der klassischen Informationssicherheit nicht ausreichen um das oft komplexe Zusammenspiel von physischen- und Cybersystemen\todo{physischen- richtig?} abzusichern.
-Bei \cps ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
-Deshalb sind zusätzliche Eigenschaften wie Veracity und Authentizität, wie in Abbildung~\ref{fig:triad} zu sehen ist, nötig um die Aspekte von \cps abzudecken.
 % Begriffe: computer, information, network, communication, physical security
 
 
@@ -149,8 +152,8 @@ Unzufriedene Mitarbeiter~\ref{factor:angreifergruppe} eines Unternehmens haben v
 Das Motiv kann liegt hierbei bei der Schädigung des Unternehmens~\ref{factor:motiv}.
 Zudem existiert eventuell Zugriff auf das System, sodass überhaupt kein Umgehen von Sicherheitsmechanismen notwendig ist~\ref{factor:methode}.~\cite{CAS+09,WYX+10}
 
-Aktivistische Gruppierungen~\ref{factor:angreifergruppe} zielen oft auf kritische \cps~\ref{factor:target}, wie beispielsweise Kernkraftwerke oder \gls{scada} Systemen in Fabriken, ab, um diese zu manipulieren \cite{CAS+09,HLL+17}. \todo{Spionage?}
-Damit dies erreicht werden kann existiert die Möglichkeit Forensiker oder Insider zu engagieren~\ref{factor:methode}.~\cite{WYX+10}
+Aktivistische Gruppierungen~\ref{factor:angreifergruppe} zielen oft auf kritische \cps~\ref{factor:target}, wie beispielsweise Kernkraftwerke oder \gls{scada} Systemen in Fabriken, ab, um diese zu manipulieren~\cite{CAS+09,HLL+17}. \todo{Spionage?}
+Damit dies erreicht werden kann, existiert die Möglichkeit Forensiker oder Insider zu engagieren~\ref{factor:methode}.~\cite{WYX+10}
 
 Staaten~\ref{factor:angreifergruppe} können politisches und militärisches Interesse~\ref{factor:motiv} daran haben Infrastruktur innerhalb oder außerhalb des Staatsgebiets~\ref{factor:target} anzugreifen \cite{CAS+09}, um diese zu sabotieren oder auszuspionieren.
 Auch hier werden Forensiker oder Insider zu engagieren~\ref{factor:methode}.
@@ -194,7 +197,8 @@ Im folgenden Kapitel sollen Angriffe an verschiedenen Punkten eines \cps dargest
 Diese können von einem angeschlossenes Netzwerk oder dem physischen System ausgehen.
 Dadurch wird der Informationsfluss von Steuer- und Nutzdaten, wie in Abbildung~\ref{fig:attack_points} an den Punkten A4 und A2 zu sehen ist, unterbrochen und die Availability des \cps eingeschränkt.
 
-Diese Angriffe sind beispielsweise bei CAN Bussen in Autos realistisch, da Nachrichten mit vielen Empfängern gesendet werden und auch die Fehlerbehebung angreifbar ist~\cite{KCR+10,CDV13}.% Koscher2010: Konkret wurde der Tacho auf 0 gesetzt
+Diese Angriffe sind beispielsweise bei CAN Bussen in Autos realistisch, da Nachrichten mit vielen Empfängern gesendet werden und auch die Fehlerbehebung angreifbar ist~\cite{KCR+10,CDV13}.
+% Koscher2010: Konkret wurde der Tacho auf 0 gesetzt
 Folgen können sein, dass sich Fenster nicht mehr schließen lassen, Warnlichter oder die Diebstahlsicherung deaktiviert werden können~\cite{HKD08}.
 
 Auch in echtzeitkritischen intelligenten Stromnetzen kann ein massives Überfluten dazu führen, dass der Normalbetrieb nicht mehr möglich ist~\cite{LLW+10}.
