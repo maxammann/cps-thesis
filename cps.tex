@@ -78,7 +78,7 @@ Die Eigenschaften von Cybersystemen und physischen Systemen in Bezug auf Sicherh
 Deshalb soll im Folgenden Sicherheit speziell für \cps definiert werden.
 
 \subsection{Sicherheitsrelevante Eigenschaften von \glsentrytext{cps}}\label{subsec:definition}
-Unter Sicherheit bei Cybersystemen versteht man im allgemeinen Informationssicherheit.
+Unter Sicherheit bei Cybersystemen versteht man im Allgemeinen Informationssicherheit.
 Informationssicherheit kann man durch drei Eigenschaften von Systemen charakterisieren~\cite{CH13}:
 \begin{itemize}[noitemsep,wide=0pt]
     \item \fb{Confidentiality} - Nur autorisierte Teilnehmer können auf Ressourcen zugreifen.\label{def:confidentiality}
@@ -107,11 +107,11 @@ Sie erweitern das CIA-Dreieck zudem um die Eigenschaft der Authentizität zwisch
 Authentizität kann genau dann hergestellt werden, wenn sich beide Kommunikationspartner einig über die Identität des Gegenübers sind.
 %Obwohl bei der Definition von \citeauthor{CH13} die Authentizität bereits in der Definition beinhaltet ist, soll diese hier dennoch zusätzlich aufgeführt werden.
 Es könnte behauptet werden, dass sich Integrity und Authentizität decken.
-Daten können allerdings Integrity durch z.B.\ Checksummen und gleichzeitig keine Authentizität besitzen.
+Daten können allerdings Integrity durch z.B.\ Prüfsummen und gleichzeitig keine Authentizität besitzen.
 In der Realität bringt Authentizität aber oftmals Integrity mit sich.
 
 Ein weiteres wichtiges Konzept ist die Nonrepudiation. % de: Revisionssicherheit
-Hierbei darf es nicht möglich sein aufgezeichnete Aktionen zu leugnen \cite{NIST13}.\todo{Wie zitiert man NIST?}
+Hierbei darf es nicht möglich sein, aufgezeichnete Aktionen zu leugnen \cite{NIST13}.\todo{Wie zitiert man NIST?}
 Ein System hat diese Eigenschaft also genau dann, wenn jegliche Aktionen, die das System beeinflussen, nachvollzogen werden können. \label{def:nonrepudiation}
 
 Zusammenfassend kann man sagen, dass die Eigenschaften von Systemen aus der klassischen Informationssicherheit nicht ausreichen um das oft komplexe Zusammenspiel von physischen- und Cybersystemen\todo{physischen- richtig?} abzusichern.
@@ -201,7 +201,7 @@ Diese Angriffe sind beispielsweise bei CAN Bussen in Autos realistisch, da Nachr
 % Koscher2010: Konkret wurde der Tacho auf 0 gesetzt
 Folgen können sein, dass sich Fenster nicht mehr schließen lassen, Warnlichter oder die Diebstahlsicherung deaktiviert werden können~\cite{HKD08}.
 
-Auch in echtzeit-kritischen intelligenten Stromnetzen kann ein massives Überfluten dazu führen, dass der Normalbetrieb nicht mehr möglich ist~\cite{LLW+10}.
+Auch in echtzeitkritischen intelligenten Stromnetzen kann ein massives Überfluten dazu führen, dass der Normalbetrieb nicht mehr möglich ist~\cite{LLW+10}.
 Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotential~\cite{LWW11}\todo{check cite}, da diese allgemein eine geringere Bandbreite aufweisen.
 
 \subsection{\glsentrytext{mitm} Angriff}\label{subsec:mitm}
@@ -231,14 +231,14 @@ In einem solchen Fall wird die Eigenschaft Veracity von \cps verletzt.
 
 Zum einen können physische Prozesse manipuliert werden, sodass Wechselwirkungen zwischen Sensoren stattfinden können, obwohl diese nicht elektronisch miteinander verbunden sind.
 Beispielsweise können zwei benachbarte Knoten in einem Stromnetzwerk gegensätzliche Störungen hervorrufen, sodass residuale Fehler in der Zustandsberechnung nicht erkannt werden können~\cite{KLG15}.
-Manipulationen nutzen hier also die Zustandsberechnung und deren Datenquelle eines \cps aus.
+Manipulationen nutzen,\todo{Komma richtig?} hier also die Zustandsberechnung und deren Datenquelle eines \cps aus.
 
 Zum anderen können Sensoren manipuliert werden.
 Üblicherweise messen Sensoren die physische Welt und geben ein analoges Signal aus, das dem Messwert entspricht.
 Dieses kann dann elektronisch abgetastet werden, um die Daten weiterzuverarbeiten.
 Dazu ist eine Kalibrierung nötig um die analogen Werte auf binäre Werte abzubilden.
 Ungültige Kalibrierungen können zu falschen Messwerten und zu katastrophalen Unfällen führen.
-Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage Mikrocontroller eingesetzt werden, wodurch es möglich ist Sensortests zu bestehen, im Produktionsbetrieb allerdings nicht wie Erwartet funktionieren.~\cite{KLG15}
+Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage Mikrocontroller eingesetzt werden, wodurch es möglich ist Sensortests zu bestehen, im Produktionsbetrieb allerdings nicht wie erwartet funktionieren.~\cite{KLG15}
 
 Bei der Automatisierung werden Sensoren und deren Daten als Vertrauenswürdig eingestuft.
 Eine Manipulation vor dem Einsatz verletzt also die Veracity von \cps.
@@ -282,7 +282,7 @@ Lorem Ipsum.
 Physischer Zugriff auf \cps sollte für unautorisierte Personen möglichst verhindert werden, da dieser viele Cybergegenmaßnahmen unwirksam macht und sehr leicht die Availability des Systems stören kann, indem dieses physisch beschädigt wird.
 Physische Angriffe können nicht algorithmisch verhindert werden, sodass meist durch physische Zugriffseinschränkungen, wie etwa Wachpersonal oder Kameras Sicherheit geschaffen werden kann.\todo{missing cite}
 % Cyber honeypod könnte einen physischen angreifer ablenken
-\citeauthor{CAS08} sind allerdings der Meinung, dass nicht-physische Angriffe potentiell attraktiver sind, da diese im allgemeinen schwieriger zu verfolgen, nicht physisch gefährlich für den Angreifer und keine Ortseinschränkungen existieren.
+\citeauthor{CAS08} sind allerdings der Meinung, dass nicht-physische Angriffe potenziell attraktiver sind, da diese im Allgemeinen schwieriger zu verfolgen, nicht physisch gefährlich für den Angreifer und keine Ortseinschränkungen existieren.
 
 Für \glspl{ics} schlägt das \gls{nist} in \cite{HUM 153} beispielsweise Sicherheitskonzepte vor wie den Schutz von physischen Standorten, Zugangskontrollen oder Überwachung von Mitarbeitern und Ressourcen.
 Für Zähler in Stromnetzen gibt das \gls{nist} in \cite{HUM 127} vor, dass diese gegen Modifikationen kryptografische Module nutzen, versiegelt und geschützt sein müssen.
@@ -300,7 +300,7 @@ Proaktive Maßnahmen versuchen das Eintreten eines Angriffs zu verhindern.
 Ein wichtiges Mittel bei dem Verhindern von Angriffen ist Authentizität, welche durch Authentifizierung erreicht werden kann.
 
 Mithilfe von Verschlüsselung kann die Confidentiality im Fall von einem \gls{mitm} Angriff sichergestellt werden~\cite{HLL+17}.
-Verschlüsselung allein erlaubt es allerdings immer noch einen Replay-Angriff auszuführen, da auch die Verschlüsselten Daten aufgezeichnet und erneut gesendet werden können.
+Verschlüsselung allein erlaubt es allerdings immer noch einen Replay-Angriff auszuführen, da auch die verschlüsselten Daten aufgezeichnet und erneut gesendet werden können.
 
 Mithilfe von digitalen Signaturen kann festgestellt werden, ob eine Nachricht von Dritten manipuliert wurde und beispielsweise ein \gls{mitm} Angriff stattgefunden hat~\cite{CAS08}.
 Aktualität der Daten kann durch einen in den zu signierenden Daten beinhalteten Zeitstempel oder durch Challenge-Response-Mechanismen bestätigt werden~\cite{CAS08}.
@@ -311,7 +311,7 @@ Durch eine Überprüfung auf Aktualität werden Replay-Angriffe verhindert, da a
 %Autorisierung stellt die Integrity des Systems sicher, indem von bestimmten Nachrichtensendern nur bestimmte Aktionen ausgeführt werden dürfen.
 
 Je nachdem welche Kommunikationswege abgesichert werden soll gibt es verschiedene Ansätze.
-Die Verbindungen $u$ und $y$ in Abbildung~\ref{fig:abstrakt} könnten beispielweise CAN oder LIN Bussen darstellen.
+Die Verbindungen $u$ und $y$ in Abbildung~\ref{fig:abstrakt} könnten beispielsweise CAN oder LIN Bussen darstellen.
 Diese stellen keine Verschlüsselung, Authentifizierung oder Autorisierung zur Verfügung~\cite{HLL+17}.
 Da effiziente Lösungen aufgrund von begrenzten Ressourcen in Autos wichtig sind, schlagen \citeauthor{HLL 167,41} die Verwendung von Hardware-basierten Lösungen, wie etwa Hardware Security Module, vor.
 
@@ -319,7 +319,7 @@ Da effiziente Lösungen aufgrund von begrenzten Ressourcen in Autos wichtig sind
 
 Soll eine sichere Kommunikation in das Internet gewährleistet werden, so stellt \gls{tls} eine standardisierte Lösung vor.
 Hierbei wird ein abhörsicherer Kanal gewährleistet, welcher Confidentiality und Integrity gewährleistet~\cite{SPB+16}.
-Weitere Protokoll abseits des TCP/IP Stacks, welche \gls{tls} verwenden, sind \gls{dtls}, welches eine Sicherung über UPD ermöglicht und \gls{llcps}, welches eine Sicherung über \gls{nfc} ermöglicht~\cite{SPB+16}.
+Weitere Protokoll abseits des TCP/IP Stacks, welche \gls{tls} verwenden, sind \gls{dtls}, welches eine Sicherung über UDP ermöglicht und \gls{llcps}, welches eine Sicherung über \gls{nfc} ermöglicht~\cite{SPB+16}.
 Besonders in der Entwicklung von Geräten für das IoT findet \gls{dtls} verwendet~\cite{YWY+17,FPA+18}.
 
 
@@ -342,7 +342,7 @@ Zudem argumentieren \citeauthor{SGL+08}, dass Verifikation und Validierung von \
 % DoS: rate limiting
 
 Reaktive Maßnahmen versuchen Angriffe zu erkennen und einen sicheren Zustand wiederherzustellen.
-Im Gegensatz zu proaktiven Maßnahmen von Kapitel~\ref{subsec:proactive} wird also der Angriff zunächst nicht verhindert, sondern gewährleistet, dass die Einflüssen eines Angriffs bewältigt werden können.
+Im Gegensatz zu proaktiven Maßnahmen von Kapitel~\ref{subsec:proactive} wird also der Angriff zunächst nicht verhindert, sondern gewährleistet, dass die Einflüsse eines Angriffs bewältigt werden können.
 
 % Nonrepudablity: Blockchain als source of trust
 
