@@ -194,14 +194,14 @@ Im folgenden Kapitel sollen Angriffe an verschiedenen Punkten eines \cps dargest
 
 \subsection{\glsentrytext{dos} Angriff}\label{subsec:dos}
 \gls{dos} Angriffe zielen darauf ab das Cybersystem mit einer großen Flut an Informationen zu stören.
-Diese können von einem angeschlossenes Netzwerk oder dem physischen System ausgehen.
+Diese können von einem angeschlossenes Netzwerk oder dem physischen System ausgehen.\todo{missing cite}
 Dadurch wird der Informationsfluss von Steuer- und Nutzdaten, wie in Abbildung~\ref{fig:attack_points} an den Punkten A4 und A2 zu sehen ist, unterbrochen und die Availability des \cps eingeschränkt.
 
-Diese Angriffe sind beispielsweise bei CAN Bussen in Autos realistisch, da Nachrichten mit vielen Empfängern gesendet werden und auch die Fehlerbehebung angreifbar ist~\cite{KCR+10,CDV13}.
+Diese Angriffe sind beispielsweise bei CAN Bussen in Autos realistisch, da Nachrichten mit vielen Empfängern gesendet werden~\cite{KCR+10} und auch die Fehlerbehebung angreifbar ist~\cite{CDV13}.
 % Koscher2010: Konkret wurde der Tacho auf 0 gesetzt
 Folgen können sein, dass sich Fenster nicht mehr schließen lassen, Warnlichter oder die Diebstahlsicherung deaktiviert werden können~\cite{HKD08}.
 
-Auch in echtzeitkritischen intelligenten Stromnetzen kann ein massives Überfluten dazu führen, dass der Normalbetrieb nicht mehr möglich ist~\cite{LLW+10}.
+Auch in echtzeit-kritischen intelligenten Stromnetzen kann ein massives Überfluten dazu führen, dass der Normalbetrieb nicht mehr möglich ist~\cite{LLW+10}.
 Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotential~\cite{LWW11}\todo{check cite}, da diese allgemein eine geringere Bandbreite aufweisen.
 
 \subsection{\glsentrytext{mitm} Angriff}\label{subsec:mitm}
@@ -222,7 +222,7 @@ Dies ist in IEEE 802.11 und LAN Netzwerken beispielsweise über ARP-Poisoning m�
 Ein weiteres Beispiel für diese Art von Angriffen sind offline Relay Angriffe.
 Dabei werden langwellige Signale, welche von Autos an den Schlüssel des Besitzers gesendet werden, um festzustellen, ob dieser in der Nähe ist, abgefangen und aufgezeichnet.
 Beim Abspielen dieses Signals, in der Nähe des Besitzers sendet der Schlüssel ein Hochfrequenzsignal, welches wiederum aufgezeichnet wird.
-Das Abspielen dieses HF-Signals kann dann genutzt werden, um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
+Das Abspielen dieses HF-Signals kann dann dazu genutzt werden, um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
 
 \subsection{Täuschungsangriff (Deception)}\label{subsec:tauschung} % Deception
 Täuschungsangriffe zielen darauf ab die Daten, welche von Sensoren aus gesendet werden zu fälschen.
@@ -231,10 +231,11 @@ In einem solchen Fall wird die Eigenschaft Veracity von \cps verletzt.
 
 Zum einen können physische Prozesse manipuliert werden, sodass Wechselwirkungen zwischen Sensoren stattfinden können, obwohl diese nicht elektronisch miteinander verbunden sind.
 Beispielsweise können zwei benachbarte Knoten in einem Stromnetzwerk gegensätzliche Störungen hervorrufen, sodass residuale Fehler in der Zustandsberechnung nicht erkannt werden können~\cite{KLG15}.
-Manipulationen nutzen hier also die Zustandsberechnung und deren Datenquelle aus.
+Manipulationen nutzen hier also die Zustandsberechnung und deren Datenquelle eines \cps aus.
 
 Zum anderen können Sensoren manipuliert werden.
-Üblicherweise messen Sensoren die physische Welt indem sie ein analoges Signal ausgeben, welches elektronisch abgetastet werden muss um die Daten weiterzubearbeiten.
+Üblicherweise messen Sensoren die physische Welt und geben ein analoges Signal aus, das dem Messwert entspricht.
+Dieses kann dann elektronisch abgetastet werden, um die Daten weiterzuverarbeiten.
 Dazu ist eine Kalibrierung nötig um die analogen Werte auf binäre Werte abzubilden.
 Ungültige Kalibrierungen können zu falschen Messwerten und zu katastrophalen Unfällen führen.
 Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage Mikrocontroller eingesetzt werden, wodurch es möglich ist Sensortests zu bestehen, im Produktionsbetrieb allerdings nicht wie Erwartet funktionieren.~\cite{KLG15}
@@ -279,7 +280,8 @@ Lorem Ipsum.
 \subsection{Physische Maßnahmen}\label{subsec:physisch}
 % (Cardenas)
 Physischer Zugriff auf \cps sollte für unautorisierte Personen möglichst verhindert werden, da dieser viele Cybergegenmaßnahmen unwirksam macht und sehr leicht die Availability des Systems stören kann, indem dieses physisch beschädigt wird.
-Physische Angriffe können nicht algorithmisch verhindert werden, sodass durch physische Zugriffseinschränkungen, wie etwa Wachpersonal oder Kameras Sicherheit geschaffen werden kann.
+Physische Angriffe können nicht algorithmisch verhindert werden, sodass meist durch physische Zugriffseinschränkungen, wie etwa Wachpersonal oder Kameras Sicherheit geschaffen werden kann.\todo{missing cite}
+% Cyber honeypod könnte einen physischen angreifer ablenken
 \citeauthor{CAS08} sind allerdings der Meinung, dass nicht-physische Angriffe potentiell attraktiver sind, da diese im allgemeinen schwieriger zu verfolgen, nicht physisch gefährlich für den Angreifer und keine Ortseinschränkungen existieren.
 
 Für \glspl{ics} schlägt das \gls{nist} in \cite{HUM 153} beispielsweise Sicherheitskonzepte vor wie den Schutz von physischen Standorten, Zugangskontrollen oder Überwachung von Mitarbeitern und Ressourcen.
@@ -305,8 +307,8 @@ Aktualität der Daten kann durch einen in den zu signierenden Daten beinhalteten
 Bei ersterem ist eine sichere Synchronisation der Zeit notwendig~\cite{CAS08}.
 Durch eine Überprüfung auf Aktualität werden Replay-Angriffe verhindert, da alte Nachrichten als invalide angesehen werden können.
 
-Autorisierung ist der nächste Schritt nachdem eine Authentifizierung stattgefunden hat.
-Autorisierung stellt die Integrity des Systems sicher, indem von bestimmten Nachrichtensendern nur bestimmte Aktionen ausgeführt werden dürfen.
+%Autorisierung ist der nächste Schritt nachdem eine Authentifizierung stattgefunden hat.
+%Autorisierung stellt die Integrity des Systems sicher, indem von bestimmten Nachrichtensendern nur bestimmte Aktionen ausgeführt werden dürfen.
 
 Je nachdem welche Kommunikationswege abgesichert werden soll gibt es verschiedene Ansätze.
 Die Verbindungen $u$ und $y$ in Abbildung~\ref{fig:abstrakt} könnten beispielweise CAN oder LIN Bussen darstellen.
