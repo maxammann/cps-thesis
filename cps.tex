@@ -111,10 +111,11 @@ Daten können allerdings Integrity durch z.B.\ Prüfsummen und gleichzeitig kein
 In der Realität bringt Authentizität aber oftmals Integrity mit sich.
 
 Ein weiteres wichtiges Konzept ist die Nonrepudiation. % de: Revisionssicherheit
-Hierbei darf es nicht möglich sein, aufgezeichnete Aktionen zu leugnen \cite{NIST13}.\todo{Wie zitiert man NIST?}
-Ein System hat diese Eigenschaft also genau dann, wenn jegliche Aktionen, die das System beeinflussen, nachvollzogen werden können. \label{def:nonrepudiation}
+Hierbei muss das System das Eintreten jegliche Ereignisse und dessen Auslöser oder Teilnehmer überprüfbar machen \cite{CH13}.
+%Hierbei darf es nicht möglich sein aufgezeichnete Aktionen zu leugnen \cite{NIST2013}.
+Ein System hat diese Eigenschaft also genau dann, wenn jedes Ereignisse, die das System beeinflussen, nachvollzogen werden können. \label{def:nonrepudiation}
 
-Zusammenfassend kann man sagen, dass die Eigenschaften von Systemen aus der klassischen Informationssicherheit nicht ausreichen um das oft komplexe Zusammenspiel von physischen- und Cybersystemen\todo{physischen- richtig?} abzusichern.
+Die Eigenschaften von Systemen aus der klassischen Informationssicherheit sind also nicht ausreichend um das oft komplexe Zusammenspiel von physischen- und Cybersystemen\todo{physischen- richtig?} abzusichern.
 Bei \cps ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
 Deshalb sind zusätzliche Eigenschaften wie Veracity und Authentizität, wie in Abbildung~\ref{fig:triad} zu sehen ist, nötig um die Aspekte von \cps abzudecken.
 \citeauthor{CH13} führt noch weitere Eigenschaften wie Accountability, Auditability und Privacy auf, welche allerdings in dieser Arbeit nicht weiter untersucht werden sollen.
@@ -183,7 +184,7 @@ In Abbildung~\ref{fig:abstrakt} ist eine abstrakte Darstellung eines \cps zu seh
 Der \enquote{Controller} sendet Befehle über $u$ an das \enquote{Physical System}.
 Dieses wiederum schickt Resultate oder Sensorwerte über $y$ an den \enquote{Controller}.
 In Abbildung~\ref{fig:attack_points} sind mögliche Angriffspunkte dargestellt.
-Hierbei stellen A1 und A3 Täuschungsangriffe dar, A4 und A2 \gls{dos} und A5 einen physischen Angriff.
+Hierbei stellen A1 und A3 Täuschungsangriffe\todo{Deception?} dar, A4 und A2 \gls{dos} und A5 einen physischen Angriff.
 Im folgenden Kapitel sollen Angriffe an verschiedenen Punkten eines \cps dargestellt werden.
 
 % Sabotage und Spionage
@@ -224,7 +225,7 @@ Dabei werden langwellige Signale, welche von Autos an den Schlüssel des Besitze
 Beim Abspielen dieses Signals, in der Nähe des Besitzers sendet der Schlüssel ein Hochfrequenzsignal, welches wiederum aufgezeichnet wird.
 Das Abspielen dieses HF-Signals kann dann dazu genutzt werden, um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
 
-\subsection{Täuschungsangriff (Deception)}\label{subsec:tauschung} % Deception
+\subsection{Täuschungsangriff (Deception)\todo{Deception vs Täuschung}}\label{subsec:tauschung} % Deception
 Täuschungsangriffe zielen darauf ab die Daten, welche von Sensoren aus gesendet werden zu fälschen.
 Dabei können die Daten zwischen dem physischen und Cybersystem zwar Authentizität vorweisen, aber dennoch nicht plausibel sein~\cite{SFJ17}.
 In einem solchen Fall wird die Eigenschaft Veracity von \cps verletzt.
@@ -289,11 +290,11 @@ Für Zähler in Stromnetzen gibt das \gls{nist} in \cite{HUM 127} vor, dass dies
 Auch medizinische Geräte und bei Autos ermöglicht ein physischer Eingriff Manipulationen oder das Auslesen von sensiblen Daten wie beispielsweise Seriennummern~\cite{HLL+17}.
 
 
-\subsection{Organisatorische Maßnahmen}\label{subsec:orga}
+%\subsection{Organisatorische Maßnahmen}\label{subsec:orga}
 % Transdiszipliär (Brazell14)
 % Betriebsblindheit (Gollman)
 
-\subsection{Proaktive Maßnahmen}\label{subsec:proactive}
+\subsection{Proaktive Maßnahmen: Verhindern von Angriffen}\label{subsec:proactive}
 % Security by Obscurity (Scarfone2008)
 % End-to-End Security (Fink)
 Proaktive Maßnahmen versuchen das Eintreten eines Angriffs zu verhindern.
@@ -315,7 +316,7 @@ Die Verbindungen $u$ und $y$ in Abbildung~\ref{fig:abstrakt} könnten beispielsw
 Diese stellen keine Verschlüsselung, Authentifizierung oder Autorisierung zur Verfügung~\cite{HLL+17}.
 Da effiziente Lösungen aufgrund von begrenzten Ressourcen in Autos wichtig sind, schlagen \citeauthor{HLL 167,41} die Verwendung von Hardware-basierten Lösungen, wie etwa Hardware Security Module, vor.
 
-% Sicherheit in Senor Netzwerken CAS08
+\todo{Sicherheit in Senor Netzwerken CAS08}
 
 Soll eine sichere Kommunikation in das Internet gewährleistet werden, so stellt \gls{tls} eine standardisierte Lösung vor.
 Hierbei wird ein abhörsicherer Kanal gewährleistet, welcher Confidentiality und Integrity gewährleistet~\cite{SPB+16}.
@@ -328,14 +329,22 @@ Eine Verifikation des Programmcodes von Software stellt eine Möglichkeit dar di
 Formale Methoden und das Testen von \cps sollten stärker miteinander integriert werden~\cite{RLS+10}.
 Zudem argumentieren \citeauthor{SGL+08}, dass Verifikation und Validierung von \cps kein einmaliges Ereignis ist, sondern stets in einen Prozess integriert sein sollten.
 
-% Widerstandsfähigkeit: Resilience
-% CAS09: Redundancy, Diversity, principle of least privlege, separation of privilege
 
-%Abschreckung: Deterrence
- % CAS09
+% Widerstandsfähigkeit (Redundancy, Diversity)
+Um \cps die Widerstandsfähigkeit (eng.\ Resilience) zu erhöhen, können Redundanzen bereit gestellt werden, um einen Single Point of Failure zu vermeiden~\cite{CAS+09}.
+Bei beispielsweise einem \gls{dos} Angriff, wie in Abbildung~\ref{fig:attack_points} bei A2 oder A4 gezeigt, könnte ein weiterer redundanter \enquote{Controller} oder weiteres \enquote{Physical System} dazu führen, dass der Angriff mitigiert oder sogar verhindert wird.
+\citeauthor{CAS+09} beschreiben außerdem, dass eine Diversität an Hard- und Software der Redundanzen kann zudem dazu führen, dass ein Angriffsvektor nicht auf alle eingesetzten Komponenten anwendbar ist.
 
 
-% Überleitung: nicht verhinderbar -> reaktive
+% Trennung von Netzen, Privilegientrennung, Least Privilege-Prinzips
+Weitere Konzepte sind die \enquote{Trennung von Netzen}~\cite{GK16}, die \enquote{Privilegientrennung} und das \enquote{Least Privilege-Prinzips}~\cite{CAS+09}, welche sowohl die Angriffsfläche als auch die Privilegien eines angegriffenen Ziels reduzieren.
+Eine
+
+%Abschreckung
+\citeauthor{CAS+09} meinten schon \citeyear{CAS+09}, dass Abschreckung (engl.\ Deterrence) durch Gesetzgebung, Gesetzesvollzug und internationale Zusammenarbeit ein wirksames Mittel gegen Angriffe sein können.
+Im Glossar vom \gls{nist} von \citeyear{Kissel13} lässt sich außerdem eine Erwähnung der Begriffs \enquote{Deterrence} in der Definition von Sicherheit finden~\cite{Kissel13}.
+Ziel ist also, dass die wahrgenommenen Kosten die wahrgenommenen Vorteile überwiegen, sodass es sich für beispielsweise einen Cyberkriminellen (wie in Kapitel~\ref{subsec:angreifergruppen} beschrieben) nicht mehr lohnt ein Ziel anzugreifen.
+Nicht alle Angriffe lassen nicht verhindern, wodurch Maßnahmen zur Detektion und Wiederherstellung nötig sind, die im nächsten Kapitel diskutiert werden.
 
 \subsection{Reaktive Maßnahmen: Detektion und Wiederherstellung}\label{subsec:reactive}
 % (Cardenas 2009, 4.)
@@ -344,10 +353,39 @@ Zudem argumentieren \citeauthor{SGL+08}, dass Verifikation und Validierung von \
 Reaktive Maßnahmen versuchen Angriffe zu erkennen und einen sicheren Zustand wiederherzustellen.
 Im Gegensatz zu proaktiven Maßnahmen von Kapitel~\ref{subsec:proactive} wird also der Angriff zunächst nicht verhindert, sondern gewährleistet, dass die Einflüsse eines Angriffs bewältigt werden können.
 
+Klassische Angriffserkennungssysteme beobachten üblicherweise Spuren im Netzwerk oder Cybersystem.
+Kontrollsysteme in \cps können allerdings einen Schritt weiter gehen und auch das physische System in die Überprüfung miteinbeziehen~\cite{CAS+09}.
+Dadurch können auch Einschränkungen der Veracity erkannt werden, welche zuvor von der Cyberseite unerkannt geblieben worden wären.
+\citeauthor{CAS+09} schlägt außerdem vor dem Betreiber von Kontrollsystemen genügend Informationen zukommen zu lassen um angemessen auf Anomalien zu reagieren.
+
+\citeauthor{KLG15} stellen in \cite{KLG15} ein Modell zur Erkennung von manipulierten Sensoren vor.
+Damit versuchen sie die Veracity eines \cps zu bewahren, indem sie die Gesamtentropie eines Clusters überwachen um fehlende Plausibilität und Konsistenz zu erkennen.
+\todo{Entropie definition?}
+In Abbildung~\ref{fig:entropie} sind die echten und manipulierten Werte dargestellt.
+In Abbildung~\ref{fig:entropie} ist der Entropieverlauf dargestellt, aus dem mögliche Angriffe abgelesen werden können.
+Die manipulierten Werte, welche anstatt den echten Werten an das Cybersystem geschickt werden, können dabei von einem Mikrocontroller in einem Sensor generiert werden.
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.4\textwidth}
+        \includegraphics[height=3cm]{entropy_a}
+        \caption{Manipulierte Werte des Reaktors}
+        \label{fig:spoof}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.4\textwidth}
+        \includegraphics[height=3cm]{entropy_b}
+        \caption{Entropie des gesamten Kraftwerks}
+        \label{fig:entropy_success}
+    \end{subfigure}
+    \caption{Detektion eines Integrity-Angriffs~\cite{KLG15}}
+    \label{fig:entropie}
+\end{figure}
+
+% SURE
+
 % Nonrepudablity: Blockchain als source of trust
 
 \section{Sind die Gegenmaßnahmen für potenzielle Szenarien ausreichen?}\label{sec:diskussion}
-\section{Mitigation von Angriffszenarien durch Gegenmaßnahmen}\label{sec:diskussion}
+\section{Werden Angriffe durch Gegenmaßnahmen ausreichend mitigiert?}\label{sec:diskussion}
 
 Sind sie Notwendig?
 Ja! -> Sind sie Ausreichend?
