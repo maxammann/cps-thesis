@@ -285,8 +285,8 @@ Physische Angriffe können nicht algorithmisch verhindert werden, sodass meist d
 % Cyber honeypod könnte einen physischen angreifer ablenken
 \citeauthor{CAS08} sind allerdings der Meinung, dass nicht-physische Angriffe potenziell attraktiver sind, da diese im Allgemeinen schwieriger zu verfolgen, nicht physisch gefährlich für den Angreifer und keine Ortseinschränkungen existieren.
 
-Für \glspl{ics} schlägt das \gls{nist} in \cite{HUM 153} beispielsweise Sicherheitskonzepte vor wie den Schutz von physischen Standorten, Zugangskontrollen oder Überwachung von Mitarbeitern und Ressourcen.
-Für Zähler in Stromnetzen gibt das \gls{nist} in \cite{HUM 127} vor, dass diese gegen Modifikationen kryptografische Module nutzen, versiegelt und geschützt sein müssen.
+Für \glspl{ics} schlägt das \gls{nist} in \cite{SPL+15} beispielsweise Sicherheitskonzepte vor wie den Schutz von physischen Standorten, Zugangskontrollen oder Überwachung von Mitarbeitern und Ressourcen.
+Für Zähler in Stromnetzen gibt das \gls{nist} in \cite{14} vor, dass diese gegen Modifikationen kryptografische Module nutzen, versiegelt und geschützt sein müssen.
 Auch medizinische Geräte und bei Autos ermöglicht ein physischer Eingriff Manipulationen oder das Auslesen von sensiblen Daten wie beispielsweise Seriennummern~\cite{HLL+17}.
 
 
@@ -314,7 +314,7 @@ Durch eine Überprüfung auf Aktualität werden Replay-Angriffe verhindert, da a
 Je nachdem welche Kommunikationswege abgesichert werden soll gibt es verschiedene Ansätze.
 Die Verbindungen $u$ und $y$ in Abbildung~\ref{fig:abstrakt} könnten beispielsweise CAN oder LIN Bussen darstellen.
 Diese stellen keine Verschlüsselung, Authentifizierung oder Autorisierung zur Verfügung~\cite{HLL+17}.
-Da effiziente Lösungen aufgrund von begrenzten Ressourcen in Autos wichtig sind, schlagen \citeauthor{HLL 167,41} die Verwendung von Hardware-basierten Lösungen, wie etwa Hardware Security Module, vor.
+Da effiziente Lösungen aufgrund von begrenzten Ressourcen in Autos wichtig sind, schlagen \citeauthor{WG12,HUM 41} die Verwendung von Hardware-basierten Lösungen, wie etwa Hardware Security Module, vor.
 
 \todo{Sicherheit in Senor Netzwerken CAS08}
 
@@ -346,6 +346,8 @@ Im Glossar vom \gls{nist} von \citeyear{Kissel13} lässt sich außerdem eine Erw
 Ziel ist also, dass die wahrgenommenen Kosten die wahrgenommenen Vorteile überwiegen, sodass es sich für beispielsweise einen Cyberkriminellen (wie in Kapitel~\ref{subsec:angreifergruppen} beschrieben) nicht mehr lohnt ein Ziel anzugreifen.
 Nicht alle Angriffe lassen nicht verhindern, wodurch Maßnahmen zur Detektion und Wiederherstellung nötig sind, die im nächsten Kapitel diskutiert werden.
 
+% Nonrepudablity: Blockchain als source of trust
+
 \subsection{Reaktive Maßnahmen: Detektion und Wiederherstellung}\label{subsec:reactive}
 % (Cardenas 2009, 4.)
 % DoS: rate limiting
@@ -353,17 +355,16 @@ Nicht alle Angriffe lassen nicht verhindern, wodurch Maßnahmen zur Detektion un
 Reaktive Maßnahmen versuchen Angriffe zu erkennen und einen sicheren Zustand wiederherzustellen.
 Im Gegensatz zu proaktiven Maßnahmen von Kapitel~\ref{subsec:proactive} wird also der Angriff zunächst nicht verhindert, sondern gewährleistet, dass die Einflüsse eines Angriffs bewältigt werden können.
 
-Klassische Angriffserkennungssysteme beobachten üblicherweise Spuren im Netzwerk oder Cybersystem.
+Klassische Angriffserkennungssysteme beobachten üblicherweise Netzwerke oder Cybersysteme auf Angriffe.
 Kontrollsysteme in \cps können allerdings einen Schritt weiter gehen und auch das physische System in die Überprüfung miteinbeziehen~\cite{CAS+09}.
 Dadurch können auch Einschränkungen der Veracity erkannt werden, welche zuvor von der Cyberseite unerkannt geblieben worden wären.
-\citeauthor{CAS+09} schlägt außerdem vor dem Betreiber von Kontrollsystemen genügend Informationen zukommen zu lassen um angemessen auf Anomalien zu reagieren.
 
 \citeauthor{KLG15} stellen in \cite{KLG15} ein Modell zur Erkennung von manipulierten Sensoren vor.
 Damit versuchen sie die Veracity eines \cps zu bewahren, indem sie die Gesamtentropie eines Clusters überwachen um fehlende Plausibilität und Konsistenz zu erkennen.
 \todo{Entropie definition?}
 In Abbildung~\ref{fig:entropie} sind die echten und manipulierten Werte dargestellt.
 In Abbildung~\ref{fig:entropie} ist der Entropieverlauf dargestellt, aus dem mögliche Angriffe abgelesen werden können.
-Die manipulierten Werte, welche anstatt den echten Werten an das Cybersystem geschickt werden, können dabei von einem Mikrocontroller in einem Sensor generiert werden.
+Die manipulierten Werte stellen einen realistischen Angriff dar, da diese von einem Mikrocontroller in einem Sensor generiert werden können.
 \begin{figure}
     \centering
     \begin{subfigure}[t]{0.4\textwidth}
@@ -380,15 +381,18 @@ Die manipulierten Werte, welche anstatt den echten Werten an das Cybersystem ges
     \label{fig:entropie}
 \end{figure}
 
-% SURE
+\citeauthor{CAS+09} schlägt vor dem Betreiber von Kontrollsystemen genügend Informationen zukommen zu lassen um angemessen auf Anomalien zu reagieren.
+Abgesehen von menschlicher Interaktion sollten, gerade in Echtzeitsystemen, automatische Prozesse eine Wiederherstellung ermöglichen.
 
-% Nonrepudablity: Blockchain als source of trust
+In \cite{KXW+18} wird ein automatisches Verfahren zur Wiederherstellung vorgestellt.
+Hierbei werden Checkpoints der physischen- und Cybersysteme verwendet, um ein die Funktionsweise eines \cps wiederzustellen.
+Dieses Verfahren findet beispielsweise Anwendung bei manipulierten Sensoren und bietet einen Vorteil gegenüber Redundanz und Diversität, da dieses auch funktioniert, wenn alle Sensoren kompromittiert sind.
+Die erfolgreichen Ergebnisse des Verfahrens wurden experimentell durch Simulationen und Test in einem Fahrzeug nachgewiesen.
 
 \section{Sind die Gegenmaßnahmen für potenzielle Szenarien ausreichen?}\label{sec:diskussion}
 \section{Werden Angriffe durch Gegenmaßnahmen ausreichend mitigiert?}\label{sec:diskussion}
 
-Sind sie Notwendig?
-Ja! -> Sind sie Ausreichend?
+Sind sie Notwendig? Ja! -> Sind sie Ausreichend?
 
 
 \newpage
