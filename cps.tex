@@ -2,7 +2,7 @@
 \documentclass[final,bibliography=totocnumbered]{include/sikseminar}
 
 \usepackage[utf8]{inputenc}
-\usepackage{todonotes}
+\usepackage[disable]{todonotes}
 \usepackage{hyperref}
 \usepackage[T1]{fontenc}
 \hypersetup{colorlinks = true,linkcolor = black,citecolor = black,urlcolor = black,filecolor = black}
@@ -87,7 +87,7 @@ Informationssicherheit kann man durch drei Eigenschaften von Systemen charakteri
 \end{itemize}
 
 Zwischen diesen drei Eigenschaften muss bei der Entwicklung ein sinnvolles Gleichgewicht gefunden werden.
-\citeauthor{GK16} beschreiben, dass bei Cybersystemen der Fokus auf \textit{Confidentiality} (dt.\ Vertraulichkeit) und bei \cps eher auf \textit{Availability} (dt.\ Verfügbarkeit) liegt.
+\citeauthor{GK16}~\cite{GK16} beschreiben, dass bei Cybersystemen der Fokus auf \textit{Confidentiality} (dt.\ Vertraulichkeit) und bei \cps eher auf \textit{Availability} (dt.\ Verfügbarkeit) liegt.
 Dieser Fokus ist kritisch zu betrachten, wenn man die diversen Einsatzorte und sicherheitskritischen Anforderungen von \cps betrachtet.
 
 Sie schlagen außerdem vor das CIA-Dreieck im Hinblick auf \cps durch die Eigenschaft \textit{Veracity} (dt.~Richtigkeit) zu erweitern.
@@ -102,7 +102,7 @@ Liefert ein Sensor beispielsweise einen für physikalische Modelle unmögliche W
 Diese Eigenschaft kann nicht durch Integrity gewährleistet werden, da die Werte eines Sensors von außerhalb des \cps beeinflusst werden können.
 Veracity stellt also eine grundsätzlich andere Eigenschaft bereit.
 
-\citeauthor{WYX+10} und \citeauthor{SFJ17} stimmen zu, dass eine Überprüfung auf die Richtigkeit von Informationen wichtig sind.
+\citeauthor{WYX+10}~\cite{WYX+10} und \citeauthor{SFJ17}~\cite{SFJ17} stimmen zu, dass eine Überprüfung auf die Richtigkeit von Informationen wichtig sind.
 Sie erweitern das CIA-Dreieck zudem um die Eigenschaft der \textit{Authenticity} (dt.\ Authentizität) zwischen Kommunikationspartnern.
 Authenticity kann genau dann hergestellt werden, wenn sich beide Kommunikationspartner einig über die Identität des Gegenübers sind~\cite{CH13}.
 %Obwohl bei der Definition von \citeauthor{CH13} die Authenticity bereits in der Definition beinhaltet ist, soll diese hier dennoch zusätzlich aufgeführt werden.
@@ -118,7 +118,7 @@ Ein System hat diese Eigenschaft also genau dann, wenn jedes Ereignis, welches d
 Die Eigenschaften von Systemen aus der klassischen Informationssicherheit sind also nicht ausreichend um das oft komplexe Zusammenspiel von physischen- und Cybersystemen\todo{physischen- richtig?} abzusichern.
 Bei \cps ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
 Deshalb sind zusätzliche Eigenschaften wie Veracity und Authenticity, wie in Abbildung~\ref{fig:triad} zu sehen ist, nötig um die Sicherheitsbedürfnisse von \cps abzudecken.
-\citeauthor{CH13} führt noch weitere Eigenschaften wie Accountability, Auditability und Privacy auf, welche allerdings in dieser Arbeit nicht weiter untersucht werden sollen.
+\citeauthor{CH13}~\cite{CH13} führt noch weitere Eigenschaften wie Accountability, Auditability und Privacy auf, welche allerdings in dieser Arbeit nicht weiter untersucht werden sollen.
 
 \begin{figure}
     \centering
@@ -282,7 +282,7 @@ Lorem Ipsum.
 % (Cardenas)
 Physischer Zugriff auf \cps sollte für unautorisierte Personen möglichst verhindert werden, da dieser viele Cybergegenmaßnahmen unwirksam macht und sehr leicht die Availability des Systems stören kann, indem dieses physisch beschädigt wird.
 % Cyber honeypod könnte einen physischen angreifer ablenken
-\citeauthor{CAS08} sind allerdings der Meinung, dass Cyberangriffe potenziell attraktiver sind, da diese im Allgemeinen schwieriger zu verfolgen, nicht physisch gefährlich für den Angreifer und keine Ortseinschränkungen existieren.
+\citeauthor{CAS08}~\cite{CAS08} sind allerdings der Meinung, dass Cyberangriffe potenziell attraktiver sind, da diese im Allgemeinen schwieriger zu verfolgen, nicht physisch gefährlich für den Angreifer und keine Ortseinschränkungen existieren.
 
 Für \glspl{ics} schlägt das \gls{nist} in \cite{SPL+15} beispielsweise Sicherheitskonzepte vor wie Zugangskontrollen oder Überwachung von Mitarbeitern und Ressourcen.
 Für Zähler in Stromnetzen gibt das \gls{nist} in \cite{PB14} vor, dass diese kryptografische Module nutzen, versiegelt und geschützt sein müssen.
@@ -313,7 +313,7 @@ Durch eine Überprüfung auf Aktualität werden Replay-Angriffe verhindert, da a
 Je nachdem welche Kommunikationswege abgesichert werden soll gibt es verschiedene Ansätze.
 Die Verbindungen $u$ und $y$ in Abbildung~\ref{fig:abstrakt} könnten beispielsweise CAN oder LIN Bussen darstellen.
 Diese stellen keine Verschlüsselung, Authentifizierung oder Autorisierung zur Verfügung~\cite{HLL+17}.
-Da effiziente Lösungen aufgrund von begrenzten Ressourcen in Autos wichtig sind, schlagen \citeauthor{WG12,HUM 41}\todo{check cite} die Verwendung von Hardware-basierten Lösungen, wie etwa Hardware Security Module, vor.
+Da effiziente Lösungen aufgrund von begrenzten Ressourcen in Autos wichtig sind, schlagen \citeauthor{WG12}~\cite{WG12} die Verwendung von Hardware Security Modules um Kommunikationen in beispielsweise Autos abzusichern.
 
 \todo{Sicherheit in Senor Netzwerken CAS08}
 
@@ -326,20 +326,20 @@ Besonders in der Entwicklung von Geräten für das IoT findet \gls{dtls} Verwend
 % Verification
 Eine Verifikation des Programmcodes von Software stellt eine Möglichkeit dar die Anzahl der Sicherheitslücken zu reduzieren~\cite{CAS08}.
 Formale Methoden und das Testen von \cps sollten stärker miteinander integriert werden~\cite{RLS+10}.
-Zudem argumentieren \citeauthor{SGL+08}, dass Verifikation und Validierung von \cps kein einmaliges Ereignis, sondern stets in einen Prozess integriert sein sollten.
+Zudem argumentieren \citeauthor{SGL+08}~\cite{SGL+08}, dass Verifikation und Validierung von \cps kein einmaliges Ereignis, sondern stets in einen Prozess integriert sein sollten.
 
 
 % Widerstandsfähigkeit (Redundancy, Diversity)
 Um \cps die Widerstandsfähigkeit (eng.\ Resilience) zu erhöhen, können Redundanzen bereit gestellt werden, um einen Single Point of Failure zu vermeiden~\cite{CAS+09}.
 Bei beispielsweise einem \gls{dos} Angriff, wie in Abbildung~\ref{fig:attack_points} bei A2 oder A4 gezeigt, könnte ein weiterer redundanter \enquote{Controller} oder weiteres \enquote{Physical System} dazu führen, dass der Angriff mitigiert.
-\citeauthor{CAS+09} beschreiben außerdem, dass eine Diversität an Hard- und Software der Redundanzen dazu führen, dass ein Angriffsvektor nicht auf alle eingesetzten Komponenten anwendbar ist.
+\citeauthor{CAS+09}~\cite{CAS+09} beschreiben außerdem, dass eine Diversität an Hard- und Software der Redundanzen dazu führen, dass ein Angriffsvektor nicht auf alle eingesetzten Komponenten anwendbar ist.
 
 
 % Trennung von Netzen, Privilegientrennung, Least Privilege-Prinzips
 Weitere Konzepte sind die \enquote{Trennung von Netzen}~\cite{GK16}, die \enquote{Privilegientrennung} und das \enquote{Least Privilege-Prinzips}~\cite{CAS+09}, welche sowohl die Angriffsfläche als auch die Privilegien eines angegriffenen Ziels reduzieren.
 
 %Abschreckung
-\citeauthor{CAS+09} meinten schon \citeyear{CAS+09}, dass Abschreckung (engl.\ Deterrence) durch Gesetzgebung, Gesetzesvollzug und internationale Zusammenarbeit ein wirksames Mittel gegen Angriffe sein können.
+\citeauthor{CAS+09}~\cite{CAS+09} meinten schon \citeyear{CAS+09}, dass Abschreckung (engl.\ Deterrence) durch Gesetzgebung, Gesetzesvollzug und internationale Zusammenarbeit ein wirksames Mittel gegen Angriffe sein können.
 Im Glossar vom \gls{nist} von \citeyear{Kissel13} lässt sich außerdem eine Erwähnung der Begriffs \enquote{Deterrence} in der Definition von Sicherheit finden~\cite{Kissel13}.
 Ziel ist es, dass die wahrgenommenen Kosten die wahrgenommenen Vorteile überwiegen, sodass es sich für beispielsweise einen Cyberkriminellen (wie in Kapitel~\ref{subsec:angreifergruppen} beschrieben) nicht mehr lohnt ein Ziel anzugreifen.
 Nicht alle Angriffe lassen nicht verhindern, wodurch Maßnahmen zur Detektion und Wiederherstellung nötig sind, die im nächsten Kapitel diskutiert werden.
@@ -379,7 +379,7 @@ In Abbildung~\ref{fig:entropy_success} ist der Entropieverlauf dargestellt, aus 
     \label{fig:entropie}
 \end{figure}
 
-\citeauthor{CAS+09} schlägt vor dem Betreiber von Kontrollsystemen genügend Informationen zukommen zu lassen um angemessen auf Anomalien zu reagieren.
+\citeauthor{CAS+09}~\cite{CAS+09} schlägt vor dem Betreiber von Kontrollsystemen genügend Informationen zukommen zu lassen um angemessen auf Anomalien zu reagieren.
 Abgesehen von menschlicher Interaktion sollten allerdings, gerade in Echtzeitsystemen, vor allem automatische Prozesse eine Wiederherstellung ermöglichen.
 
 In \cite{KXW+18} wird ein automatisches Verfahren zur Wiederherstellung vorgestellt.
