@@ -2,7 +2,7 @@
 \documentclass[final,bibliography=totocnumbered]{include/sikseminar}
 
 \usepackage[utf8]{inputenc}
-\usepackage[disable]{todonotes}
+\usepackage{todonotes}
 \usepackage{hyperref}
 \usepackage[T1]{fontenc}
 \hypersetup{colorlinks = true,linkcolor = black,citecolor = black,urlcolor = black,filecolor = black}
@@ -47,6 +47,9 @@
 \section*{Kurzfassung}
 Eine kurze Zusammenfassung der Ausarbeitung mit 10-12 Zeilen Text.
 \end{abstract}
+\todo{
+Sind alle Begriffe definiert und klar?
+}
 \thispagestyle{empty}
 \newpage
 \tableofcontents
@@ -90,7 +93,7 @@ Zwischen diesen drei Eigenschaften muss bei der Entwicklung ein sinnvolles Gleic
 \citeauthor{GK16}~\cite{GK16} beschreiben, dass bei Cybersystemen der Fokus auf \textit{Confidentiality} (dt.\ Vertraulichkeit) und bei \cps eher auf \textit{Availability} (dt.\ Verfügbarkeit) liegt.
 Dieser Fokus ist kritisch zu betrachten, wenn man die diversen Einsatzorte und sicherheitskritischen Anforderungen von \cps betrachtet.
 
-Sie schlagen außerdem vor das CIA-Dreieck im Hinblick auf \cps durch die Eigenschaft \textit{Veracity} (dt.~Richtigkeit) zu erweitern.
+Sie schlagen außerdem vor das CIA-Dreieck\todo{Erklären} im Hinblick auf \cps durch die Eigenschaft \textit{Veracity} (dt.~Richtigkeit) zu erweitern.
 Ein System hat diese Eigenschaft genau dann, wenn Aussagen des Systems die Wahrhaftigkeit der  Wirklichkeit reflektieren.
 Es muss also sichergestellt werden, dass Sensoren, durch beispielsweise physische Maßnahmen (siehe Kapitel~\ref{subsec:physisch}) fälschungssicher sind.
 Confidentiality und Integrity (dt.\ Integrität) sind nicht ausreichend um die Richtigkeit von Informationen zu garantieren.
@@ -118,7 +121,7 @@ Ein System hat diese Eigenschaft also genau dann, wenn jedes Ereignis, welches d
 Die Eigenschaften von Systemen aus der klassischen Informationssicherheit sind also nicht ausreichend um das oft komplexe Zusammenspiel von physischen- und Cybersystemen\todo{physischen- richtig?} abzusichern.
 Bei \cps ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
 Deshalb sind zusätzliche Eigenschaften wie Veracity und Authenticity, wie in Abbildung~\ref{fig:triad} zu sehen ist, nötig um die Sicherheitsbedürfnisse von \cps abzudecken.
-\citeauthor{CH13}~\cite{CH13} führt noch weitere Eigenschaften wie Accountability, Auditability und Privacy auf, welche allerdings in dieser Arbeit nicht weiter untersucht werden sollen.
+\citeauthor{CH13}~\cite{CH13} führt noch weitere Eigenschaften wie Accountability, Auditability und Privacy auf, welche allerdings in dieser Arbeit nicht weiter untersucht werden sollen.\todo{Erklären warum nicht (Platzgründe genügt.)}
 
 \begin{figure}
     \centering
@@ -126,6 +129,9 @@ Deshalb sind zusätzliche Eigenschaften wie Veracity und Authenticity, wie in Ab
     \caption{Erweitertes CIA-Dreieck}
     \label{fig:triad}
 \end{figure}
+
+\todo{Tabelle mit Eigenschaften}
+
 
 % Begriffe: computer, information, network, communication, physical security
 
@@ -193,7 +199,7 @@ Im folgenden Kapitel sollen Angriffe an verschiedenen Punkten eines \cps dargest
 % IoT Unterschiede zu Cybersystemen (FPA+18)
 % Workflow von CPS (WYX+10, II.)
 
-\subsection{\glsentrytext{dos} Angriff}\label{subsec:dos}
+\subsection{\glsentrylong{dos} Angriff}\label{subsec:dos}
 \gls{dos} Angriffe zielen darauf ab das Cybersystem mit einer großen Flut an Informationen zu stören.
 Diese können von einem angeschlossenes Netzwerk oder dem physischen System ausgehen.\todo{missing cite}
 Dadurch wird der Informationsfluss von Steuer- und Nutzdaten, wie in Abbildung~\ref{fig:attack_points} an den Punkten A4 und A2 zu sehen ist, unterbrochen und die Availability des \cps eingeschränkt.
@@ -205,7 +211,9 @@ Folgen können sein, dass sich Fenster nicht mehr schließen lassen und Warnlich
 Auch in echtzeitkritischen intelligenten Stromnetzen kann ein massives Überfluten dazu führen, dass der Normalbetrieb nicht mehr möglich ist~\cite{LLW+10}.
 Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotential~\cite{LWW11}\todo{check cite}, da diese allgemein eine geringere Bandbreite aufweisen.
 
-\subsection{\glsentrytext{mitm} Angriff}\label{subsec:mitm}
+% Distributed DoS
+
+\subsection{\glsentrylong{mitm} Angriff}\label{subsec:mitm}
 % Unterschied Active vs Passive: http://www.security-science.com/pdf/active-man-in-the-middle.pdf
 Bei \gls{mitm} Angriffe kann man zwischen aktiven und passiven Angriffen unterscheiden~\cite{WYX+10}.
 Passive verändern den Netzwerkverkehr nicht, sondern lauschen nur um an Informationen zu gelangen (sog.\ Lauschangriff).
@@ -225,8 +233,8 @@ Dabei werden langwellige Signale, welche von Autos an den Schlüssel des Besitze
 Beim Abspielen dieses Signals, in der Nähe des Besitzers sendet der Schlüssel ein Hochfrequenzsignal, welches wiederum aufgezeichnet wird.
 Das Abspielen dieses HF-Signals kann dann dazu genutzt werden, um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
 
-\subsection{Täuschungsangriff (Deception)\todo{Deception vs Täuschung}}\label{subsec:tauschung} % Deception
-Täuschungsangriffe bei \cps zielen darauf ab die Daten, welche von Sensoren aus gesendet werden zu fälschen.
+\subsection{Physischer Täuschungsangriff}\label{subsec:physical-deception}
+Täuschungsangriffe bei \cps zielen darauf ab die Daten, schon bevor sie von Sensoren aus gesendet werden, zu fälschen.
 Dabei können die Daten zwischen dem physischen und Cybersystem zwar Authenticity vorweisen, aber dennoch nicht plausibel sein~\cite{SFJ17}.
 In einem solchen Fall wird die Eigenschaft Veracity von \cps verletzt.
 
@@ -244,7 +252,7 @@ Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage
 %Eine Manipulation vor dem Einsatz verletzt also die Veracity von \cps.
 \todo{Vertrauen in Sensoren kritisch zu betrachten}
 
-\subsection{Physisches Auslesen/Manipulieren}
+% \subsection{Physisches Auslesen/Manipulieren} % Eventuell duplizierung von kapitel davor
 % Confidentiality, Integrity
 
 
@@ -252,9 +260,6 @@ Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage
 %% (WYX+10, II. B.)
 %
 %Nonrepudiation kann Aufschluss auf eine solche Attacke geben, da Aktionen getätigt wurden, welche aber nicht von der eigentlich berechtigten Person getätigt wurden.
-
-
-\todo{Tabelle mit Angriffen und Eigenschaften}
 
 \section{Gegenmaßnahmen}\label{sec:gegenmassnahmen}
 % Authenticity, Nonrepudiability
@@ -358,10 +363,9 @@ Kontrollsysteme in \cps können allerdings einen Schritt weiter gehen und auch d
 Dadurch können auch Einschränkungen der Veracity erkannt werden, welche zuvor von der Cyberseite unerkannt geblieben worden wären.
 
 \citeauthor{KLG15} stellen in \cite{KLG15} ein Modell zur Erkennung von manipulierten Sensoren vor.
-Sie versuchen die Veracity eines \cps zu bewahren, indem sie die Gesamtentropie eines Clusters überwachen um fehlende Plausibilität und Konsistenz zu erkennen.
-\todo{Entropie definition?}
+Sie versuchen die Veracity eines \cps zu bewahren, indem sie die Gesamtentropie eines Clusters\todo{Erklären} überwachen um fehlende Plausibilität und Konsistenz zu erkennen.
 In Abbildung~\ref{fig:spoof} sind die echten und manipulierten Werte dargestellt.
-In Abbildung~\ref{fig:entropy_success} ist der Entropieverlauf dargestellt, aus dem mögliche Angriffe abgelesen werden können.
+In Abbildung~\ref{fig:entropy_success} ist der Entropieverlauf dargestellt, aus dem mögliche Angriffe abgelesen werden können.\todo{Abbildung mehr erklären: Was wird erwartet? Wie kann man einen Angriff hier erkennen?}
 %Die manipulierten Werte stellen einen realistischen Angriff dar, da diese von einem Mikrocontroller in einem Sensor generiert werden können.
 \begin{figure}
     \centering
