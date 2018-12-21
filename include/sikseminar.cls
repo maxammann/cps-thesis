@@ -35,7 +35,6 @@
 \RequirePackage{textcomp}
 
 \usepackage[backend=biber,bibencoding=utf-8,style=alphabetic-verb]{biblatex}
-\bibliography{bib/cps}
 
 \makeatletter
 %% Seitenlayout

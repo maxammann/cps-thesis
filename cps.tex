@@ -8,6 +8,8 @@
 \hypersetup{colorlinks = true,linkcolor = black,citecolor = black,urlcolor = black,filecolor = black}
 \usepackage[inline]{enumitem}
 \usepackage[acronym,toc,section=section,numberedsection,nomain]{glossaries}
+\usepackage{tabu}
+\tabulinesep=1.2mm
 \glstoctrue
 \makeglossaries
 \input{acronyms}
@@ -16,6 +18,8 @@
 \usepackage{subcaption}
 \usepackage{xspace}
 \graphicspath{{./figure/}}
+
+\bibliography{bib/cps}
 
 \usetikzlibrary{shapes.geometric}
 
@@ -32,6 +36,7 @@
 
 \begin{document}
 
+
 \Title[Security Considerations for \glsentrytext{cps}]{Security Considerations for Cyber-Physical Systems}
 \makeTitle
 
@@ -44,8 +49,15 @@
 \maketitle
 
 \begin{abstract}
-\section*{Kurzfassung}
-Eine kurze Zusammenfassung der Ausarbeitung mit 10-12 Zeilen Text.
+    \section*{Kurzfassung}
+    Durch die enge Koppelung von physischen und Cybersystem bei \cps ergeben sich neue relevante Eigenschaften, welche eine Erweiterung der Eigenschaften von klassischen Systemen darstellen.
+
+    Zahlreiche Angriffe belegen die mangelhafte Sicherheit von derzeitig eingesetzten \cps.
+    Deshalb soll in dieser Arbeit ein Überblick über potentielle Angreifergruppen und Angriffsszenarien gegeben werden, um adäquate Gegenmaßnahmen vorzustellen.
+    Gegenmaßnahmen können dabei sowohl proaktiv als auch reaktiven eingesetzt werden, um \cps zu schützen.
+
+    Zuletzt soll diskutiert werden in wie fern momentan eingesetzte Systeme, in Bezug auf Sicherheit, verbessert werden können.
+
 \end{abstract}
 \todo{
 Sind alle Begriffe definiert und klar?
@@ -84,9 +96,9 @@ Deshalb soll im Folgenden Sicherheit speziell für \cps definiert werden.
 Unter Sicherheit bei Cybersystemen versteht man im Allgemeinen Informationssicherheit.
 Informationssicherheit kann man durch drei Eigenschaften von Systemen charakterisieren~\cite{CH13}:
 \begin{itemize}[noitemsep,wide=0pt]
-    \item \fb{Confidentiality} - Nur autorisierte Teilnehmer können auf Ressourcen zugreifen.\label{def:confidentiality}
-    \item \fb{Integrity} - Ressourcen können nur von autorisierten Teilnehmern verändert werden.\label{def:integrity}
-    \item \fb{Availability} - Ressourcen ist für autorisierte Teilnehmer angemessen verfügbar.\label{def:availability}
+    \item \fb{Confidentiality} - Nur autorisierte Teilnehmer können auf Ressourcen zugreifen.
+    \item \fb{Integrity} - Ressourcen können nur von autorisierten Teilnehmern verändert werden.
+    \item \fb{Availability} - Ressourcen ist für autorisierte Teilnehmer angemessen verfügbar.
 \end{itemize}
 
 Zwischen diesen drei Eigenschaften muss bei der Entwicklung ein sinnvolles Gleichgewicht gefunden werden.
@@ -113,24 +125,62 @@ Es könnte behauptet werden, dass sich Integrity und Authenticity decken.
 Daten können allerdings Integrity durch z.B.\ Prüfsummen und gleichzeitig keine Authenticity besitzen.
 In der Realität bringt Authenticity aber oftmals Integrity mit sich.
 
-Ein weiteres wichtiges Konzept ist die \textit{Nonrepudiation} (dt.\ Revisionssicherheit).
+Ein weiteres wichtiges Konzept ist die \textit{Non-repudiation} (dt.\ Revisionssicherheit).
 Hierbei muss das System das Eintreten jeglicher Ereignisse und dessen Auslöser oder Teilnehmer nachvollziehbar machen \cite{CH13}.
 %Hierbei darf es nicht möglich sein aufgezeichnete Aktionen zu leugnen \cite{NIST2013}.
-Ein System hat diese Eigenschaft also genau dann, wenn jedes Ereignis, welches das System beeinflusst, nachvollzogen werden kann. \label{def:nonrepudiation}
+Ein System hat diese Eigenschaft also genau dann, wenn jedes Ereignis, welches das System beeinflusst, nachvollzogen werden kann.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=4cm]{triad}
+    \caption{Erweitertes CIA-Dreieck}
+    \label{fig:triad}
+\end{figure}
 
 Die Eigenschaften von Systemen aus der klassischen Informationssicherheit sind also nicht ausreichend um das oft komplexe Zusammenspiel von physischen- und Cybersystemen\todo{physischen- richtig?} abzusichern.
 Bei \cps ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
 Deshalb sind zusätzliche Eigenschaften wie Veracity und Authenticity, wie in Abbildung~\ref{fig:triad} zu sehen ist, nötig um die Sicherheitsbedürfnisse von \cps abzudecken.
 \citeauthor{CH13}~\cite{CH13} führt noch weitere Eigenschaften wie Accountability, Auditability und Privacy auf, welche allerdings in dieser Arbeit nicht weiter untersucht werden sollen.\todo{Erklären warum nicht (Platzgründe genügt.)}
 
-\begin{figure}
+\todo{Tabelle mit Eigenschaften}
+
+
+\begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{triad}
-    \caption{Erweitertes CIA-Dreieck}
-    \label{fig:triad}
+    \begin{longtabu}
+        to \linewidth { | l | X[6,l] | X[1.2,l] | }
+        \hline
+        Eigenschaft&Ein System hat diese Eigenschaft genau dann, wenn~\ldots&Relevante Literatur \\
+        \hline
+        Confidentiality&
+        \ldots nur autorisierte Teilnehmer auf Ressourcen zugreifen können.&
+        \cite{CH13} \\
+        \hline
+        Integrity&
+        \ldots Ressourcen nur von autorisierten Teilnehmern verändert werden können.&
+        \cite{CH13} \\
+        \hline
+        Availability&
+        \ldots Ressourcen für autorisierte Teilnehmer angemessen verfügbar ist.&
+        \cite{CH13} \\
+        \hline
+        Veracity &
+        \ldots Aussagen des Systems die Wahrhaftigkeit der Wirklichkeit reflektieren.&
+        \cite{KLG15} \cite{GK16}\\
+        \hline
+        Authenticity&
+        \ldots sich beide Kommunikationspartner einig über die Identität des Gegenübers sind.&
+        \cite{SFJ17} \cite{CH13}\\
+        \hline
+        Non-repudiation &
+        \ldots jedes Ereignis, welches das System beeinflusst, nachvollzogen werden kann.&
+        \cite{CH13} \cite{SFJ17} \cite{Ross15} \\
+        \hline
+    \end{longtabu}
+    \caption{Übersicht der \cps Eigenschaften}
+    \label{fig:table}
 \end{figure}
 
-\todo{Tabelle mit Eigenschaften}
 
 
 % Begriffe: computer, information, network, communication, physical security
@@ -221,9 +271,11 @@ Hierbei wird die Confidentiality von Daten missachtet.
 
 Bei aktiven hingegen wird der Verkehr zwischen zwei Kommunikationspartnern zudem noch verändert.
 Beide Arten nutzen allerdings dieselben initialen Angriffsvektoren.
-In der Abbildung~\ref{fig:attack_points} stellt A1 einen aktiven \gls{mitm} Angriff dar.
+In der Abbildung~\ref{fig:attack_points} stellt A1 und A3 aktive \gls{mitm} Angriffe dar.
 Ein Controller kommuniziert über ein Netzwerk mit einem physischen System über die Verbindungen $y$ und $u$.
-Ziel eines Angreifers ist es den Netzwerkverkehr zwischen den beiden anderen Hosts über sich zu leiten~\cite{WYX+10,FPA+18}.
+Ziel eines Angreifers ist es den Netzwerkverkehr zwischen den beiden anderen Hosts über sich zu leiten~\cite{WYX+10,FPA+18} um ihn so beeinflussen zu können.
+In der Abbildung ist dies dadurch dargestellt, dass $y \ne \tilde{y}$ und $u \ne \tilde{u}$.
+Ein passiver Angriff die Kommunikation nicht verändern, dh.\ es gilt $y = \tilde{y}$ und $u = \tilde{u}$.
 Diese Angriffe können also aufgrund von fehlender Authenticity zu einem Verlust von Integrity führen, da nicht sichergestellt ist, dass die Daten nicht manipuliert wurden.\todo{Mehr erklären?}
 
 Dies ist in IEEE 802.11 und lokalen Netzwerken beispielsweise über ARP-Poisoning möglich~\cite{FIT+12}, wodurch die Identität eines anderen Netzwerkteilnehmers eingenommen werden kann~\cite{RN05}.
@@ -259,7 +311,7 @@ Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage
 %\subsection{Compromised-Credentials Angriff}\label{subsec:key}
 %% (WYX+10, II. B.)
 %
-%Nonrepudiation kann Aufschluss auf eine solche Attacke geben, da Aktionen getätigt wurden, welche aber nicht von der eigentlich berechtigten Person getätigt wurden.
+%Non-repudiation kann Aufschluss auf eine solche Attacke geben, da Aktionen getätigt wurden, welche aber nicht von der eigentlich berechtigten Person getätigt wurden.
 
 \section{Gegenmaßnahmen}\label{sec:gegenmassnahmen}
 % Authenticity, Nonrepudiability
