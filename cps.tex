@@ -280,8 +280,8 @@
     Beim Abspielen dieses Signals, in der Nähe des Besitzers sendet der Schlüssel ein Hochfrequenzsignal, welches wiederum aufgezeichnet wird.
     Das Abspielen dieses HF-Signals kann dann dazu genutzt werden, um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
 
-    \subsection{Physischer Täuschungsangriff}\label{subsec:physical-deception}
-    Täuschungsangriffe bei \cps zielen darauf ab die Daten, schon bevor sie von Sensoren aus gesendet werden, zu fälschen.
+    \subsection{Angriff auf das physischen Systems}\label{subsec:physical-deception}
+    Angriffe auf den physischen Teil eines \cps zielen darauf ab Daten, schon vor dem Senden an das Cybersystem zu manipulieren.
     Dabei können die Daten zwischen dem physischen und Cybersystem zwar Authenticity vorweisen, aber dennoch nicht plausibel sein~\cite{SFJ17}.
     In einem solchen Fall wird die Eigenschaft Veracity von \cps verletzt.
 
@@ -295,16 +295,11 @@
     Ungültige Kalibrierungen können zu falschen Messwerten und zu katastrophalen Unfällen führen.
     Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage Mikrocontroller eingesetzt werden, wodurch es möglich ist Sensortests zu bestehen und im Produktionsbetrieb allerdings nicht wie erwartet zu funktionieren.~\cite{KLG15}
 
+    Abgesehen von einer Manipulation, kann aber auch schon ein Auslesen von beispielsweise Seriennummern in medizinischen Geräten einen schweren Eingriff in die Confidentiality des Systems darstellen~\cite{HLL+17}.
+
     %Bei der Automatisierung werden Sensoren und deren Daten als Vertrauenswürdig eingestuft.
     %Eine Manipulation vor dem Einsatz verletzt also die Veracity von \cps.
     \todo{Vertrauen in Sensoren kritisch zu betrachten}
-
-    \subsection{Physisches Auslesen/Manipulieren} % Eventuell duplizierung von kapitel davor
-    % Confidentiality, Integrity
-
-    Auch medizinische Geräte ermöglicht ein physischer Eingriff Manipulationen oder das Auslesen von sensiblen Daten wie beispielsweise Seriennummern~\cite{HLL+17}.
-
-
 
     %\subsection{Compromised-Credentials Angriff}\label{subsec:key}
     %% (WYX+10, II. B.)
@@ -336,7 +331,9 @@
 
 
     %\subsection{Organisatorische Maßnahmen}\label{subsec:orga}
-
+    % (Cardenas)
+    % Transdiszipliär (Brazell14)
+    % Betriebsblindheit (Gollman)
 
     \subsection{Proaktive Maßnahmen: Verhindern von Angriffen}\label{subsec:proactive}
     % Security by Obscurity (Scarfone2008)
@@ -390,6 +387,13 @@
     Ziel ist es, dass die wahrgenommenen Kosten die wahrgenommenen Vorteile überwiegen, sodass es sich für beispielsweise einen Cyberkriminellen (wie in Kapitel~\ref{subsec:angreifergruppen} beschrieben) nicht mehr lohnt ein Ziel anzugreifen.
     Nicht alle Angriffe lassen nicht verhindern, wodurch Maßnahmen zur Detektion und Wiederherstellung nötig sind, die im nächsten Kapitel diskutiert werden.
 
+    Physischer Zugriff auf \cps kann für unautorisierte Personen organisatorisch verhindert werden.
+    Physischer Zugang kann viele Cybergegenmaßnahmen unwirksam machen und sehr leicht die Availability des Systems stören, indem dieses physisch beschädigt wird.
+    % Cyber honeypod könnte einen physischen angreifer ablenken
+    \citeauthor{CAS08}~\cite{CAS08} sind allerdings der Meinung, dass Cyberangriffe potenziell attraktiver sind, da diese im Allgemeinen schwieriger zu verfolgen, nicht physisch gefährlich für den Angreifer und keine Ortseinschränkungen existieren.
+
+    Für \glspl{ics} schlägt das \gls{nist} in \cite{SPL+15} beispielsweise Sicherheitskonzepte vor wie Zugangskontrollen oder Überwachung von Mitarbeitern und Ressourcen.
+
     % Nonrepudablity: Blockchain als source of trust
 
     \subsection{Reaktive Maßnahmen: Detektion und Wiederherstellung}\label{subsec:reactive}
@@ -432,17 +436,6 @@
     Dieses Verfahren findet beispielsweise Anwendung bei manipulierten Sensoren.
     Dieses bieten einen Vorteil gegenüber Redundanz und Diversität, da auch wenn alle Sensoren kompromittiert sind, immer noch ein Betrieb sichergestellt werden kann.
     Die erfolgreichen Ergebnisse des Verfahrens wurden experimentell durch Simulationen und Test in einem Fahrzeug nachgewiesen.
-
-    \subsubsection{Organisatorische Maßnahmen}\label{subsec:physisch}
-    % (Cardenas)
-    % Transdiszipliär (Brazell14)
-    % Betriebsblindheit (Gollman)
-    Zugriff auf \cps kann für unautorisierte Personen organisatorisch verhindert werden.
-    Physischer Zugang kann viele Cybergegenmaßnahmen unwirksam machen und sehr leicht die Availability des Systems stören, indem dieses physisch beschädigt wird.
-    % Cyber honeypod könnte einen physischen angreifer ablenken
-    \citeauthor{CAS08}~\cite{CAS08} sind allerdings der Meinung, dass Cyberangriffe potenziell attraktiver sind, da diese im Allgemeinen schwieriger zu verfolgen, nicht physisch gefährlich für den Angreifer und keine Ortseinschränkungen existieren.
-
-    Für \glspl{ics} schlägt das \gls{nist} in \cite{SPL+15} beispielsweise Sicherheitskonzepte vor wie Zugangskontrollen oder Überwachung von Mitarbeitern und Ressourcen.
 
     \section{Verbesserung der aktuellen Sicherheitssituation von \glsentryshort{cps}}\label{sec:diskussion}
 
