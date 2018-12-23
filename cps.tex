@@ -45,7 +45,7 @@
 
     \begin{abstract}
         \section*{Kurzfassung}
-        Durch die enge Koppelung von physischen und Cybersystem bei \cps ergeben sich neue relevante Eigenschaften, welche eine Erweiterung der Eigenschaften von klassischen Systemen darstellen.
+        Durch die enge Koppelung von physischen und Cyber-System bei \cps ergeben sich neue relevante Eigenschaften, welche eine Erweiterung der Eigenschaften von klassischen Systemen darstellen.
 
         Zahlreiche Angriffe belegen die mangelhafte Sicherheit von derzeitig eingesetzten \cps.
         Deshalb soll in dieser Arbeit ein Überblick über potentielle Angreifergruppen und Angriffsszenarien gegeben werden, um adäquate Gegenmaßnahmen vorzustellen.
@@ -65,14 +65,14 @@
     \section{Einführung}\label{sec:intro}
     \cps sind meist eingebettete Echtzeitsysteme, welche eine hohe Verfügbarkeit, Robustheit, Widerstandsfähigkeit und Berechenbarkeit aufweisen müssen.
     Die physische Welt macht hohe Verfügbarkeit allerdings oft schwierig, da sie alles andere als berechenbar ist~\cite{Lee08,SGL+08}.
-    Einsatzorte für diese Systeme sind beispielsweise intelligente Stromnetze, symbiotische Sensornetzwerke für die Agrarwirtschaft und Katastrophenabwehr, medizinische oder assistierende Geräte, intelligente Verkehrssteuerung, intelligente Gebäude~\cite{RLS+10}, Autos und \glspl{ics} sein.
+    Einsatzorte für diese Systeme sind beispielsweise intelligente Stromnetze, symbiotische Sensornetzwerke für die Agrarwirtschaft und Katastrophenabwehr, medizinische oder assistierende Geräte, intelligente Verkehrssteuerung, intelligente Gebäude~\cite{RLS+10}, Autos und \glspl{ics} sein~\cite{HLL+17}.
 
     In diesen Beispielen spielt ein außerordentliches Maß an Vertrauen eine Rolle~\cite{SGL+08}.
-    Dieses ist zwar auch bei Cybersystemen gefordert, allerdings ohne die Koppelung an physische Prozesse~\cite{BG11}.
+    Dieses ist zwar auch bei Cyber-Systemen gefordert, allerdings ohne die Koppelung an physische Prozesse~\cite{BG11}.
     Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise die Bindung an eine Batterie oder eine leichte Bauweise~\cite{YWY+17}.
-    Es existiert also ein Unterschied in den Anforderungen an \cps und Cybersystemen, wie Anwendungsservern oder Heimcomputern, sodass man diese in Bezug auf Sicherheit auf einem anderen Blickwinkel betrachten muss.
+    Es existiert also ein Unterschied zwischen den Anforderungen an \cps und Cyber-Systemen, wie Anwendungsservern oder Heimcomputern, sodass man diese in Bezug auf Sicherheit auf einem anderen Blickwinkel betrachten muss.
 
-    In dem Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von physischen und Cybersystemen im Bezug auch Sicherheit geklärt.
+    In dem Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von physischen und Cyber-Systemen im Bezug auch Sicherheit geklärt.
     Zudem werden mögliche Angreifer im Kapitel~\ref{subsec:angreifergruppen} beleuchtet.
     Im Kapitel~\ref{sec:angriffszenarien} werden mögliche Szenarien für Angriffe und im Kapitel~\ref{sec:gegenmassnahmen} Gegenmaßnahmen dargestellt.
     Zuletzt soll im Kapitel~\ref{sec:diskussion} diskutiert werden, ob die genannten Gegenmaßnahmen für die Szenarien ein adäquate Lösung darstellen.
@@ -84,11 +84,11 @@
 
     \section{Bedeutung von Sicherheit in \glsentrytext{cps}}\label{sec:bedeutung-sicherheit}
 
-    Die Eigenschaften von Cybersystemen und physischen Systemen in Bezug auf Sicherheit unterscheiden sich.
+    Die Eigenschaften von Cyber-Systemen und physischen Systemen in Bezug auf Sicherheit unterscheiden sich.
     Deshalb soll im Folgenden Sicherheit speziell für \cps definiert werden.
 
     \subsection{Sicherheitsrelevante Eigenschaften von \glsentrytext{cps}}\label{subsec:definition}
-    Unter Sicherheit bei Cybersystemen versteht man im Allgemeinen Informationssicherheit.
+    Unter Sicherheit bei Cyber-Systemen versteht man im Allgemeinen Informationssicherheit.
     Informationssicherheit kann man durch drei Eigenschaften von Systemen charakterisieren~\cite{CH13}:
     \begin{itemize}[noitemsep,wide=0pt]
         \item \fb{Confidentiality} - Nur autorisierte Teilnehmer können auf Ressourcen zugreifen.
@@ -97,7 +97,7 @@
     \end{itemize}
 
     Zwischen diesen drei Eigenschaften muss bei der Entwicklung ein sinnvolles Gleichgewicht gefunden werden.
-    \citeauthor{GK16}~\cite{GK16} beschreiben, dass bei Cybersystemen der Fokus auf \textit{Confidentiality} (dt.\ Vertraulichkeit) und bei \cps eher auf \textit{Availability} (dt.\ Verfügbarkeit) liegt.
+    \citeauthor{GK16}~\cite{GK16} beschreiben, dass bei Cyber-Systemen der Fokus auf \textit{Confidentiality} (dt.\ Vertraulichkeit) und bei \cps eher auf \textit{Availability} (dt.\ Verfügbarkeit) liegt.
     Dieser Fokus ist kritisch zu betrachten, wenn man die diversen Einsatzorte und sicherheitskritischen Anforderungen von \cps betrachtet.
 
     Sie schlagen außerdem vor das CIA-Dreieck\todo{Erklären} im Hinblick auf \cps durch die Eigenschaft \textit{Veracity} (dt.~Richtigkeit) zu erweitern.
@@ -132,7 +132,7 @@
         \label{fig:triad}
     \end{figure}
 
-    Die Eigenschaften von Systemen aus der klassischen Informationssicherheit sind also nicht ausreichend um das oft komplexe Zusammenspiel von physischen- und Cybersystemen\todo{physischen- richtig?} abzusichern.
+    Die Eigenschaften von Systemen aus der klassischen Informationssicherheit sind also nicht ausreichend um das oft komplexe Zusammenspiel von physischen- und Cyber-Systemen\todo{physischen- richtig?} abzusichern.
     Bei \cps ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
     Deshalb sind zusätzliche Eigenschaften wie Veracity und Authenticity, wie in Abbildung~\ref{fig:triad} zu sehen ist, nötig um die Sicherheitsbedürfnisse von \cps abzudecken.
     \citeauthor{CH13}~\cite{CH13} führt noch weitere Eigenschaften wie Accountability, Auditability und Privacy auf, welche allerdings in dieser Arbeit nicht weiter untersucht werden sollen.\todo{Erklären warum nicht (Platzgründe genügt.)}
@@ -240,12 +240,12 @@
 
     % Sabotage und Spionage
     % Migration von Legacy Systemen ist kritisch (Gollman, 1.)
-    % Unterschied zu Cybersystemen (Cardenas 2008, 3.)
-    % IoT Unterschiede zu Cybersystemen (FPA+18)
+    % Unterschied zu Cyber-Systemen (Cardenas 2008, 3.)
+    % IoT Unterschiede zu Cyber-Systemen (FPA+18)
     % Workflow von CPS (WYX+10, II.)
 
     \subsection{\glsentrylong{dos} Angriff}\label{subsec:dos}
-    \gls{dos} Angriffe zielen darauf ab das Cybersystem mit einer großen Flut an Informationen zu stören.
+    \gls{dos} Angriffe zielen darauf ab das Cyber-System mit einer großen Flut an Informationen zu stören.
     Diese können von einem angeschlossenes Netzwerk oder dem physischen System ausgehen.\todo{missing cite}
     Dadurch wird der Informationsfluss von Steuer- und Nutzdaten, wie in Abbildung~\ref{fig:attack_points} an den Punkten A4 und A2 zu sehen ist, unterbrochen und die Availability des \cps eingeschränkt.
 
@@ -281,8 +281,8 @@
     Das Abspielen dieses HF-Signals kann dann dazu genutzt werden, um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
 
     \subsection{Angriff auf das physischen Systems}\label{subsec:physical-deception}
-    Angriffe auf den physischen Teil eines \cps zielen darauf ab Daten, schon vor dem Senden an das Cybersystem zu manipulieren.
-    Dabei können die Daten zwischen dem physischen und Cybersystem zwar Authenticity vorweisen, aber dennoch nicht plausibel sein~\cite{SFJ17}.
+    Angriffe auf den physischen Teil eines \cps zielen darauf ab Daten, schon vor dem Senden an das Cyber-System zu manipulieren.
+    Dabei können die Daten zwischen dem physischen und Cyber-System zwar Authenticity vorweisen, aber dennoch nicht plausibel sein~\cite{SFJ17}.
     In einem solchen Fall wird die Eigenschaft Veracity von \cps verletzt.
 
     Zum einen können physische Prozesse manipuliert werden, sodass Wechselwirkungen zwischen Sensoren stattfinden können, obwohl diese nicht elektronisch miteinander verbunden sind.
@@ -290,7 +290,7 @@
 
     Zum anderen können Sensoren manipuliert werden.
     Üblicherweise messen Sensoren die physische Welt und geben ein analoges Signal aus, das dem zu messenden Wert entspricht.
-    Dieses kann dann vom Cybersystem elektronisch abgetastet werden, um die Daten weiterzuverarbeiten.
+    Dieses kann dann vom Cyber-System elektronisch abgetastet werden, um die Daten weiterzuverarbeiten.
     Dazu ist eine Kalibrierung nötig um die analogen Werte auf binäre Werte abzubilden.
     Ungültige Kalibrierungen können zu falschen Messwerten und zu katastrophalen Unfällen führen.
     Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage Mikrocontroller eingesetzt werden, wodurch es möglich ist Sensortests zu bestehen und im Produktionsbetrieb allerdings nicht wie erwartet zu funktionieren.~\cite{KLG15}
@@ -403,7 +403,7 @@
     Reaktive Maßnahmen versuchen Angriffe zu erkennen und einen sicheren Zustand wiederherzustellen.
     Im Gegensatz zu proaktiven Maßnahmen von Kapitel~\ref{subsec:proactive} wird also der Angriff zunächst nicht verhindert, sondern es wird gewährleistet, dass die Einflüsse eines Angriffs bewältigt werden können.
 
-    Klassische Angriffserkennungssysteme beobachten üblicherweise Netzwerke oder Cybersysteme.
+    Klassische Angriffserkennungssysteme beobachten üblicherweise Netzwerke oder Cyber-Systeme.
     Kontrollsysteme in \cps können allerdings einen Schritt weiter gehen und auch das physische System in die Überprüfung miteinbeziehen~\cite{CAS+09}.
     Dadurch können auch Einschränkungen der Veracity erkannt werden, welche zuvor von der Cyberseite unerkannt geblieben worden wären.
 
@@ -432,7 +432,7 @@
     Abgesehen von menschlicher Interaktion sollten allerdings, gerade in Echtzeitsystemen, vor allem automatische Prozesse eine Wiederherstellung ermöglichen.
 
     In \cite{KXW+18} wird ein automatisches Verfahren zur Wiederherstellung vorgestellt.
-    Hierbei werden Checkpoints der physischen- und Cybersysteme verwendet, um ein die Funktionsweise eines \cps wiederzustellen.
+    Hierbei werden Checkpoints der physischen- und Cyber-Systeme verwendet, um ein die Funktionsweise eines \cps wiederzustellen.
     Dieses Verfahren findet beispielsweise Anwendung bei manipulierten Sensoren.
     Dieses bieten einen Vorteil gegenüber Redundanz und Diversität, da auch wenn alle Sensoren kompromittiert sind, immer noch ein Betrieb sichergestellt werden kann.
     Die erfolgreichen Ergebnisse des Verfahrens wurden experimentell durch Simulationen und Test in einem Fahrzeug nachgewiesen.
