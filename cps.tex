@@ -48,10 +48,10 @@
         Durch die enge Koppelung von physischen und Cyber-System bei \cps ergeben sich neue relevante Eigenschaften, welche eine Erweiterung der Eigenschaften von klassischen Systemen darstellen.
 
         Zahlreiche Angriffe belegen die mangelhafte Sicherheit von derzeitig eingesetzten \cps.
-        Deshalb soll in dieser Arbeit ein Überblick über potentielle Angreifergruppen und Angriffsszenarien gegeben werden, um adäquate Gegenmaßnahmen vorzustellen.
+        Deshalb soll in dieser Arbeit ein Überblick über potenzielle Angreifergruppen und Angriffsszenarien gegeben werden, um adäquate Gegenmaßnahmen vorzustellen.
         Gegenmaßnahmen können dabei sowohl proaktiv als auch reaktiven eingesetzt werden, um \cps zu schützen.
 
-        Zuletzt soll diskutiert werden in wie fern momentan eingesetzte Systeme, in Bezug auf Sicherheit, verbessert werden können.
+        Zuletzt soll diskutiert werden inwiefern momentan eingesetzte Systeme, in Bezug auf Sicherheit, verbessert werden können.
 
     \end{abstract}
     \todo{
@@ -72,6 +72,7 @@
     Dieses ist zwar auch bei Cyber-Systemen gefordert, allerdings ohne die Koppelung an physische Prozesse~\cite{BG11}.
     Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise die Bindung an eine Batterie oder eine leichte Bauweise~\cite{YWY+17}.
     Es existiert also ein Unterschied zwischen den Anforderungen an \cps und Cyber-Systemen, wie Anwendungsservern oder Heimcomputern, sodass man diese in Bezug auf Sicherheit auf einem anderen Blickwinkel betrachten muss.
+    \todo{Einleitung ausbauen}
 
     In Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von physischen und Cyber-Systemen im Bezug auch Sicherheit geklärt.
     Zudem werden mögliche Angreifer in Kapitel~\ref{subsec:angreifergruppen} beleuchtet.
@@ -114,7 +115,7 @@
     Hierbei hat ein System genau dann diese Eigenschaft, wenn Aussagen des Systems nicht zu weit von erwartbaren Werten abweichen.
     Liefert ein Sensor beispielsweise einen für physikalische Modelle unmögliche Wert, so ist dieser nicht plausibel und das System kann dies als möglichen Angriff oder aber auch einen Systemfehler erkennen.~\cite{GK16,KLG15}
 
-    Diese Eigenschaft entspricht nicht die der Integrity, da die Werte des Sensors bereits vor dem verlassen des physischen Systems verändert werden können.
+    Diese Eigenschaft entspricht nicht die der Integrity, da die Werte des Sensors bereits vor dem Verlassen des physischen Systems verändert werden können.
     Bei Integrity spielt die Kommunikation der beiden Systeme eine zentrale Rolle.
     Veracity stellt also eine grundsätzlich andere Eigenschaft bereit.
 
@@ -141,7 +142,7 @@
     Die Eigenschaften von Systemen aus der klassischen Informationssicherheit sind also nicht ausreichend um das oft komplexe Zusammenspiel von physischen und Cyber-Systemen abzusichern.
     Bei \cps ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
     Deshalb sind zusätzliche Eigenschaften wie Veracity und Authenticity, wie in Abbildung~\ref{fig:triad} zu sehen ist, nötig um die Sicherheitsbedürfnisse von \cps abzudecken.
-    \citeauthor{CH13}~\cite{CH13} führen noch weitere Eigenschaften wie Accountability, Auditability und Privacy auf, welche allerdings in dieser Arbeit nicht weiter untersucht werden sollen, da diese schon durch andere Eigenschaften größtenteils abgedeckt sind (Accountability durch Authenticity, Auditability durch Non-repudiation und Privacy durch Confidentiality) und so auch keine keine große Erwähnung in Literatur finden bzw\todo{Übereinstimmung überprüfen}.
+    \citeauthor{CH13}~\cite{CH13} führen noch weitere Eigenschaften wie Accountability, Auditability und Privacy auf, welche allerdings in dieser Arbeit nicht weiter untersucht werden sollen, da diese schon durch andere Eigenschaften größtenteils abgedeckt sind (Accountability durch Authenticity, Auditability durch Non-repudiation und Privacy durch Confidentiality) und so auch keine große Erwähnung in der Literatur finden.\todo{Übereinstimmung überprüfen}
 
     \begin{figure}[h]
         \centering
@@ -201,7 +202,7 @@
 
     Computerforensiker~\ref{factor:angreifergruppe} haben nicht unbedingt als Ziel selbst ein System zu beschädigen.
     Zum einen kann das Finden von Lücken als Ziel haben, diese unter bestimmten Auflagen offen zulegen und dadurch schließen zu können~\cite{Hahn2012}~\ref{factor:motiv}.
-    Dabei gibt es Verschiedene Arten wie man diese offenlegen kann. \citeauthor{Hahn2012} unterscheidet hierbei zwischen voller, beschränkter und keiner Offenlegung.
+    Dabei gibt es verschiedene Arten, wie man diese offenlegen kann. \citeauthor{Hahn2012} unterscheidet hierbei zwischen voller, beschränkter und keiner Offenlegung.
     Zum anderen können diese Lücken aber auch als Schadsoftware verkaufen werden~\ref{factor:motiv}, wie \citeauthor{Allodi2013} in ihrer Risikoeinschätzung \cite{Allodi2013} erläutern.
 
     Unzufriedene~\ref{factor:motiv}~Mitarbeiter~\ref{factor:angreifergruppe} eines Unternehmens haben viel Wissen über dessen Infrastruktur.
@@ -260,7 +261,7 @@
     Folgen können sein, dass sich Fenster nicht mehr schließen lassen und Warnlichter oder die Diebstahlsicherung deaktiviert werden können~\cite{HKD08}.
 
     Auch in echtzeitkritischen intelligenten Stromnetzen kann ein massives Überfluten dazu führen, dass der Normalbetrieb nicht mehr möglich ist~\cite{LLW+10}.
-    Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotential~\cite{LWW11}, da diese allgemein eine geringere Bandbreite aufweisen.
+    Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotenzial~\cite{LWW11}, da diese allgemein eine geringere Bandbreite aufweisen.
     Sollte es bei einem \gls{dos} Angriff mehrere Angreifer geben, so wird von einem Distributed-\acrlong{dos} Angriff gesprochen.
 
 
@@ -277,16 +278,16 @@
     Ein Controller kommuniziert über ein Netzwerk mit einem physischen System über die Verbindungen $y$ und $u$.
     Ziel eines Angreifers ist es den Netzwerkverkehr zwischen den beiden anderen Hosts über sich zu leiten~\cite{WYX+10,FPA+18} um ihn so beeinflussen zu können.
     In der Abbildung ist dies dadurch dargestellt, dass $y \ne \tilde{y}$ und $u \ne \tilde{u}$.
-    Ein passiver Angriff würde die Kommunikation nicht verändern, dh.\ es gilt $y = \tilde{y}$ und $u = \tilde{u}$.
+    Ein passiver Angriff würde die Kommunikation nicht verändern, d.~h.\ es gilt $y = \tilde{y}$ und $u = \tilde{u}$.
     Diese Angriffe sind aufgrund von fehlender Authenticity zwischen den Kommunikationspartnern möglich.
-    Die Partner können sich also nicht sicher sein ob die Nachrichten, ob die Nachricht nicht während dem Transport von Sende zu Empfänger nicht verändert wurden.
+    Die Partner können sich also nicht sicher sein, ob die Nachricht nicht während dem Transport von Sende zu Empfänger nicht verändert wurden.
     Dadurch ist auch die Integrity der Kommunikation nicht mehr gewährleistet, da auch Prüfsummen so abgeändert werden können, sodass diese den manipulierten Daten entsprechen.
 
     Diese Angriffe sind beispielsweise in IEEE 802.11 und lokalen Netzwerken über ARP-Poisoning möglich~\cite{FIT+12}, indem die Identität eines anderen Netzwerkteilnehmers eingenommen werden kann~\cite{RN05}.
 
     Ein weiteres Beispiel für diese Art von Angriffen sind offline Relay Angriffe bei Autos.
     Dabei werden langwellige Signale, die von dem Auto an den Schlüssel des Besitzers gesendet werden, abgefangen und aufgezeichnet.
-    War der Besitzer zu diesem Zeitpunk nicht in der Nähe, so kann man das Aufgezeichnete Signal weiter verwenden und es in der Nähe des Besitzers erneut abspielen.
+    War der Besitzer zu diesem Zeitpunkt nicht in der Nähe, so kann man das aufgezeichnete Signal weiter verwenden und es in der Nähe des Besitzers erneut abspielen.
     Der Schlüssel sendet nun ein Hochfrequenzsignal, welches wiederum aufgezeichnet wird.
     Das erneute Abspielen dieses HF-Signals kann dann dazu genutzt werden, um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
 
@@ -346,7 +347,7 @@
     %Autorisierung stellt die Integrity des Systems sicher, indem von bestimmten Nachrichtensendern nur bestimmte Aktionen ausgeführt werden dürfen.
 
     Je nachdem welche Kommunikationswege abgesichert werden soll gibt es verschiedene Ansätze.
-    Die Verbindungen $u$ und $y$ in Abbildung~\ref{fig:abstrakt} könnten beispielsweise CAN oder LIN Busse darstellen, welche die oft die Kommunikation in Autos ermöglichen.
+    Die Verbindungen $u$ und $y$ in Abbildung~\ref{fig:abstrakt} könnten beispielsweise durch Controller Area Networks (CAN) oder Local Interconnect Networks (LIN) realisiert sein, welche oft als Bussystem in Autos verwendet werden.
     Diese stellen keine Verschlüsselung, Authentifizierung oder Autorisierung zur Verfügung~\cite{HLL+17}.
     Da effiziente Lösungen aufgrund von begrenzten Ressourcen in Autos wichtig sind, schlagen \citeauthor{WG12}~\cite{WG12} die Verwendung von Hardware Security Modules um Kommunikationen in beispielsweise Autos abzusichern.
     Für Zähler in Stromnetzen gibt das \gls{nist} in \cite{PB14} vor, dass diese kryptografische Module nutzen und entsprechend physisch geschützt und versiegelt sein müssen.
@@ -366,8 +367,8 @@
 
 
     % Widerstandsfähigkeit (Redundancy, Diversity)
-    Um \cps die Widerstandsfähigkeit (eng.\ Resilience) zu erhöhen, können Redundanzen bereit gestellt werden, um einen Single Point of Failure zu vermeiden~\cite{CAS+09}.
-    Bei beispielsweise einem \gls{dos} Angriff, wie in Abbildung~\ref{fig:attack_points} bei A2 oder A4 gezeigt, könnte ein weiterer redundanter \enquote{Controller} oder weiteres \enquote{Physical System} dazu führen, dass der Angriff mitigiert werden kann.
+    Um \cps die Widerstandsfähigkeit (eng.\ Resilience) zu erhöhen, können Redundanzen bereitgestellt werden, um einen Single Point of Failure zu vermeiden~\cite{CAS+09}.
+    Bei beispielsweise einem \gls{dos} Angriff, wie in Abbildung~\ref{fig:attack_points} bei A2 oder A4 gezeigt, könnte ein weiterer redundanter \enquote{Controller} oder weiteres \enquote{Physical System} dazu führen, dass der Angriff abgeschwächt werden kann.
     \citeauthor{CAS+09}~\cite{CAS+09} beschreiben außerdem, dass eine Diversität an Hard- und Software der Redundanzen dazu führen, dass ein Angriffsvektor nicht auf alle eingesetzten Komponenten anwendbar ist und somit verhindert werden kann.
 
 
@@ -422,17 +423,18 @@
         \label{fig:entropie}
     \end{figure}
 
-    \citeauthor{CAS+09}~\cite{CAS+09} schlägt vor dem Betreiber von Kontrollsystemen genügend Informationen zukommen zu lassen um angemessen auf Anomalien zu reagieren.
+    \citeauthor{CAS+09}~\cite{CAS+09} schlagen vor, dem Betreiber von Kontrollsystemen genügend Informationen zukommen zu lassen, um gut auf Anomalien reagieren zu können.
     Abgesehen von menschlicher Interaktion sollten allerdings, gerade in Echtzeitsystemen, vor allem automatische Prozesse eine Wiederherstellung ermöglichen.
 
     In \cite{KXW+18} wird ein automatisches Verfahren zur Wiederherstellung vorgestellt.
     Hierbei werden Checkpoints der physischen und Cyber-Systeme verwendet, um ein die Funktionsweise eines \cps wiederzustellen.
     Dieses Verfahren findet beispielsweise Anwendung bei manipulierten Sensoren.
-    Dieses bieten einen Vorteil gegenüber Redundanz und Diversität, da auch wenn alle Sensoren kompromittiert sind, immer noch ein Betrieb sichergestellt werden kann.
+    Dieses bieten einen Vorteil gegenüber Redundanz und Diversität, da, auch wenn alle Sensoren kompromittiert sind, immer noch ein Betrieb sichergestellt werden kann.
     Die erfolgreichen Ergebnisse des Verfahrens wurden experimentell durch Simulationen und Test in einem Fahrzeug nachgewiesen.
 
     \section{Verbesserung der aktuellen Sicherheitssituation von \glsentryshort{cps}}
     \label{sec:improve-security-situation}
+    \todo{Kapitel schreiben}
 
     \newpage
     % ~\nocite{*}
