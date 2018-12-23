@@ -62,7 +62,8 @@
     \tableofcontents
     \newpage
 
-    \section{Einführung}\label{sec:intro}
+    \section{Einführung}
+    \label{sec:intro}
     \cps sind meist eingebettete Echtzeitsysteme, welche eine hohe Verfügbarkeit, Robustheit, Widerstandsfähigkeit und Berechenbarkeit aufweisen müssen.
     Die physische Welt macht hohe Verfügbarkeit allerdings oft schwierig, da sie alles andere als berechenbar ist~\cite{Lee08,SGL+08}.
     Einsatzorte für diese Systeme sind beispielsweise intelligente Stromnetze, symbiotische Sensornetzwerke für die Agrarwirtschaft und Katastrophenabwehr, medizinische oder assistierende Geräte, intelligente Verkehrssteuerung, intelligente Gebäude~\cite{RLS+10}, Autos und \glspl{ics} sein~\cite{HLL+17}.
@@ -73,21 +74,23 @@
     Es existiert also ein Unterschied zwischen den Anforderungen an \cps und Cyber-Systemen, wie Anwendungsservern oder Heimcomputern, sodass man diese in Bezug auf Sicherheit auf einem anderen Blickwinkel betrachten muss.
 
     In dem Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von physischen und Cyber-Systemen im Bezug auch Sicherheit geklärt.
-    Zudem werden mögliche Angreifer im Kapitel~\ref{subsec:angreifergruppen} beleuchtet.
-    Im Kapitel~\ref{sec:angriffszenarien} werden mögliche Szenarien für Angriffe und im Kapitel~\ref{sec:gegenmassnahmen} Gegenmaßnahmen dargestellt.
-    Zuletzt soll im Kapitel~\ref{sec:diskussion} diskutiert werden, ob die genannten Gegenmaßnahmen für die Szenarien ein adäquate Lösung darstellen.
+    Zudem werden mögliche Angreifer in Kapitel~\ref{subsec:angreifergruppen} beleuchtet.
+    In Kapitel~\ref{sec:angriffszenarien} werden mögliche Szenarien für Angriffe und in Kapitel~\ref{sec:gegenmassnahmen} dazu Gegenmaßnahmen dargestellt.
+    Zuletzt soll in Kapitel~\ref{sec:improve-security-situation} diskutiert werden, wie die aktuelle Sicherheitssituation verbessert werden kann.
     % Beispiele:
     %   Stuxnet (Langer)
     %   Spectre: https://arxiv.org/pdf/1811.05441.pdf
     %   EU: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=JOIN:2017:0450:FIN https://ec.europa.eu/transport/sites/transport/files/3rd-mobility-pack/com20180283_en.pdf
     %   https://nakedsecurity.sophos.com/2018/11/15/darpa-uses-a-remote-island-to-stage-a-cyberattack-on-the-us-power-grid/?utm_campaign=Security%2BNewsletter&utm_medium=email&utm_source=Security_Newsletter_co_103
 
-    \section{Bedeutung von Sicherheit in \glsentrytext{cps}}\label{sec:bedeutung-sicherheit}
+    \section{Bedeutung von Sicherheit in \glsentrytext{cps}}
+    \label{sec:bedeutung-sicherheit}
 
     Die Eigenschaften von Cyber-Systemen und physischen Systemen in Bezug auf Sicherheit unterscheiden sich.
     Deshalb soll im Folgenden Sicherheit speziell für \cps definiert werden.
 
-    \subsection{Sicherheitsrelevante Eigenschaften von \glsentrytext{cps}}\label{subsec:definition}
+    \subsection{Sicherheitsrelevante Eigenschaften von \glsentrytext{cps}}
+    \label{subsec:definition}
     Unter Sicherheit bei Cyber-Systemen versteht man im Allgemeinen Informationssicherheit.
     Informationssicherheit kann man durch drei Eigenschaften von Systemen charakterisieren~\cite{CH13}:
     \begin{itemize}[noitemsep,wide=0pt]
@@ -102,7 +105,7 @@
 
     Sie schlagen außerdem vor das CIA-Dreieck\todo{Erklären} im Hinblick auf \cps durch die Eigenschaft \textit{Veracity} (dt.~Richtigkeit) zu erweitern.
     Ein System hat diese Eigenschaft genau dann, wenn Aussagen des Systems die Wahrhaftigkeit der Wirklichkeit reflektieren.
-    Es muss also sichergestellt werden, dass Sensoren, durch beispielsweise physische Maßnahmen (siehe Kapitel~\ref{subsec:physisch}) fälschungssicher sind.
+    Es muss also sichergestellt werden, dass Sensoren, durch beispielsweise physische Maßnahmen (siehe Kapitel~\ref{physisch-orga}) fälschungssicher sind.
     Confidentiality und Integrity (dt.\ Integrität) sind nicht ausreichend um die Richtigkeit von Informationen zu garantieren.
     Veracity ist eine relativ starke Eigenschaft.
     Deshalb kann man in Fällen, in denen diese nur schwer zu erreichen ist, zunächst auf Plausibility setzen.
@@ -176,12 +179,11 @@
         \label{fig:table}
     \end{figure}
 
-
-
     % Begriffe: computer, information, network, communication, physical security
 
 
-    \subsection{Angreifergruppen}\label{subsec:angreifergruppen}
+    \subsection{Angreifergruppen}
+    \label{subsec:angreifergruppen}
 
     Angriffe können von unterschiedlichen Gruppen aus unterschiedlichen Gründen ausgehen.
     Im Folgenden sollen verschiedene Gruppen nach den Faktoren
@@ -213,7 +215,8 @@
     Das Wissen über den Angreifer und dessen Motivation kann maßgeblich bei der Wahl und der Strategie der Gegenmaßnahmen helfen.
     Zudem können, wie im nächsten Kapitel beschrieben, dadurch Gefahrenmodelle\todo{Noch relevant?} und detailliertere Angriffsszenarien entworfen werden.
 
-    \section{Angriffsszenarien}\label{sec:angriffszenarien}
+    \section{Angriffsszenarien}
+    \label{sec:angriffszenarien}
     % Confidentiality, Integrity, Availability, Veracity
     \begin{figure}
         \centering
@@ -244,7 +247,8 @@
     % IoT Unterschiede zu Cyber-Systemen (FPA+18)
     % Workflow von CPS (WYX+10, II.)
 
-    \subsection{\glsentrylong{dos} Angriff}\label{subsec:dos}
+    \subsection{\glsentrylong{dos} Angriff}
+    \label{subsec:dos}
     \gls{dos} Angriffe zielen darauf ab das Cyber-System mit einer großen Flut an Informationen zu stören.
     Diese können von einem angeschlossenes Netzwerk oder dem physischen System ausgehen.\todo{missing cite}
     Dadurch wird der Informationsfluss von Steuer- und Nutzdaten, wie in Abbildung~\ref{fig:attack_points} an den Punkten A4 und A2 zu sehen ist, unterbrochen und die Availability des \cps eingeschränkt.
@@ -258,7 +262,8 @@
 
     % Distributed DoS
 
-    \subsection{\glsentrylong{mitm} Angriff}\label{subsec:mitm}
+    \subsection{\glsentrylong{mitm} Angriff}
+    \label{subsec:mitm}
     % Unterschied Active vs Passive: http://www.security-science.com/pdf/active-man-in-the-middle.pdf
     Bei \gls{mitm} Angriffe kann man zwischen aktiven und passiven Angriffen unterscheiden~\cite{WYX+10}.
     Passive verändern den Netzwerkverkehr nicht, sondern lauschen nur um an Informationen zu gelangen (sog.\ Lauschangriff).
@@ -280,7 +285,8 @@
     Beim Abspielen dieses Signals, in der Nähe des Besitzers sendet der Schlüssel ein Hochfrequenzsignal, welches wiederum aufgezeichnet wird.
     Das Abspielen dieses HF-Signals kann dann dazu genutzt werden, um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
 
-    \subsection{Angriff auf das physischen Systems}\label{subsec:physical-deception}
+    \subsection{Angriff des physischen Systems}
+    \label{subsec:physical-deception}
     Angriffe auf den physischen Teil eines \cps zielen darauf ab Daten, schon vor dem Senden an das Cyber-System zu manipulieren.
     Dabei können die Daten zwischen dem physischen und Cyber-System zwar Authenticity vorweisen, aber dennoch nicht plausibel sein~\cite{SFJ17}.
     In einem solchen Fall wird die Eigenschaft Veracity von \cps verletzt.
@@ -303,39 +309,21 @@
 
     %\subsection{Compromised-Credentials Angriff}\label{subsec:key}
     %% (WYX+10, II. B.)
-    %
     %Non-repudiation kann Aufschluss auf eine solche Attacke geben, da Aktionen getätigt wurden, welche aber nicht von der eigentlich berechtigten Person getätigt wurden.
 
     \section{Gegenmaßnahmen}\label{sec:gegenmassnahmen}
-    % Authenticity, Nonrepudiability
-
     % Fingerprinting, Network Separation, End System Security (Gollman)
     % Properties: Safety, Security, Reliability, Resilence (LLZ+14)
-
-    % Least Privilege (Gollman)
     % Need-to-Know (Gollman)
-    % Separation (Gollman)
-
-    % Proactive Mechanisms, Reactive Mechanisms, Design and Analysis Principles (Cardenas 2008)
-
+    % Transdiszipliär (Brazell14)
+    % Betriebsblindheit (Gollman)
     % Context Aware Security: Sensing, Cyber, Control, Physical Security (WYX+10)
-
-    % \subsection{Modellierung von \glsentrytext{cps}}\label{subsec:modellierung}
-    % % Argument: Neue Grundlage für Embedded Systems/CPS: Modelbasiert anstatt Programm (Lee08)
-    % Noch nicht sicher.
-    %
-    % Um hierbei dem Standard an Sicherheit zu genügen, schlägt \citeauthor{Lee08} sogar vor eine neue Grundlage für diese Systeme zu etablieren~\cite{Lee08}.
 
     Gegenmaßnahmen haben als Ziel Angriffe zu verhindern oder abzuschwächen.
     Für diese Arbeit soll zwischen reaktive und proaktiven Maßnahmen unterschieden werden.
 
-
-    %\subsection{Organisatorische Maßnahmen}\label{subsec:orga}
-    % (Cardenas)
-    % Transdiszipliär (Brazell14)
-    % Betriebsblindheit (Gollman)
-
-    \subsection{Proaktive Maßnahmen: Verhindern von Angriffen}\label{subsec:proactive}
+    \subsection{Proaktive Maßnahmen: Verhindern von Angriffen}
+    \label{subsec:proactive}
     % Security by Obscurity (Scarfone2008)
     % End-to-End Security (Fink)
     Proaktive Maßnahmen versuchen das Eintreten eines Angriffs zu verhindern.
@@ -387,6 +375,7 @@
     Ziel ist es, dass die wahrgenommenen Kosten die wahrgenommenen Vorteile überwiegen, sodass es sich für beispielsweise einen Cyberkriminellen (wie in Kapitel~\ref{subsec:angreifergruppen} beschrieben) nicht mehr lohnt ein Ziel anzugreifen.
     Nicht alle Angriffe lassen nicht verhindern, wodurch Maßnahmen zur Detektion und Wiederherstellung nötig sind, die im nächsten Kapitel diskutiert werden.
 
+    \label{physisch-orga}
     Physischer Zugriff auf \cps kann für unautorisierte Personen organisatorisch verhindert werden.
     Physischer Zugang kann viele Cybergegenmaßnahmen unwirksam machen und sehr leicht die Availability des Systems stören, indem dieses physisch beschädigt wird.
     % Cyber honeypod könnte einen physischen angreifer ablenken
@@ -437,7 +426,8 @@
     Dieses bieten einen Vorteil gegenüber Redundanz und Diversität, da auch wenn alle Sensoren kompromittiert sind, immer noch ein Betrieb sichergestellt werden kann.
     Die erfolgreichen Ergebnisse des Verfahrens wurden experimentell durch Simulationen und Test in einem Fahrzeug nachgewiesen.
 
-    \section{Verbesserung der aktuellen Sicherheitssituation von \glsentryshort{cps}}\label{sec:diskussion}
+    \section{Verbesserung der aktuellen Sicherheitssituation von \glsentryshort{cps}}
+    \label{sec:improve-security-situation}
 
     \newpage
     % ~\nocite{*}
