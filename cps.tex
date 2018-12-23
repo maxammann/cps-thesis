@@ -73,7 +73,7 @@
     Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise die Bindung an eine Batterie oder eine leichte Bauweise~\cite{YWY+17}.
     Es existiert also ein Unterschied zwischen den Anforderungen an \cps und Cyber-Systemen, wie Anwendungsservern oder Heimcomputern, sodass man diese in Bezug auf Sicherheit auf einem anderen Blickwinkel betrachten muss.
 
-    In dem Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von physischen und Cyber-Systemen im Bezug auch Sicherheit geklärt.
+    In Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von physischen und Cyber-Systemen im Bezug auch Sicherheit geklärt.
     Zudem werden mögliche Angreifer in Kapitel~\ref{subsec:angreifergruppen} beleuchtet.
     In Kapitel~\ref{sec:angriffszenarien} werden mögliche Szenarien für Angriffe und in Kapitel~\ref{sec:gegenmassnahmen} dazu Gegenmaßnahmen dargestellt.
     Zuletzt soll in Kapitel~\ref{sec:improve-security-situation} diskutiert werden, wie die aktuelle Sicherheitssituation verbessert werden kann.
@@ -86,8 +86,8 @@
     \section{Bedeutung von Sicherheit in \glsentrytext{cps}}
     \label{sec:bedeutung-sicherheit}
 
-    Die Eigenschaften von Cyber-Systemen und physischen Systemen in Bezug auf Sicherheit unterscheiden sich.
-    Deshalb soll im Folgenden Sicherheit speziell für \cps definiert werden.
+    Physische und Cyber-Systeme unterscheiden sich ihn ihren Eigenschaften in Bezug auf deren Sicherheit.
+    Deshalb sollen im Folgenden relevante Eigenschaften speziell für \cps definiert werden.
 
     \subsection{Sicherheitsrelevante Eigenschaften von \glsentrytext{cps}}
     \label{subsec:definition}
@@ -99,23 +99,26 @@
         \item \fb{Availability} - Ressourcen ist für autorisierte Teilnehmer angemessen verfügbar.
     \end{itemize}
 
-    Zwischen diesen drei Eigenschaften muss bei der Entwicklung ein sinnvolles Gleichgewicht gefunden werden.
+    In der Literatur findet sich das Konzept dieser drei Eigenschaften unter dem Begriff \textit{CIA-Dreieck} wieder.
+    Eine namentliche Übereinstimmung mit bereits anders belegten Begriffen stellt hier nur einen Zufall dar.
+    Zwischen diesen Eigenschaften muss bei der Entwicklung ein sinnvolles Gleichgewicht gefunden werden.
     \citeauthor{GK16}~\cite{GK16} beschreiben, dass bei Cyber-Systemen der Fokus auf \textit{Confidentiality} (dt.\ Vertraulichkeit) und bei \cps eher auf \textit{Availability} (dt.\ Verfügbarkeit) liegt.
     Dieser Fokus ist kritisch zu betrachten, wenn man die diversen Einsatzorte und sicherheitskritischen Anforderungen von \cps betrachtet.
 
-    Sie schlagen außerdem vor das CIA-Dreieck\todo{Erklären} im Hinblick auf \cps durch die Eigenschaft \textit{Veracity} (dt.~Richtigkeit) zu erweitern.
-    Ein System hat diese Eigenschaft genau dann, wenn Aussagen des Systems die Wahrhaftigkeit der Wirklichkeit reflektieren.
-    Es muss also sichergestellt werden, dass Sensoren, durch beispielsweise physische Maßnahmen (siehe Kapitel~\ref{physisch-orga}) fälschungssicher sind.
+    Sie schlagen außerdem vor das CIA-Dreieck im Hinblick auf \cps durch die Eigenschaft \textit{Veracity} (dt.~Richtigkeit) zu erweitern.
+    Ein System hat diese Eigenschaft genau dann, wenn Aussagen des Systems die Wahrhaftigkeit der Wirklichkeit entsprechen.
+    Es muss also sichergestellt werden, dass Sensoren, durch beispielsweise physische Maßnahmen fälschungssicher sind~(siehe Kapitel~\ref{physisch-orga}).
     Confidentiality und Integrity (dt.\ Integrität) sind nicht ausreichend um die Richtigkeit von Informationen zu garantieren.
     Veracity ist eine relativ starke Eigenschaft.
     Deshalb kann man in Fällen, in denen diese nur schwer zu erreichen ist, zunächst auf Plausibility setzen.
-    Herbei hat ein System genau dann diese Eigenschaft, wenn Aussagen des Systems nicht zu weit von erwartbaren Werten abweichen.
-    Liefert ein Sensor beispielsweise einen für physikalische Modelle unmögliche Wert, so ist dieser nicht plausibel und das System kann dies als möglichen Angriff erkennen.~\cite{GK16}
+    Hierbei hat ein System genau dann diese Eigenschaft, wenn Aussagen des Systems nicht zu weit von erwartbaren Werten abweichen.
+    Liefert ein Sensor beispielsweise einen für physikalische Modelle unmögliche Wert, so ist dieser nicht plausibel und das System kann dies als möglichen Angriff oder aber auch einen Systemfehler erkennen.~\cite{GK16,KLG15}
 
-    Diese Eigenschaft kann nicht durch Integrity gewährleistet werden, da die Werte eines Sensors von außerhalb des \cps beeinflusst werden können.
+    Diese Eigenschaft entspricht nicht die der Integrity, da die Werte des Sensors bereits vor dem verlassen des physischen Systems verändert werden können.
+    Bei Integrity spielt die Kommunikation der beiden Systeme eine zentrale Rolle.
     Veracity stellt also eine grundsätzlich andere Eigenschaft bereit.
 
-    \citeauthor{WYX+10}~\cite{WYX+10} und \citeauthor{SFJ17}~\cite{SFJ17} stimmen zu, dass eine Überprüfung auf die Richtigkeit von Informationen wichtig sind.
+    \citeauthor{WYX+10}~\cite{WYX+10} und \citeauthor{SFJ17}~\cite{SFJ17} stimmen zu, dass eine Überprüfung auf die Richtigkeit der Informationen wichtig sind.
     Sie erweitern das CIA-Dreieck zudem um die Eigenschaft der \textit{Authenticity} (dt.\ Authentizität) zwischen Kommunikationspartnern.
     Authenticity kann genau dann hergestellt werden, wenn sich beide Kommunikationspartner einig über die Identität des Gegenübers sind~\cite{CH13}.
     %Obwohl bei der Definition von \citeauthor{CH13} die Authenticity bereits in der Definition beinhaltet ist, soll diese hier dennoch zusätzlich aufgeführt werden.
@@ -135,20 +138,17 @@
         \label{fig:triad}
     \end{figure}
 
-    Die Eigenschaften von Systemen aus der klassischen Informationssicherheit sind also nicht ausreichend um das oft komplexe Zusammenspiel von physischen- und Cyber-Systemen\todo{physischen- richtig?} abzusichern.
+    Die Eigenschaften von Systemen aus der klassischen Informationssicherheit sind also nicht ausreichend um das oft komplexe Zusammenspiel von physischen und Cyber-Systemen abzusichern.
     Bei \cps ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
     Deshalb sind zusätzliche Eigenschaften wie Veracity und Authenticity, wie in Abbildung~\ref{fig:triad} zu sehen ist, nötig um die Sicherheitsbedürfnisse von \cps abzudecken.
-    \citeauthor{CH13}~\cite{CH13} führt noch weitere Eigenschaften wie Accountability, Auditability und Privacy auf, welche allerdings in dieser Arbeit nicht weiter untersucht werden sollen.\todo{Erklären warum nicht (Platzgründe genügt.)}
-
-    \todo{Tabelle mit Eigenschaften}
-
+    \citeauthor{CH13}~\cite{CH13} führen noch weitere Eigenschaften wie Accountability, Auditability und Privacy auf, welche allerdings in dieser Arbeit nicht weiter untersucht werden sollen, da diese schon durch andere Eigenschaften größtenteils abgedeckt sind (Accountability durch Authenticity, Auditability durch Non-repudiation und Privacy durch Confidentiality) und so auch keine keine große Erwähnung in Literatur finden bzw\todo{Übereinstimmung überprüfen}.
 
     \begin{figure}[h]
         \centering
         \begin{longtabu}
-            to \linewidth { | l | X[6,l] | X[1.2,l] | }
+            to \linewidth { | l | X[6,l] | X[1.1,l] | }
             \hline
-            Eigenschaft&Ein System hat diese Eigenschaft genau dann, wenn~\ldots&Relevante Literatur \\
+            Eigenschaft: $e$&Ein System hat Eigenschaft $e$ genau dann, wenn~\ldots&Relevante Literatur \\
             \hline
             Confidentiality&
             \ldots nur autorisierte Teilnehmer auf Ressourcen zugreifen können.&
@@ -163,7 +163,7 @@
             \cite{CH13} \\
             \hline
             Veracity &
-            \ldots Aussagen des Systems die Wahrhaftigkeit der Wirklichkeit reflektieren.&
+            \ldots Aussagen des Systems die Wahrhaftigkeit der Wirklichkeit entsprechen.&
             \cite{KLG15} \cite{GK16}\\
             \hline
             Authenticity&
@@ -193,27 +193,29 @@
         \item Motiv\label{factor:motiv}
         \item Angriffsvektoren\label{factor:methode}
         \item Konsequenzen\label{factor:konsequenz}
-    \end{enumerate*} aufgezählt werden~\cite{HLL+17}.\todo{Aufzählung entfernen?}
+    \end{enumerate*} aufgezählt werden~\cite{HLL+17}.
+    Wird ein Faktor nicht erwähnt, so ist dieser für diese Gruppe unwichtig.
 
-    Kriminelle Gruppen \ref{factor:angreifergruppe} versuchen oft mit Hilfe von Erpressung \ref{factor:methode} ein Ziel anzugreifen \cite{WYX+10}.
+    Kriminelle Gruppen \ref{factor:angreifergruppe} versuchen oft ziele zu erpressen~\ref{factor:methode}~\cite{WYX+10}, um Geld oder andere Wertgegenstände zu stehlen~\ref{factor:motiv}.
     Dabei sind Cyberangriffe nur ein logischer nächster Schritt der Kriminellen, da diese weitaus günstiger, weniger riskant, nicht durch Entfernungen eingeschränkt und einfacher zu koordinieren und wiederholen sind. \cite{CAS+09}
 
     Computerforensiker~\ref{factor:angreifergruppe} haben nicht unbedingt als Ziel selbst ein System zu beschädigen.
-    Zum einen kann das Finden von Lücken als Ziel haben, diese unter bestimmten Auflagen offen zulegen oder schließen zu können~\ref{factor:motiv}. \todo{Zitat fehlt}
-    Zum anderen können diese aber auch als Schadsoftware verkaufen werden~\ref{factor:motiv}. \todo{Zitat fehlt}
+    Zum einen kann das Finden von Lücken als Ziel haben, diese unter bestimmten Auflagen offen zulegen und dadurch schließen zu können~\cite{Hahn2012}~\ref{factor:motiv}.
+    Dabei gibt es Verschiedene Arten wie man diese offenlegen kann. \citeauthor{Hahn2012} unterscheidet hierbei zwischen voller, beschränkter und keiner Offenlegung.
+    Zum anderen können diese Lücken aber auch als Schadsoftware verkaufen werden~\ref{factor:motiv}, wie \citeauthor{Allodi2013} in ihrer Risikoeinschätzung \cite{Allodi2013} erläutern.
 
-    Unzufriedene Mitarbeiter~\ref{factor:angreifergruppe} eines Unternehmens haben viel Wissen über dessen Infrastruktur.
+    Unzufriedene~\ref{factor:motiv}~Mitarbeiter~\ref{factor:angreifergruppe} eines Unternehmens haben viel Wissen über dessen Infrastruktur.
     Das Ziel ist hierbei die Schädigung des Unternehmens~\ref{factor:konsequenz}.
     Zudem existiert eventuell Zugriff auf das System, sodass überhaupt kein Umgehen von Sicherheitsmechanismen notwendig ist~\ref{factor:methode}.~\cite{CAS+09,WYX+10}
 
-    Aktivistische Gruppierungen~\ref{factor:angreifergruppe} zielen oft auf kritische \cps~\ref{factor:target}, wie beispielsweise Kernkraftwerke oder \gls{scada} Systemen in Fabriken, ab, um diese zu manipulieren~\cite{CAS+09,HLL+17}. \todo{Spionage?}
+    Aktivistische Gruppierungen~\ref{factor:angreifergruppe} zielen oft auf kritische \cps~\ref{factor:target}, wie beispielsweise Kernkraftwerke oder \gls{scada} Systemen in Fabriken, ab, um diese zu manipulieren oder auszuspionieren~\cite{CAS+09,HLL+17}.
     Damit dies erreicht werden kann, existiert die Möglichkeit Forensiker oder Insider zu engagieren~\ref{factor:methode}.~\cite{WYX+10}
 
     Staaten~\ref{factor:angreifergruppe} können politisches und militärisches Interesse~\ref{factor:motiv} daran haben Infrastruktur innerhalb oder außerhalb des Staatsgebiets~\ref{factor:target} anzugreifen \cite{CAS+09}, um diese zu sabotieren oder auszuspionieren.
     Auch hier können Forensiker oder Insider engagiert werden~\ref{factor:methode}.
 
     Das Wissen über den Angreifer und dessen Motivation kann maßgeblich bei der Wahl und der Strategie der Gegenmaßnahmen helfen.
-    Zudem können, wie im nächsten Kapitel beschrieben, dadurch Gefahrenmodelle\todo{Noch relevant?} und detailliertere Angriffsszenarien entworfen werden.
+    Im nächsten Kapitel soll deshalb eine Auswahl an Angriffsszenarien beschrieben werden.
 
     \section{Angriffsszenarien}
     \label{sec:angriffszenarien}
@@ -249,8 +251,8 @@
 
     \subsection{\glsentrylong{dos} Angriff}
     \label{subsec:dos}
-    \gls{dos} Angriffe zielen darauf ab das Cyber-System mit einer großen Flut an Informationen zu stören.
-    Diese können von einem angeschlossenes Netzwerk oder dem physischen System ausgehen.\todo{missing cite}
+    \gls{dos} Angriffe zielen darauf ab das Cyber-System durch eine große Flut an Informationen zu stören.
+    Diese können von einem angeschlossenes Netzwerk oder dem physischen System ausgehen.
     Dadurch wird der Informationsfluss von Steuer- und Nutzdaten, wie in Abbildung~\ref{fig:attack_points} an den Punkten A4 und A2 zu sehen ist, unterbrochen und die Availability des \cps eingeschränkt.
 
     Diese Angriffe sind beispielsweise bei CAN Bussen in Autos realistisch, da Nachrichten mit vielen Empfängern gesendet werden~\cite{KCR+10} und auch die Fehlerbehebung angreifbar ist~\cite{CDV13}.
@@ -258,9 +260,9 @@
     Folgen können sein, dass sich Fenster nicht mehr schließen lassen und Warnlichter oder die Diebstahlsicherung deaktiviert werden können~\cite{HKD08}.
 
     Auch in echtzeitkritischen intelligenten Stromnetzen kann ein massives Überfluten dazu führen, dass der Normalbetrieb nicht mehr möglich ist~\cite{LLW+10}.
-    Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotential~\cite{LWW11}\todo{check cite}, da diese allgemein eine geringere Bandbreite aufweisen.
+    Der Einsatz von kabelloser Kommunikation erhöht dabei das Angriffspotential~\cite{LWW11}, da diese allgemein eine geringere Bandbreite aufweisen.
+    Sollte es bei einem \gls{dos} Angriff mehrere Angreifer geben, so wird von einem Distributed-\acrlong{dos} Angriff gesprochen.
 
-    % Distributed DoS
 
     \subsection{\glsentrylong{mitm} Angriff}
     \label{subsec:mitm}
@@ -269,21 +271,24 @@
     Passive verändern den Netzwerkverkehr nicht, sondern lauschen nur um an Informationen zu gelangen (sog.\ Lauschangriff).
     Hierbei wird die Confidentiality von Daten missachtet.
 
-    Bei aktiven hingegen wird der Verkehr zwischen zwei Kommunikationspartnern zudem noch verändert.
+    Bei aktiven hingegen wird der Verkehr zwischen zwei Kommunikationspartnern verändert.
     Beide Arten nutzen allerdings dieselben initialen Angriffsvektoren.
     In der Abbildung~\ref{fig:attack_points} stellt A1 und A3 aktive \gls{mitm} Angriffe dar.
     Ein Controller kommuniziert über ein Netzwerk mit einem physischen System über die Verbindungen $y$ und $u$.
     Ziel eines Angreifers ist es den Netzwerkverkehr zwischen den beiden anderen Hosts über sich zu leiten~\cite{WYX+10,FPA+18} um ihn so beeinflussen zu können.
     In der Abbildung ist dies dadurch dargestellt, dass $y \ne \tilde{y}$ und $u \ne \tilde{u}$.
-    Ein passiver Angriff die Kommunikation nicht verändern, dh.\ es gilt $y = \tilde{y}$ und $u = \tilde{u}$.
-    Diese Angriffe können also aufgrund von fehlender Authenticity zu einem Verlust von Integrity führen, da nicht sichergestellt ist, dass die Daten nicht manipuliert wurden.\todo{Mehr erklären?}
+    Ein passiver Angriff würde die Kommunikation nicht verändern, dh.\ es gilt $y = \tilde{y}$ und $u = \tilde{u}$.
+    Diese Angriffe sind aufgrund von fehlender Authenticity zwischen den Kommunikationspartnern möglich.
+    Die Partner können sich also nicht sicher sein ob die Nachrichten, ob die Nachricht nicht während dem Transport von Sende zu Empfänger nicht verändert wurden.
+    Dadurch ist auch die Integrity der Kommunikation nicht mehr gewährleistet, da auch Prüfsummen so abgeändert werden können, sodass diese den manipulierten Daten entsprechen.
 
-    Dies ist in IEEE 802.11 und lokalen Netzwerken beispielsweise über ARP-Poisoning möglich~\cite{FIT+12}, wodurch die Identität eines anderen Netzwerkteilnehmers eingenommen werden kann~\cite{RN05}.
+    Diese Angriffe sind beispielsweise in IEEE 802.11 und lokalen Netzwerken über ARP-Poisoning möglich~\cite{FIT+12}, indem die Identität eines anderen Netzwerkteilnehmers eingenommen werden kann~\cite{RN05}.
 
-    Ein weiteres Beispiel für diese Art von Angriffen sind offline Relay Angriffe.
-    Dabei werden langwellige Signale, welche von Autos an den Schlüssel des Besitzers gesendet werden, um festzustellen, ob dieser in der Nähe ist, abgefangen und aufgezeichnet.
-    Beim Abspielen dieses Signals, in der Nähe des Besitzers sendet der Schlüssel ein Hochfrequenzsignal, welches wiederum aufgezeichnet wird.
-    Das Abspielen dieses HF-Signals kann dann dazu genutzt werden, um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
+    Ein weiteres Beispiel für diese Art von Angriffen sind offline Relay Angriffe bei Autos.
+    Dabei werden langwellige Signale, die von dem Auto an den Schlüssel des Besitzers gesendet werden, abgefangen und aufgezeichnet.
+    War der Besitzer zu diesem Zeitpunk nicht in der Nähe, so kann man das Aufgezeichnete Signal weiter verwenden und es in der Nähe des Besitzers erneut abspielen.
+    Der Schlüssel sendet nun ein Hochfrequenzsignal, welches wiederum aufgezeichnet wird.
+    Das erneute Abspielen dieses HF-Signals kann dann dazu genutzt werden, um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
 
     \subsection{Angriff des physischen Systems}
     \label{subsec:physical-deception}
@@ -299,7 +304,7 @@
     Dieses kann dann vom Cyber-System elektronisch abgetastet werden, um die Daten weiterzuverarbeiten.
     Dazu ist eine Kalibrierung nötig um die analogen Werte auf binäre Werte abzubilden.
     Ungültige Kalibrierungen können zu falschen Messwerten und zu katastrophalen Unfällen führen.
-    Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage Mikrocontroller eingesetzt werden, wodurch es möglich ist Sensortests zu bestehen und im Produktionsbetrieb allerdings nicht wie erwartet zu funktionieren.~\cite{KLG15}
+    Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage Mikrocontroller eingesetzt werden, wodurch es möglich ist Sensortests zu bestehen und im Produktionsbetrieb allerdings nicht wie erwartet zu funktionieren.~\cite{KLG15}\todo{Beispiel: VW}
 
     Abgesehen von einer Manipulation, kann aber auch schon ein Auslesen von beispielsweise Seriennummern in medizinischen Geräten einen schweren Eingriff in die Confidentiality des Systems darstellen~\cite{HLL+17}.
 
@@ -320,7 +325,7 @@
     % Context Aware Security: Sensing, Cyber, Control, Physical Security (WYX+10)
 
     Gegenmaßnahmen haben als Ziel Angriffe zu verhindern oder abzuschwächen.
-    Für diese Arbeit soll zwischen reaktive und proaktiven Maßnahmen unterschieden werden.
+    In dieser Arbeit soll zwischen reaktiven und proaktiven Maßnahmen unterschieden werden.
 
     \subsection{Proaktive Maßnahmen: Verhindern von Angriffen}
     \label{subsec:proactive}
@@ -341,16 +346,16 @@
     %Autorisierung stellt die Integrity des Systems sicher, indem von bestimmten Nachrichtensendern nur bestimmte Aktionen ausgeführt werden dürfen.
 
     Je nachdem welche Kommunikationswege abgesichert werden soll gibt es verschiedene Ansätze.
-    Die Verbindungen $u$ und $y$ in Abbildung~\ref{fig:abstrakt} könnten beispielsweise CAN oder LIN Bussen darstellen.
+    Die Verbindungen $u$ und $y$ in Abbildung~\ref{fig:abstrakt} könnten beispielsweise CAN oder LIN Busse darstellen, welche die oft die Kommunikation in Autos ermöglichen.
     Diese stellen keine Verschlüsselung, Authentifizierung oder Autorisierung zur Verfügung~\cite{HLL+17}.
     Da effiziente Lösungen aufgrund von begrenzten Ressourcen in Autos wichtig sind, schlagen \citeauthor{WG12}~\cite{WG12} die Verwendung von Hardware Security Modules um Kommunikationen in beispielsweise Autos abzusichern.
-    Für Zähler in Stromnetzen gibt das \gls{nist} in \cite{PB14} vor, dass diese kryptografische Module nutzen, versiegelt und geschützt sein müssen.
+    Für Zähler in Stromnetzen gibt das \gls{nist} in \cite{PB14} vor, dass diese kryptografische Module nutzen und entsprechend physisch geschützt und versiegelt sein müssen.
 
     \todo{Sicherheit in Senor Netzwerken CAS08}
 
-    Soll eine sichere Kommunikation in das Internet gewährleistet werden, so stellt \gls{tls} eine standardisierte Lösung vor.
+    Soll eine sichere Kommunikation in das Internet gewährleistet werden, so stellt \gls{tls} eine standardisierte Lösung dar.
     Hierbei wird ein abhörsicherer Kanal gewährleistet, welcher Confidentiality und Integrity gewährleistet~\cite{SPB+16}.
-    Weitere Protokoll abseits des TCP/IP Stacks, welche \gls{tls} verwenden, sind \gls{dtls}, welches eine Sicherung über UDP ermöglicht und \gls{llcps}, welches eine Sicherung über \gls{nfc} ermöglicht~\cite{SPB+16}.
+   Abseits des TCP/IP Stacks bietet die \acrlong{dtls} eine Sicherung von UDP und das und das \acrlong{llcp} eine sicherere Kommunikation über \acrlong{nfc} an~\cite{SPB+16}.
     Besonders in der Entwicklung von Geräten für das IoT findet \gls{dtls} Verwendung~\cite{YWY+17,FPA+18}.
 
 
@@ -362,18 +367,18 @@
 
     % Widerstandsfähigkeit (Redundancy, Diversity)
     Um \cps die Widerstandsfähigkeit (eng.\ Resilience) zu erhöhen, können Redundanzen bereit gestellt werden, um einen Single Point of Failure zu vermeiden~\cite{CAS+09}.
-    Bei beispielsweise einem \gls{dos} Angriff, wie in Abbildung~\ref{fig:attack_points} bei A2 oder A4 gezeigt, könnte ein weiterer redundanter \enquote{Controller} oder weiteres \enquote{Physical System} dazu führen, dass der Angriff mitigiert.
-    \citeauthor{CAS+09}~\cite{CAS+09} beschreiben außerdem, dass eine Diversität an Hard- und Software der Redundanzen dazu führen, dass ein Angriffsvektor nicht auf alle eingesetzten Komponenten anwendbar ist.
+    Bei beispielsweise einem \gls{dos} Angriff, wie in Abbildung~\ref{fig:attack_points} bei A2 oder A4 gezeigt, könnte ein weiterer redundanter \enquote{Controller} oder weiteres \enquote{Physical System} dazu führen, dass der Angriff mitigiert werden kann.
+    \citeauthor{CAS+09}~\cite{CAS+09} beschreiben außerdem, dass eine Diversität an Hard- und Software der Redundanzen dazu führen, dass ein Angriffsvektor nicht auf alle eingesetzten Komponenten anwendbar ist und somit verhindert werden kann.
 
 
     % Trennung von Netzen, Privilegientrennung, Least Privilege-Prinzips
-    Weitere Konzepte sind die \enquote{Trennung von Netzen}~\cite{GK16}, die \enquote{Privilegientrennung} und das \enquote{Least Privilege-Prinzips}~\cite{CAS+09}, welche sowohl die Angriffsfläche als auch die Privilegien eines angegriffenen Ziels reduzieren.
+    Weitere Konzepte sind die \enquote{Trennung von Netzen}~\cite{GK16}, die \enquote{Privilegientrennung} und das \enquote{Least Privilege-Prinzip}~\cite{CAS+09}, welche sowohl die Angriffsfläche als auch die Schwere des Angriffs reduzieren.
 
     %Abschreckung
     \citeauthor{CAS+09}~\cite{CAS+09} meinten schon \citeyear{CAS+09}, dass Abschreckung (engl.\ Deterrence) durch Gesetzgebung, Gesetzesvollzug und internationale Zusammenarbeit ein wirksames Mittel gegen Angriffe sein können.
     Im Glossar vom \gls{nist} von \citeyear{Kissel13} lässt sich außerdem eine Erwähnung der Begriffs \enquote{Deterrence} in der Definition von Sicherheit finden~\cite{Kissel13}.
     Ziel ist es, dass die wahrgenommenen Kosten die wahrgenommenen Vorteile überwiegen, sodass es sich für beispielsweise einen Cyberkriminellen (wie in Kapitel~\ref{subsec:angreifergruppen} beschrieben) nicht mehr lohnt ein Ziel anzugreifen.
-    Nicht alle Angriffe lassen nicht verhindern, wodurch Maßnahmen zur Detektion und Wiederherstellung nötig sind, die im nächsten Kapitel diskutiert werden.
+    Nicht alle Angriffe lassen nicht verhindern, wodurch Maßnahmen zur Detektion und Wiederherstellung nötig sind, die im nächsten Kapitel diskutiert werden sollen.
 
     \label{physisch-orga}
     Physischer Zugriff auf \cps kann für unautorisierte Personen organisatorisch verhindert werden.
@@ -421,7 +426,7 @@
     Abgesehen von menschlicher Interaktion sollten allerdings, gerade in Echtzeitsystemen, vor allem automatische Prozesse eine Wiederherstellung ermöglichen.
 
     In \cite{KXW+18} wird ein automatisches Verfahren zur Wiederherstellung vorgestellt.
-    Hierbei werden Checkpoints der physischen- und Cyber-Systeme verwendet, um ein die Funktionsweise eines \cps wiederzustellen.
+    Hierbei werden Checkpoints der physischen und Cyber-Systeme verwendet, um ein die Funktionsweise eines \cps wiederzustellen.
     Dieses Verfahren findet beispielsweise Anwendung bei manipulierten Sensoren.
     Dieses bieten einen Vorteil gegenüber Redundanz und Diversität, da auch wenn alle Sensoren kompromittiert sind, immer noch ein Betrieb sichergestellt werden kann.
     Die erfolgreichen Ergebnisse des Verfahrens wurden experimentell durch Simulationen und Test in einem Fahrzeug nachgewiesen.
