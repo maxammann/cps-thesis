@@ -51,7 +51,7 @@
         Deshalb soll in dieser Arbeit ein Überblick über potenzielle Angreifergruppen und Angriffsszenarien gegeben werden, um adäquate Gegenmaßnahmen vorzustellen.
         Gegenmaßnahmen können dabei sowohl proaktiv als auch reaktiven eingesetzt werden, um \cps zu schützen.
 
-        Zuletzt soll diskutiert werden inwiefern momentan eingesetzte Systeme, in Bezug auf Sicherheit, verbessert werden können.
+        Zuletzt soll ein Fazit zur aktuellen Sicherheitssituation getroffen werden.
 
     \end{abstract}
     \todo{
@@ -62,26 +62,27 @@
     \tableofcontents
     \newpage
 
-    \section{Einführung}
+    \section{Einleitung}
     \label{sec:intro}
     \cps sind meist eingebettete Echtzeitsysteme, welche eine hohe Verfügbarkeit, Robustheit, Widerstandsfähigkeit und Berechenbarkeit aufweisen müssen.
     Die physische Welt macht hohe Verfügbarkeit allerdings oft schwierig, da sie alles andere als berechenbar ist~\cite{Lee08,SGL+08}.
-    Einsatzorte für diese Systeme sind beispielsweise intelligente Stromnetze, symbiotische Sensornetzwerke für die Agrarwirtschaft und Katastrophenabwehr, medizinische oder assistierende Geräte, intelligente Verkehrssteuerung, intelligente Gebäude~\cite{RLS+10}, Autos und \glspl{ics} sein~\cite{HLL+17}.
+    Einsatzorte für diese Systeme sind beispielsweise intelligente Stromnetze, symbiotische Sensornetzwerke für die Agrarwirtschaft und Katastrophenabwehr, medizinische oder assistierende Geräte, intelligente Verkehrssteuerung, intelligente Gebäude~\cite{RLS+10}, \gls{scada}, Autos und \glspl{ics} sein~\cite{HLL+17}.
 
     In diesen Beispielen spielt ein außerordentliches Maß an Vertrauen eine Rolle~\cite{SGL+08}.
     Dieses ist zwar auch bei Cyber-Systemen gefordert, allerdings ohne die Koppelung an physische Prozesse~\cite{BG11}.
     Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise die Bindung an eine Batterie oder eine leichte Bauweise~\cite{YWY+17}.
     Es existiert also ein Unterschied zwischen den Anforderungen an \cps und Cyber-Systemen, wie Anwendungsservern oder Heimcomputern, sodass man diese in Bezug auf Sicherheit auf einem anderen Blickwinkel betrachten muss.
-    \todo{Einleitung ausbauen}
+
+    Angriffe wie Stuxnet beweisen, dass ein Bedürfnis nach verbesserter Sicherheit existiert.
+    Ersteres stellt einen im Jahr 2010 stattgefundenen, umfassenden Angriff gegen \gls{scada} Systeme in einem Nuklearkraftwerk dar~\cite{Langner11}.
+    Das Vorgehen bei diesem Angriff war zu diesem Zeitpunkt neu, da es von dem eines Cyberangriffs abwich~\cite{Langner11}.
 
     In Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von physischen und Cyber-Systemen im Bezug auch Sicherheit geklärt.
     Zudem werden mögliche Angreifer in Kapitel~\ref{subsec:angreifergruppen} beleuchtet.
     In Kapitel~\ref{sec:angriffszenarien} werden mögliche Szenarien für Angriffe und in Kapitel~\ref{sec:gegenmassnahmen} dazu Gegenmaßnahmen dargestellt.
-    Zuletzt soll in Kapitel~\ref{sec:improve-security-situation} diskutiert werden, wie die aktuelle Sicherheitssituation verbessert werden kann.
+    Zuletzt soll in Kapitel~\ref{sec:fazit-security-situation} ein Fazit zur aktuelle Sicherheitssituation getroffen werden.
     % Beispiele:
-    %   Stuxnet (Langer)
     %   Spectre: https://arxiv.org/pdf/1811.05441.pdf
-    %   EU: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=JOIN:2017:0450:FIN https://ec.europa.eu/transport/sites/transport/files/3rd-mobility-pack/com20180283_en.pdf
     %   https://nakedsecurity.sophos.com/2018/11/15/darpa-uses-a-remote-island-to-stage-a-cyberattack-on-the-us-power-grid/?utm_campaign=Security%2BNewsletter&utm_medium=email&utm_source=Security_Newsletter_co_103
 
     \section{Bedeutung von Sicherheit in \glsentrytext{cps}}
@@ -432,9 +433,31 @@
     Dieses bieten einen Vorteil gegenüber Redundanz und Diversität, da, auch wenn alle Sensoren kompromittiert sind, immer noch ein Betrieb sichergestellt werden kann.
     Die erfolgreichen Ergebnisse des Verfahrens wurden experimentell durch Simulationen und Test in einem Fahrzeug nachgewiesen.
 
-    \section{Verbesserung der aktuellen Sicherheitssituation von \glsentryshort{cps}}
-    \label{sec:improve-security-situation}
-    \todo{Kapitel schreiben}
+    \section{Fazit zur aktuellen Sicherheitssituation von \glsentryshort{cps}}
+    \label{sec:fazit-security-situation}
+    Das implementieren von Gegenmaßnahmen liegt momentan in der Verantwortung der einzelnen Herstellern von \cps.
+    Mit dem Aufkommen von Konsumgüter für das IoT wird es immer wichtiger, dass Hersteller ein Bewusstsein für Confidentiality, Integrity, Availability, Authenticity, Veracity und Non-repudiation entwickeln.
+    Aber nicht nur in neuen Systemen ist dieses von großer Wichtigkeit.
+    Auch bereits eingesetzten SCADA Systemen müssen im Hinblick auf diese Eigenschaften überarbeitet der eventuell sogar komplett ausgetauscht werden.
+    Die erwähnten Angriffsszenarien stellen nur eine Auswahl von möglichen Angriffen dar, die sich über viele Anwendungsgebiete wie Autos, intelligente Stromnetze oder medizinische Geräte strecken.
+    Dies belegt ein massives Sicherheitsproblem in dem Bereich der \cps.
+
+    Angriffe wie beispielsweise Stuxnet (siehe \nameref{sec:intro}) zu verhindern liegt auch im Interesse der Europäischen Union.
+    In der EU finden derzeit Diskussionen zu automatisierten und intelligenten Autos statt.
+    Zwar gibt es schon Regelungen zur Abnahme von Autos und Datenschutzgesetze, aber es fehlt noch ein vollständiger rechtlicher Rahmen für intelligente und selbstfahrende Autos~\cite{EuropeanCommission2018}.
+    Zudem sieht die europäische Kommission vor allem einen wirtschaftlichen Nutzen in diesen neuen Technologien und will global Wettbewerbsfähig sein~\cite{EuropeanCommission2018}.
+    Der Fokus in der Sicherheit von Autos liegt allerdings bei Cyber-Systemen.
+    So wird in~\cite{EuropeanCommission2018} weniger die physische Seite von \cps in Autos beleuchtet.
+    Es existiert aktuell noch kein Konzept zum Schutz von Autos gegen Cyberangriffe~\cite{EuropeanCommission2018}.
+    Es bleibt abzuwarten ob bei der Gesetzgebung und der Festlegung von neuen Abnahmekriterien ein Bewusstsein für die aktuelle Sicherheitsproblematik von \cps gebildet wird.
+
+    Abschließend kann gesagt werden, dass aktuelle Forschung zur Sicherung von \cps und die gesetzlichen Rahmen  aufeinander abgestimmt werden sollten um einen Schutz der Anwender und Dritter zu gewährleisten.
+    Besonders bei der Koppelung mit physischen Prozessen, wie im Beispiel der intelligenten Autos, wird Sicherheit immer wichtiger.
+
+
+
+    %zur Sicherheit von IoT Geräten~\cite{Pinto2018}
+
 
     \newpage
     % ~\nocite{*}
