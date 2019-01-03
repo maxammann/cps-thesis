@@ -1,7 +1,7 @@
 % Encoding: UTF-8
 \documentclass[final,bibliography=totocnumbered]{include/sikseminar}
 \usepackage[utf8]{inputenc}
-\usepackage[textsize=tiny]{todonotes}
+\usepackage[textsize=tiny,disable]{todonotes}
 \usepackage{hyperref}
 \usepackage[T1]{fontenc}
 \usepackage[inline]{enumitem}
@@ -12,7 +12,7 @@
 \usepackage{tabu}
 \tabulinesep=1.2mm
 
-\usepackage[acronym,toc,section=section,numberedsection,nomain]{glossaries}
+\usepackage[acronym]{glossaries}
 \input{acronyms}
 
 \hypersetup{colorlinks = true,linkcolor = black,citecolor = black,urlcolor = black,filecolor = black}
@@ -23,7 +23,7 @@
 
 \clubpenalty=10000
 \widowpenalty=10000
-\overfullrule=1mm
+%\overfullrule=1mm
 
 \newcommand{\fb}[1]{\dofb#1}
 \newcommand{\cps}{\glspl{cps}\xspace}
@@ -46,17 +46,13 @@
     \begin{abstract}
         \section*{Kurzfassung}
         Durch die enge Koppelung von physischen und Cyber-System bei \cps ergeben sich neue relevante Eigenschaften, welche eine Erweiterung der Eigenschaften von klassischen Systemen darstellen.
-
         Zahlreiche Angriffe belegen die mangelhafte Sicherheit von derzeitig eingesetzten \cps.
         Deshalb soll in dieser Arbeit ein Überblick über potenzielle Angreifergruppen und Angriffsszenarien gegeben werden, um adäquate Gegenmaßnahmen vorzustellen.
-        Gegenmaßnahmen können dabei sowohl proaktiv als auch reaktiven eingesetzt werden, um \cps zu schützen.
-
+        Besonders bei \cps besteht eine große Diversität an Angriffsmöglichkeiten durch die erhöhte Komplexität und enge Koppelung.
+        Gegenmaßnahmen nehmen dadurch ebenfalls an Komplexität zu und können dabei sowohl proaktiv als auch reaktiven eingesetzt werden.
         Zuletzt soll ein Fazit zur aktuellen Sicherheitssituation getroffen werden.
 
     \end{abstract}
-    \todo{
-    Sind alle Begriffe definiert und klar?
-    }
     \thispagestyle{empty}
     \newpage
     \tableofcontents
@@ -74,8 +70,8 @@
     Es existiert also ein Unterschied zwischen den Anforderungen an \cps und Cyber-Systemen, wie Anwendungsservern oder Heimcomputern, sodass man diese in Bezug auf Sicherheit auf einem anderen Blickwinkel betrachten muss.
 
     Angriffe wie Stuxnet beweisen, dass ein Bedürfnis nach verbesserter Sicherheit existiert.
-    Ersteres stellt einen im Jahr 2010 stattgefundenen, umfassenden Angriff gegen \gls{scada} Systeme in einem Nuklearkraftwerk dar~\cite{Langner11}.
-    Das Vorgehen bei diesem Angriff war zu diesem Zeitpunkt neu, da es von dem eines Cyberangriffs abwich~\cite{Langner11}.
+    Dieser Angriff war 2010 ein umfassender Angriff gegen \gls{scada} Systeme in einem Nuklearkraftwerk~\cite{Langner11}.
+    Das Vorgehen bei diesem Angriff war zu diesem Zeitpunkt neu, da es von dem eines Cyberangriffs abwich indem vor allem die das physische System eine wichtige Rolle spielte~\cite{Langner11}.
 
     In Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von physischen und Cyber-Systemen im Bezug auch Sicherheit geklärt.
     Zudem werden mögliche Angreifer in Kapitel~\ref{subsec:angreifergruppen} beleuchtet.
@@ -102,10 +98,10 @@
     \end{itemize}
 
     In der Literatur findet sich das Konzept dieser drei Eigenschaften unter dem Begriff \textit{CIA-Dreieck} wieder.
-    Eine namentliche Übereinstimmung mit bereits anders belegten Begriffen stellt hier nur einen Zufall dar.
-    Zwischen diesen Eigenschaften muss bei der Entwicklung ein sinnvolles Gleichgewicht gefunden werden.
+    Eine namentliche Übereinstimmung mit anderen Konzepten stellt hier nur einen Zufall dar.
+    Zwischen diesen drei Eigenschaften muss bei der Entwicklung ein sinnvolles Gleichgewicht gefunden werden.
     \citeauthor{GK16}~\cite{GK16} beschreiben, dass bei Cyber-Systemen der Fokus auf \textit{Confidentiality} (dt.\ Vertraulichkeit) und bei \cps eher auf \textit{Availability} (dt.\ Verfügbarkeit) liegt.
-    Dieser Fokus ist kritisch zu betrachten, wenn man die diversen Einsatzorte und sicherheitskritischen Anforderungen von \cps betrachtet.
+    Dieser Fokus ist kritisch zu betrachten, wenn man die diversen Einsatzorte und sicherheitskritischen Anforderungen von \cps betrachtet~\cite{GK16}.
 
     Sie schlagen außerdem vor das CIA-Dreieck im Hinblick auf \cps durch die Eigenschaft \textit{Veracity} (dt.~Richtigkeit) zu erweitern.
     Ein System hat diese Eigenschaft genau dann, wenn Aussagen des Systems die Wahrhaftigkeit der Wirklichkeit entsprechen.
@@ -133,7 +129,7 @@
     %Hierbei darf es nicht möglich sein aufgezeichnete Aktionen zu leugnen \cite{NIST2013}.
     Ein System hat diese Eigenschaft also genau dann, wenn jedes Ereignis, welches das System beeinflusst, nachvollzogen werden kann.
 
-    \begin{figure}[h]
+    \begin{figure}[ht]
         \centering
         \includegraphics[height=4cm]{triad}
         \caption{Erweitertes CIA-Dreieck}
@@ -145,9 +141,9 @@
     Deshalb sind zusätzliche Eigenschaften wie Veracity und Authenticity, wie in Abbildung~\ref{fig:triad} zu sehen ist, nötig um die Sicherheitsbedürfnisse von \cps abzudecken.
     \citeauthor{CH13}~\cite{CH13} führen noch weitere Eigenschaften wie Accountability, Auditability und Privacy auf, welche allerdings in dieser Arbeit nicht weiter untersucht werden sollen, da diese schon durch andere Eigenschaften größtenteils abgedeckt sind (Accountability durch Authenticity, Auditability durch Non-repudiation und Privacy durch Confidentiality) und so auch keine große Erwähnung in der Literatur finden.\todo{Übereinstimmung überprüfen}
 
-    \begin{figure}[h]
+    \begin{figure}[ht]
         \centering
-        \begin{longtabu}
+        \begin{tabu}
             to \linewidth { | l | X[6,l] | X[1.1,l] | }
             \hline
             Eigenschaft: $e$&Ein System hat Eigenschaft $e$ genau dann, wenn~\ldots&Relevante Literatur \\
@@ -176,7 +172,7 @@
             \ldots jedes Ereignis, welches das System beeinflusst, nachvollzogen werden kann.&
             \cite{CH13} \cite{SFJ17} \cite{Ross15} \\
             \hline
-        \end{longtabu}
+        \end{tabu}
         \caption{Übersicht der \cps Eigenschaften}
         \label{fig:table}
     \end{figure}
@@ -292,7 +288,7 @@
     Der Schlüssel sendet nun ein Hochfrequenzsignal, welches wiederum aufgezeichnet wird.
     Das erneute Abspielen dieses HF-Signals kann dann dazu genutzt werden, um das Auto aufzuschließen und anschließend zu starten.~\cite{HLL+17}
 
-    \subsection{Angriff des physischen Systems}
+    \subsection{Angriff auf das physische System}
     \label{subsec:physical-deception}
     Angriffe auf den physischen Teil eines \cps zielen darauf ab Daten, schon vor dem Senden an das Cyber-System zu manipulieren.
     Dabei können die Daten zwischen dem physischen und Cyber-System zwar Authenticity vorweisen, aber dennoch nicht plausibel sein~\cite{SFJ17}.
@@ -404,15 +400,21 @@
     Dadurch können auch Einschränkungen der Veracity erkannt werden, welche zuvor von der Cyberseite unerkannt geblieben worden wären.
 
     \citeauthor{KLG15} stellen in \cite{KLG15} ein Modell zur Erkennung von manipulierten Sensoren vor.
-    Sie versuchen die Veracity eines \cps zu bewahren, indem sie die Gesamtentropie eines Clusters\todo{Erklären} überwachen um fehlende Plausibilität und Konsistenz zu erkennen.
-    In Abbildung~\ref{fig:spoof} sind die echten und manipulierten Werte dargestellt.
-    In Abbildung~\ref{fig:entropy_success} ist der Entropieverlauf dargestellt, aus dem mögliche Angriffe abgelesen werden können.\todo{Abbildung mehr erklären: Was wird erwartet? Wie kann man einen Angriff hier erkennen?}
-    %Die manipulierten Werte stellen einen realistischen Angriff dar, da diese von einem Mikrocontroller in einem Sensor generiert werden können.
+    Sie versuchen die Veracity eines \cps zu bewahren, indem sie die Gesamtentropie eines Clusters überwachen um fehlende Plausibilität und Konsistenz zu erkennen.
+    Entropie ist ein abstraktes Maß für die Zufälligkeit innerhalb eines Datensatzes.
+    In einem Kraftwerk kann zu jedem Zeitpunkt ein Wert für die aktuelle Entropie des gesamten Werkes bestimmt werden.
+    In Abbildung~\ref{fig:spoof} ist zu sehen, dass der Angreifer den tatsächlichen Druck verringert, um die Betriebskosten zu erhöhen und gleichzeitig dem Sensor falsche Druckwerte vorspielt.
+    In Abbildung~\ref{fig:entropy_success} ist der aktuelle mittlere Entropiewert (rote Linie) abzulesen, welcher über dem üblichen Entropiewert liegt (grüne Linie).
+    Daraus kann geschlossen werden, dass eine Anomalie innerhalb des Kraftwerkes existiert aber noch nicht bei welchem Sensor.
+    Deshalb kann zudem noch die Entropie jedes einzelnen Sensors überwacht werden um so den gesuchten Sensor ausfindig zu machen.
+    Allerdings ist dies nur möglich wenn der Entropieverlauf für die gefälschten Werte von Abbildung~\ref{fig:spoof} abweicht.
+    Bei guten gefälschten Werten ist ein Ausfindig machen des Sensors also nicht unbedingt möglich.
+
     \begin{figure}
         \centering
         \begin{subfigure}[t]{0.4\textwidth}
             \includegraphics[height=3cm]{entropy_a}
-            \caption{Manipulierte Werte des Reaktors}
+            \caption{Gefälschte Werte eines Sensors}
             \label{fig:spoof}
         \end{subfigure}
         \begin{subfigure}[t]{0.4\textwidth}
@@ -431,28 +433,28 @@
     Hierbei werden Checkpoints der physischen und Cyber-Systeme verwendet, um ein die Funktionsweise eines \cps wiederzustellen.
     Dieses Verfahren findet beispielsweise Anwendung bei manipulierten Sensoren.
     Dieses bieten einen Vorteil gegenüber Redundanz und Diversität, da, auch wenn alle Sensoren kompromittiert sind, immer noch ein Betrieb sichergestellt werden kann.
-    Die erfolgreichen Ergebnisse des Verfahrens wurden experimentell durch Simulationen und Test in einem Fahrzeug nachgewiesen.
+    Die erfolgreichen Ergebnisse des Verfahrens wurden experimentell durch Simulationen und Test in einem Modellfahrzeug nachgewiesen.
 
     \section{Fazit zur aktuellen Sicherheitssituation von \glsentryshort{cps}}
     \label{sec:fazit-security-situation}
     Das implementieren von Gegenmaßnahmen liegt momentan in der Verantwortung der einzelnen Hersteller von \cps.
-    Mit dem Aufkommen von Konsumgüter für das IoT wird es immer wichtiger, dass Hersteller ein Bewusstsein für Confidentiality, Integrity, Availability, Authenticity, Veracity und Non-repudiation entwickeln.
-    Aber nicht nur in neuen Systemen ist dieses von großer Wichtigkeit.
-    Auch bereits eingesetzten SCADA Systemen müssen im Hinblick auf diese Eigenschaften überarbeitet der eventuell sogar komplett ausgetauscht werden.
+    Mit dem Aufkommen von neuen Konsumgüter für das IoT wird es immer wichtiger, dass Hersteller ein Bewusstsein für Confidentiality, Integrity, Availability, Authenticity, Veracity und Non-repudiation entwickeln.
+    Aber nicht nur in neuen Systemen ist dies von großer Wichtigkeit.
+    Auch bereits eingesetzte SCADA Systemen müssen im Hinblick auf diese Eigenschaften überarbeitet oder eventuell sogar komplett ausgetauscht werden.
     Die erwähnten Angriffsszenarien stellen nur eine Auswahl von möglichen Angriffen dar, die sich über viele Anwendungsgebiete wie Autos, intelligente Stromnetze oder medizinische Geräte strecken.
-    Dies belegt ein massives Sicherheitsproblem in dem Bereich der \cps.
+    Die vielen Sicherheitslücken in etwa \cite{HLL+17} belegt ein massives Sicherheitsproblem in dem Bereich der \cps.
 
-    Angriffe wie beispielsweise Stuxnet (siehe \nameref{sec:intro}) zu verhindern liegt auch im Interesse der Europäischen Union.
-    Zu beispielsweise automatisierten und intelligenten Autos finden derzeit Diskussionen statt.
-    Zwar gibt es schon Regelungen zur Abnahme von Autos und Datenschutzgesetze, aber es fehlt noch ein vollständiger rechtlicher Rahmen für intelligente und selbstfahrende Autos~\cite{EuropeanCommission2018}.
+    Angriffe wie beispielsweise Stuxnet (siehe \nameref{sec:intro}) zu verhindern liegt auch im Interesse von Staaten und Staatenverbünden wie der Europäischen Union.
+    Zu beispielsweise selbstfahrende und intelligenten Autos finden derzeit Diskussionen statt.
+    Zwar gibt es schon Regelungen zur Abnahme von Autos und Datenschutzgesetze, aber es fehlt noch ein vollständiger rechtlicher Rahmen für diese Autos~\cite{EuropeanCommission2018}.
     Zudem sieht die europäische Kommission vor allem einen wirtschaftlichen Nutzen in diesen neuen Technologien und will global Wettbewerbsfähig sein~\cite{EuropeanCommission2018}.
-    Der Fokus in der Sicherheit von Autos liegt allerdings bei Cyber-Systemen.
-    So wird in~\cite{EuropeanCommission2018} weniger die physische Seite von \cps in Autos beleuchtet.
+    Der Fokus in der Sicherheit von Autos liegt noch zu sehr auf der Seite der Cyber-Systemen.
+    So wird in~\cite{EuropeanCommission2018} nur wenig die physische Seite von \cps in Autos beleuchtet.
     Es existiert aktuell noch kein Konzept zum Schutz von Autos gegen Cyberangriffe~\cite{EuropeanCommission2018}.
     Es bleibt abzuwarten, ob bei der Gesetzgebung und der Festlegung von neuen Abnahmekriterien ein Bewusstsein für die aktuelle Sicherheitsproblematik von \cps gebildet wird.
 
-    Abschließend kann gesagt werden, dass aktuelle Forschung zur Sicherung von \cps und die gesetzlichen Rahmen  aufeinander abgestimmt werden sollten um einen Schutz der Anwender und Dritter zu gewährleisten.
-    Besonders bei der Koppelung mit physischen Prozessen, wie im Beispiel der intelligenten Autos, wird Sicherheit immer wichtiger.
+    Abschließend kann gesagt werden, dass aktuelle Forschung zur Sicherung von \cps und die gesetzlichen Rahmen aufeinander abgestimmt werden sollten um einen Schutz der Anwender und Dritter zu gewährleisten.
+    Besonders bei der Koppelung mit physischen Prozessen, wie im Beispiel der intelligenten Autos, ist Sicherheit wichtig.
 
     \newpage
     % ~\nocite{*}
