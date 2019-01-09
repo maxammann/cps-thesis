@@ -46,12 +46,12 @@
 
     \begin{abstract}
         \section*{Kurzfassung}
-        Durch die enge Koppelung von physischen und Cyber-System bei \cps ergeben sich neue relevante Eigenschaften, welche eine Erweiterung der Eigenschaften von klassischen Systemen darstellen.
+        Durch die enge Koppelung von dem physischen System und dem Cyber-System bei \cps ergeben sich neue relevante Eigenschaften, welche eine Erweiterung der Eigenschaften von klassischen Systemen darstellen.
         Zahlreiche Angriffe belegen die mangelhafte Sicherheit von derzeitig eingesetzten \cps.
-        Deshalb soll in dieser Arbeit ein Überblick über potenzielle Angreifergruppen und Angriffsszenarien gegeben werden, um adäquate Gegenmaßnahmen vorzustellen.
+        Daher soll in dieser Arbeit ein Überblick über potenzielle Angreifergruppen und Angriffsszenarien gegeben werden, um adäquate Gegenmaßnahmen vorzustellen.
         Besonders bei \cps besteht eine große Diversität an Angriffsmöglichkeiten durch die erhöhte Komplexität und enge Koppelung.
-        Gegenmaßnahmen nehmen dadurch ebenfalls an Komplexität zu und können dabei sowohl proaktiv als auch reaktiven eingesetzt werden.
-        Zuletzt soll ein Fazit zur aktuellen Sicherheitssituation getroffen werden.
+        Gegenmaßnahmen nehmen dadurch ebenfalls an Komplexität zu und können dabei sowohl proaktiv als auch reaktiv eingesetzt werden.
+        Zuletzt soll ein Fazit zur aktuellen Sicherheitssituation gezogen werden.
 
     \end{abstract}
     \thispagestyle{empty}
@@ -61,22 +61,22 @@
 
     \section{Einleitung}
     \label{sec:intro}
-    \cps sind meist eingebettete Echtzeitsysteme, welche eine hohe Verfügbarkeit, Robustheit, Widerstandsfähigkeit und Berechenbarkeit aufweisen müssen.
-    Die physische Welt macht hohe Verfügbarkeit allerdings oft schwierig, da sie alles andere als berechenbar ist~\cite{Lee08,SGL+08}.
-    Einsatzorte für diese Systeme sind beispielsweise intelligente Stromnetze, symbiotische Sensornetzwerke für die Agrarwirtschaft und Katastrophenabwehr, medizinische oder assistierende Geräte, intelligente Verkehrssteuerung, intelligente Gebäude~\cite{RLS+10}, \gls{scada}, Autos und \glspl{ics} sein~\cite{HLL+17}.
+    \cps sind meist eingebettete Echtzeitsysteme, welche eine hohe Verfügbarkeit, Robustheit, Widerstandsfähigkeit gegen Angriffe und Berechenbarkeit aufweisen müssen.
+    Die physische Welt macht hohe Verfügbarkeit in Verbindung mit Berechenbarkeit allerdings oft schwierig~\cite{Lee08,SGL+08}.
+    Einsatzorte für diese Systeme sind beispielsweise intelligente Stromnetze, symbiotische Sensornetzwerke für die Agrarwirtschaft und Katastrophenabwehr, medizinische oder assistierende Geräte, intelligente Verkehrssteuerung, intelligente Gebäude~\cite{RLS+10}, \gls{scada}, Autos und \glspl{ics}~\cite{HLL+17}.
 
     In diesen Beispielen spielt ein außerordentliches Maß an Vertrauen eine Rolle~\cite{SGL+08}.
     Dieses ist zwar auch bei Cyber-Systemen gefordert, allerdings ohne die Koppelung an physische Prozesse~\cite{BG11}.
-    Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise die Bindung an eine Batterie oder eine leichte Bauweise~\cite{YWY+17}.
-    Es existiert also ein Unterschied zwischen den Anforderungen an \cps und Cyber-Systemen, wie Anwendungsservern oder Heimcomputern, sodass man diese in Bezug auf Sicherheit auf einem anderen Blickwinkel betrachten muss.
+    Zudem unterliegt man konzeptionell bedingt auch einigen Restriktionen wie beispielsweise der Bindung an eine Batterie oder eine leichte Bauweise~\cite{YWY+17}.
+    Es existiert also ein Unterschied zwischen den Anforderungen an \cps und Cyber-Systeme als an Anwendungsserver oder Heimcomputer, sodass man diese in Bezug auf Sicherheit aus einem anderen Blickwinkel betrachten muss.
 
     Angriffe wie Stuxnet beweisen, dass ein Bedürfnis nach verbesserter Sicherheit existiert.
     Dieser Angriff war 2010 ein umfassender Angriff gegen \gls{scada} Systeme in einem Nuklearkraftwerk~\cite{Langner11}.
-    Das Vorgehen bei diesem Angriff war zu diesem Zeitpunkt neu, da es von dem eines Cyberangriffs abwich indem vor allem die das physische System eine wichtige Rolle spielte~\cite{Langner11}.
+    Das Vorgehen bei diesem Angriff war zu diesem Zeitpunkt neu, da es von dem eines Cyberangriffs abwich, da vor allem das physische System eine wichtige Rolle spielte~\cite{Langner11}.
 
-    In Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von physischen und Cyber-Systemen im Bezug auch Sicherheit geklärt.
+    In Kapitel~\ref{sec:bedeutung-sicherheit} wird zunächst das Zusammenspiel von physischen Systemen und Cyber-Systemen im Bezug auch Sicherheit geklärt.
     Zudem werden mögliche Angreifer in Kapitel~\ref{subsec:angreifergruppen} beleuchtet.
-    In Kapitel~\ref{sec:angriffszenarien} werden mögliche Szenarien für Angriffe und in Kapitel~\ref{sec:gegenmassnahmen} dazu Gegenmaßnahmen dargestellt.
+    In Kapitel~\ref{sec:angriffszenarien} werden mögliche Szenarien für Angriffe und in Kapitel~\ref{sec:gegenmassnahmen} Gegenmaßnahmen dargestellt.
     Zuletzt soll in Kapitel~\ref{sec:fazit-security-situation} ein Fazit zur aktuelle Sicherheitssituation getroffen werden.
     % Beispiele:
     %   Spectre: https://arxiv.org/pdf/1811.05441.pdf
@@ -85,7 +85,7 @@
     \section{Bedeutung von Sicherheit in \glsentrytext{cps}}
     \label{sec:bedeutung-sicherheit}
 
-    Physische und Cyber-Systeme unterscheiden sich ihn ihren Eigenschaften in Bezug auf deren Sicherheit.
+    Physische Systeme und Cyber-Systeme unterscheiden sich ihn ihren Eigenschaften in Bezug auf ihre Sicherheit.
     Deshalb sollen im Folgenden relevante Eigenschaften speziell für \cps definiert werden.
 
     \subsection{Sicherheitsrelevante Eigenschaften von \glsentrytext{cps}}
@@ -95,7 +95,7 @@
     \begin{itemize}[noitemsep,wide=0pt]
         \item \fb{Confidentiality} - Nur autorisierte Teilnehmer können auf Ressourcen zugreifen.
         \item \fb{Integrity} - Ressourcen können nur von autorisierten Teilnehmern verändert werden.
-        \item \fb{Availability} - Ressourcen ist für autorisierte Teilnehmer angemessen verfügbar.
+        \item \fb{Availability} - Ressourcen sind für autorisierte Teilnehmer angemessen verfügbar.
     \end{itemize}
 
     In der Literatur findet sich das Konzept dieser drei Eigenschaften unter dem Begriff \textit{CIA-Dreieck} wieder.
@@ -105,15 +105,15 @@
     Dieser Fokus ist kritisch zu betrachten, wenn man die diversen Einsatzorte und sicherheitskritischen Anforderungen von \cps betrachtet~\cite{GK16}.
 
     Sie schlagen außerdem vor das CIA-Dreieck im Hinblick auf \cps durch die Eigenschaft \textit{Veracity} (dt.~Richtigkeit) zu erweitern.
-    Ein System hat diese Eigenschaft genau dann, wenn Aussagen des Systems die Wahrhaftigkeit der Wirklichkeit entsprechen.
+    Ein System hat diese Eigenschaft genau dann, wenn Aussagen des Systems der Wahrhaftigkeit der Wirklichkeit entsprechen.
     Es muss also sichergestellt werden, dass Sensoren, durch beispielsweise physische Maßnahmen fälschungssicher sind~(siehe Kapitel~\ref{physisch-orga}).
-    Confidentiality und Integrity (dt.\ Integrität) sind nicht ausreichend um die Richtigkeit von Informationen zu garantieren.
+    Confidentiality und Integrity (dt.\ Integrität) sind nicht ausreichend, um die Richtigkeit von Informationen zu garantieren.
     Veracity ist eine relativ starke Eigenschaft.
-    Deshalb kann man in Fällen, in denen diese nur schwer zu erreichen ist, zunächst auf Plausibility setzen.
+    Deshalb kann man in Fällen, in denen diese nur schwer zu erreichen ist, zunächst auf \textit{Plausibility} (dt.\ Plausiblität) setzen.
     Hierbei hat ein System genau dann diese Eigenschaft, wenn Aussagen des Systems nicht zu weit von erwartbaren Werten abweichen.
     Liefert ein Sensor beispielsweise einen für physikalische Modelle unmögliche Wert, so ist dieser nicht plausibel und das System kann dies als möglichen Angriff oder aber auch einen Systemfehler erkennen.~\cite{GK16,KLG15}
 
-    Diese Eigenschaft entspricht nicht die der Integrity, da die Werte des Sensors bereits vor dem Verlassen des physischen Systems verändert werden können.
+    Diese Eigenschaft entspricht nicht der der Integrity, da die Werte des Sensors bereits vor dem Verlassen des physischen Systems verändert werden können.
     Bei Integrity spielt die Kommunikation der beiden Systeme eine zentrale Rolle.
     Veracity stellt also eine grundsätzlich andere Eigenschaft bereit.
 
@@ -137,7 +137,7 @@
         \label{fig:triad}
     \end{figure}
 
-    Die Eigenschaften von Systemen aus der klassischen Informationssicherheit sind also nicht ausreichend um das oft komplexe Zusammenspiel von physischen und Cyber-Systemen abzusichern.
+    Die Eigenschaften von Systemen aus der klassischen Informationssicherheit sind also nicht ausreichend um das oft komplexe Zusammenspiel von physischen Systemen und Cyber-Systemen abzusichern.
     Bei \cps ist also sowohl die Richtigkeit von Informationen als auch die zweifelsfreie Identifikation zweier Parteien wichtig.
     Deshalb sind zusätzliche Eigenschaften wie Veracity und Authenticity, wie in Abbildung~\ref{fig:triad} zu sehen ist, nötig um die Sicherheitsbedürfnisse von \cps abzudecken.
     \citeauthor{CH13}~\cite{CH13} führen noch weitere Eigenschaften wie Accountability, Auditability und Privacy auf, welche allerdings in dieser Arbeit nicht weiter untersucht werden sollen, da diese schon durch andere Eigenschaften größtenteils abgedeckt sind (Accountability durch Authenticity, Auditability durch Non-repudiation und Privacy durch Confidentiality) und so auch keine große Erwähnung in der Literatur finden.\todo{Übereinstimmung überprüfen}
@@ -162,7 +162,7 @@
             \cite{CH13} \\
             \hline
             Veracity &
-            \ldots Aussagen des Systems die Wahrhaftigkeit der Wirklichkeit entsprechen.&
+            \ldots Aussagen des Systems der Wahrhaftigkeit der Wirklichkeit entsprechen.&
             \cite{KLG15} \cite{GK16}\\
             \hline
             Authenticity&
@@ -199,9 +199,9 @@
     Dabei sind Cyberangriffe nur ein logischer nächster Schritt der Kriminellen, da diese weitaus günstiger, weniger riskant, nicht durch Entfernungen eingeschränkt und einfacher zu koordinieren und wiederholen sind. \cite{CAS+09}
 
     Computerforensiker~\ref{factor:angreifergruppe} haben nicht unbedingt als Ziel selbst ein System zu beschädigen.
-    Zum einen kann das Finden von Lücken als Ziel haben, diese unter bestimmten Auflagen offen zulegen und dadurch schließen zu können~\cite{Hahn2012}~\ref{factor:motiv}.
+    Zum einen kann das Finden von Lücken zum Ziel haben, diese unter bestimmten Auflagen offen zulegen und dadurch schließen zu können~\cite{Hahn2012}~\ref{factor:motiv}.
     Dabei gibt es verschiedene Arten, wie man diese offenlegen kann. \citeauthor{Hahn2012} unterscheidet hierbei zwischen voller, beschränkter und keiner Offenlegung.
-    Zum anderen können diese Lücken aber auch als Schadsoftware verkaufen werden~\ref{factor:motiv}, wie \citeauthor{Allodi2013} in ihrer Risikoeinschätzung \cite{Allodi2013} erläutern.
+    Zum anderen können diese Lücken aber auch als Schadsoftware verkauft werden~\ref{factor:motiv}, wie \citeauthor{Allodi2013} in ihrer Risikoeinschätzung zum Schwarzmarkt im Internet \cite{Allodi2013} erläutern.
 
     Unzufriedene~\ref{factor:motiv}~Mitarbeiter~\ref{factor:angreifergruppe} eines Unternehmens haben viel Wissen über dessen Infrastruktur.
     Das Ziel ist hierbei die Schädigung des Unternehmens~\ref{factor:konsequenz}.
@@ -272,14 +272,14 @@
 
     Bei aktiven hingegen wird der Verkehr zwischen zwei Kommunikationspartnern verändert.
     Beide Arten nutzen allerdings dieselben initialen Angriffsvektoren.
-    In der Abbildung~\ref{fig:attack_points} stellt A1 und A3 aktive \gls{mitm} Angriffe dar.
+    In der Abbildung~\ref{fig:attack_points} stellen A1 und A3 aktive \gls{mitm} Angriffe dar.
     Ein Controller kommuniziert über ein Netzwerk mit einem physischen System über die Verbindungen $y$ und $u$.
     Ziel eines Angreifers ist es den Netzwerkverkehr zwischen den beiden anderen Hosts über sich zu leiten~\cite{WYX+10,FPA+18} um ihn so beeinflussen zu können.
     In der Abbildung ist dies dadurch dargestellt, dass $y \ne \tilde{y}$ und $u \ne \tilde{u}$.
     Ein passiver Angriff würde die Kommunikation nicht verändern, d.~h.\ es gilt $y = \tilde{y}$ und $u = \tilde{u}$.
     Diese Angriffe sind aufgrund von fehlender Authenticity zwischen den Kommunikationspartnern möglich.
-    Die Partner können sich also nicht sicher sein, ob die Nachricht nicht während dem Transport von Sende zu Empfänger nicht verändert wurden.
-    Dadurch ist auch die Integrity der Kommunikation nicht mehr gewährleistet, da auch Prüfsummen so abgeändert werden können, sodass diese den manipulierten Daten entsprechen.
+    Die Partner können sich also nicht sicher sein, ob die Nachricht nicht während dem Transport von Sender zu Empfänger nicht verändert wurde.
+    Dadurch ist auch die Integrity der Kommunikation nicht mehr gewährleistet, da auch Prüfsummen abgeändert werden können, sodass diese den manipulierten Daten entsprechen.
 
     Diese Angriffe sind beispielsweise in IEEE 802.11 und lokalen Netzwerken über ARP-Poisoning möglich~\cite{FIT+12}, indem die Identität eines anderen Netzwerkteilnehmers eingenommen werden kann~\cite{RN05}.
 
@@ -291,9 +291,9 @@
 
     \subsection{Angriff auf das physische System}
     \label{subsec:physical-deception}
-    Angriffe auf den physischen Teil eines \cps zielen darauf ab Daten, schon vor dem Senden an das Cyber-System zu manipulieren.
-    Dabei können die Daten zwischen dem physischen und Cyber-System zwar Authenticity vorweisen, aber dennoch nicht plausibel sein~\cite{SFJ17}.
-    In einem solchen Fall wird die Eigenschaft Veracity von \cps verletzt.
+    Angriffe auf den physischen Teil eines \cps zielen darauf ab Daten schon vor dem Senden an das Cyber-System zu manipulieren.
+    Dabei können die Daten zwischen dem physischen System und Cyber-System zwar Authenticity vorweisen, aber dennoch nicht plausibel sein~\cite{SFJ17}.
+    In einem solchen Fall wird die Eigenschaft Veracity vom \cps verletzt.
 
     Zum einen können physische Prozesse manipuliert werden, sodass Wechselwirkungen zwischen Sensoren stattfinden können, obwohl diese nicht elektronisch miteinander verbunden sind.
     Beispielsweise können zwei benachbarte Knoten in einem Stromnetzwerk gegensätzliche Störungen hervorrufen, sodass Fehler in der globalen Zustandsberechnung nicht erkannt werden können~\cite{KLG15}.
@@ -301,7 +301,7 @@
     Zum anderen können Sensoren manipuliert werden.
     Üblicherweise messen Sensoren die physische Welt und geben ein analoges Signal aus, das dem zu messenden Wert entspricht.
     Dieses kann dann vom Cyber-System elektronisch abgetastet werden, um die Daten weiterzuverarbeiten.
-    Dazu ist eine Kalibrierung nötig um die analogen Werte auf binäre Werte abzubilden.
+    Dazu ist eine Kalibrierung nötig um die analogen Werte als binäre Werte abzubilden.
     Ungültige Kalibrierungen können zu falschen Messwerten und zu katastrophalen Unfällen führen.
     Dieses Problem wird verstärkt, indem in vielen monolithisch Sensoren heutzutage Mikrocontroller eingesetzt werden, wodurch es möglich ist Sensortests zu bestehen und im Produktionsbetrieb nicht nach Spezifikation zu arbeiten.~\cite{KLG15}\todo{Beispiel: VW}
 
@@ -337,36 +337,36 @@
     Verschlüsselung allein erlaubt es allerdings immer noch einen Replay-Angriff auszuführen, da auch die verschlüsselten Daten aufgezeichnet und erneut gesendet werden können.
 
     Mithilfe von digitalen Signaturen kann festgestellt werden, ob eine Nachricht von Dritten manipuliert wurde und beispielsweise ein \gls{mitm} Angriff stattgefunden hat~\cite{CAS08}.
-    Aktualität der Daten kann durch einen, in den zu signierenden Daten beinhalteten Zeitstempel oder durch Challenge-Response-Mechanismen gesichert werden~\cite{CAS08}.
-    Bei ersterem ist eine sichere Synchronisation der Zeit notwendig~\cite{CAS08}.
-    Durch eine Überprüfung auf Aktualität werden Replay-Angriffe verhindert, da alte Nachrichten als invalide angesehen werden können.
+    Aktualität der Daten kann durch einen, in den zu signierenden Daten beinhalteten Zeitstempel, oder durch Challenge-Response-Mechanismen gesichert werden~\cite{CAS08}.
+    Bei Ersterem ist eine sichere Synchronisation der Zeit notwendig~\cite{CAS08}.
+    Durch eine Überprüfung auf Aktualität werden Replay-Angriffe verhindert, da alte Nachrichten als invalide erkannt werden können.
 
     %Autorisierung ist der nächste Schritt nachdem eine Authentifizierung stattgefunden hat.
     %Autorisierung stellt die Integrity des Systems sicher, indem von bestimmten Nachrichtensendern nur bestimmte Aktionen ausgeführt werden dürfen.
 
-    Je nachdem welche Kommunikationswege abgesichert werden soll gibt es verschiedene Ansätze.
-    Die Verbindungen $u$ und $y$ in Abbildung~\ref{fig:abstrakt} könnten beispielsweise durch Controller Area Networks (CAN) oder Local Interconnect Networks (LIN) realisiert sein, welche oft als Bussystem in Autos verwendet werden.
+    Je nachdem welche Kommunikationswege abgesichert werden sollen gibt es verschiedene Ansätze.
+    Die Verbindungen $u$ und $y$ in Abbildung~\ref{fig:abstrakt} könnten beispielsweise durch Controller Area Networks (CAN) oder Local Interconnect Networks (LIN) realisiert werden, welche oft als Bussystem in Autos verwendet werden.
     Diese stellen keine Verschlüsselung, Authentifizierung oder Autorisierung zur Verfügung~\cite{HLL+17}.
-    Da effiziente Lösungen aufgrund von begrenzten Ressourcen in Autos wichtig sind, schlagen \citeauthor{WG12}~\cite{WG12} die Verwendung von Hardware Security Modules um Kommunikationen in beispielsweise Autos abzusichern.
+    Da effiziente Lösungen aufgrund von begrenzten Ressourcen in Autos wichtig sind, schlagen \citeauthor{WG12}~\cite{WG12} die Verwendung von Hardware Security Modules vor um Kommunikationen in beispielsweise Autos abzusichern.
     Für Zähler in Stromnetzen gibt das \gls{nist} in \cite{PB14} vor, dass diese kryptografische Module nutzen und entsprechend physisch geschützt und versiegelt sein müssen.
 
     \todo{Sicherheit in Senor Netzwerken CAS08}
 
-    Soll eine sichere Kommunikation in das Internet gewährleistet werden, so stellt \gls{tls} eine standardisierte Lösung dar.
-    Hierbei wird ein abhörsicherer Kanal gewährleistet, welcher Confidentiality und Integrity gewährleistet~\cite{SPB+16}.
-   Abseits des TCP/IP Stacks bietet die \acrlong{dtls} eine Sicherung von UDP und das und das \acrlong{llcp} eine sicherere Kommunikation über \acrlong{nfc} an~\cite{SPB+16}.
+    Soll eine sichere Kommunikation über das Internet gewährleistet werden, so stellt \gls{tls} eine standardisierte Lösung dar.
+    Hierbei wird ein abhörsicherer Kanal aufgebaut, welcher Confidentiality und Integrity gewährleistet~\cite{SPB+16}.
+   Abseits des TCP/IP Stacks bietet die \acrlong{dtls} eine Sicherung von UDP und das \acrlong{llcp} eine sicherere Kommunikation über \acrlong{nfc} an~\cite{SPB+16}.
     Besonders in der Entwicklung von Geräten für das IoT findet \gls{dtls} Verwendung~\cite{YWY+17,FPA+18}.
 
 
     % Verification
     Eine Verifikation des Programmcodes von Software stellt eine Möglichkeit dar die Anzahl der Sicherheitslücken zu reduzieren~\cite{CAS08}.
-    Formale Methoden und das Testen von \cps sollten stärker miteinander integriert werden~\cite{RLS+10}.
-    Zudem argumentieren \citeauthor{SGL+08}~\cite{SGL+08}, dass Verifikation und Validierung von \cps kein einmaliges Ereignis, sondern stets in einen Prozess integriert sein sollten.
+    Formale Methoden und das Testen von \cps sollten stärker ineinander integriert werden~\cite{RLS+10}.
+    Zudem argumentieren \citeauthor{SGL+08}~\cite{SGL+08}, dass Verifikation und Validierung von \cps nicht nur einmalig stattfinden, sondern stets in einen Prozess integriert sein sollten.
 
 
     % Widerstandsfähigkeit (Redundancy, Diversity)
-    Um \cps die Widerstandsfähigkeit (eng.\ Resilience) zu erhöhen, können Redundanzen bereitgestellt werden, um einen Single Point of Failure zu vermeiden~\cite{CAS+09}.
-    Bei beispielsweise einem \gls{dos} Angriff, wie in Abbildung~\ref{fig:attack_points} bei A2 oder A4 gezeigt, könnte ein weiterer redundanter \enquote{Controller} oder weiteres \enquote{Physical System} dazu führen, dass der Angriff abgeschwächt werden kann.
+    Um die Widerstandsfähigkeit (eng.\ Resilience) von \cps zu erhöhen, können Redundanzen bereitgestellt werden, um einen Single Point of Failure zu vermeiden~\cite{CAS+09}.
+    Bei beispielsweise einem \gls{dos} Angriff, wie in Abbildung~\ref{fig:attack_points} bei A2 oder A4 gezeigt, könnte ein weiterer redundanter \enquote{Controller} oder weiteres \enquote{Physical System} dazu führen, dass der Angriff abgeschwächt wird.
     \citeauthor{CAS+09}~\cite{CAS+09} beschreiben außerdem, dass eine Diversität an Hard- und Software der Redundanzen dazu führen, dass ein Angriffsvektor nicht auf alle eingesetzten Komponenten anwendbar ist und somit verhindert werden kann.
 
 
@@ -377,13 +377,13 @@
     \citeauthor{CAS+09}~\cite{CAS+09} meinten schon \citeyear{CAS+09}, dass Abschreckung (engl.\ Deterrence) durch Gesetzgebung, Gesetzesvollzug und internationale Zusammenarbeit ein wirksames Mittel gegen Angriffe sein können.
     Im Glossar vom \gls{nist} von \citeyear{Kissel13} lässt sich außerdem eine Erwähnung der Begriffs \enquote{Deterrence} in der Definition von Sicherheit finden~\cite{Kissel13}.
     Ziel ist es, dass die wahrgenommenen Kosten die wahrgenommenen Vorteile überwiegen, sodass es sich für beispielsweise einen Cyberkriminellen (wie in Kapitel~\ref{subsec:angreifergruppen} beschrieben) nicht mehr lohnt ein Ziel anzugreifen.
-    Nicht alle Angriffe lassen nicht verhindern, wodurch Maßnahmen zur Detektion und Wiederherstellung nötig sind, die im nächsten Kapitel diskutiert werden sollen.
+    Nicht alle Angriffe lassen sich verhindern, wodurch Maßnahmen zur Detektion und Wiederherstellung nötig sind, die im nächsten Kapitel diskutiert werden sollen.
 
     \label{physisch-orga}
     Physischer Zugriff auf \cps kann für unautorisierte Personen organisatorisch verhindert werden.
     Physischer Zugang kann viele Cybergegenmaßnahmen unwirksam machen und sehr leicht die Availability des Systems stören, indem dieses physisch beschädigt wird.
     % Cyber honeypod könnte einen physischen angreifer ablenken
-    \citeauthor{CAS08}~\cite{CAS08} sind allerdings der Meinung, dass Cyberangriffe potenziell attraktiver sind, da diese im Allgemeinen schwieriger zu verfolgen, nicht physisch gefährlich für den Angreifer und keine Ortseinschränkungen existieren.
+    \citeauthor{CAS08}~\cite{CAS08} sind allerdings der Meinung, dass Cyberangriffe potenziell attraktiver sind, da diese im Allgemeinen schwieriger zu verfolgen, nicht physisch gefährlich für den Angreifer sind und keine Ortseinschränkungen existieren.
 
     Für \glspl{ics} schlägt das \gls{nist} in \cite{SPL+15} beispielsweise Sicherheitskonzepte vor wie Zugangskontrollen oder Überwachung von Mitarbeitern und Ressourcen.
 
@@ -394,22 +394,22 @@
     % DoS: rate limiting
 
     Reaktive Maßnahmen versuchen Angriffe zu erkennen und einen sicheren Zustand wiederherzustellen.
-    Im Gegensatz zu proaktiven Maßnahmen von Kapitel~\ref{subsec:proactive} wird also der Angriff zunächst nicht verhindert, sondern es wird gewährleistet, dass die Einflüsse eines Angriffs bewältigt werden können.
+    Im Gegensatz zu proaktiven Maßnahmen von Kapitel~\ref{subsec:proactive} wird also der Angriff zunächst nicht verhindert, sondern es wird gewährleistet, dass die Auswirkungen eines Angriffs bewältigt werden können.
 
     Klassische Angriffserkennungssysteme beobachten üblicherweise Netzwerke oder Cyber-Systeme.
     Kontrollsysteme in \cps können allerdings einen Schritt weiter gehen und auch das physische System in die Überprüfung miteinbeziehen~\cite{CAS+09}.
     Dadurch können auch Einschränkungen der Veracity erkannt werden, welche zuvor von der Cyberseite unerkannt geblieben worden wären.
 
     \citeauthor{KLG15} stellen in \cite{KLG15} ein Modell zur Erkennung von manipulierten Sensoren vor.
-    Sie versuchen die Veracity eines \cps zu bewahren, indem sie die Gesamtentropie eines Clusters überwachen um fehlende Plausibilität und Konsistenz zu erkennen.
+    Sie versuchen die Veracity eines \cps zu bewahren, indem sie die Gesamtentropie eines Clusters überwachen, um fehlende Plausibilität und Konsistenz zu erkennen.
     Entropie ist ein abstraktes Maß für die Zufälligkeit innerhalb eines Datensatzes.
     In einem Kraftwerk kann zu jedem Zeitpunkt ein Wert für die aktuelle Entropie des gesamten Werkes bestimmt werden.
     In Abbildung~\ref{fig:spoof} ist zu sehen, dass der Angreifer den tatsächlichen Druck verringert, um die Betriebskosten zu erhöhen und gleichzeitig dem Sensor falsche Druckwerte vorspielt.
     In Abbildung~\ref{fig:entropy_success} ist der aktuelle mittlere Entropiewert (rote Linie) abzulesen, welcher über dem üblichen Entropiewert liegt (grüne Linie).
-    Daraus kann geschlossen werden, dass eine Anomalie innerhalb des Kraftwerkes existiert aber noch nicht bei welchem Sensor.
+    Daraus kann geschlossen werden, dass eine Anomalie innerhalb des Kraftwerkes existiert, aber noch nicht bei welchem Sensor.
     Deshalb kann zudem noch die Entropie jedes einzelnen Sensors überwacht werden um so den gesuchten Sensor ausfindig zu machen.
     Allerdings ist dies nur möglich wenn der Entropieverlauf für die gefälschten Werte von Abbildung~\ref{fig:spoof} abweicht.
-    Bei guten gefälschten Werten ist ein Ausfindig machen des Sensors also nicht unbedingt möglich.
+    Bei guten gefälschten Werten ist eine Identifikation des einzelnen Sensors also nicht unbedingt möglich.
 
     \begin{figure}
         \centering
@@ -428,33 +428,35 @@
     \end{figure}
 
     \citeauthor{CAS+09}~\cite{CAS+09} schlagen vor, dem Betreiber von Kontrollsystemen genügend Informationen zukommen zu lassen, um gut auf Anomalien reagieren zu können.
-    Abgesehen von menschlicher Interaktion sollten allerdings, gerade in Echtzeitsystemen, vor allem automatische Prozesse eine Wiederherstellung ermöglichen.
+    Abgesehen von menschlicher Interaktion sollten allerdings gerade in Echtzeitsystemen vor allem automatische Prozesse eine Wiederherstellung ermöglichen.
 
     In \cite{KXW+18} wird ein automatisches Verfahren zur Wiederherstellung vorgestellt.
-    Hierbei werden Checkpoints der physischen und Cyber-Systeme verwendet, um ein die Funktionsweise eines \cps wiederzustellen.
+    Hierbei werden Checkpoints der physischen Systeme und Cyber-Systeme verwendet, um die Funktionsweise eines \cps wiederzustellen.
     Dieses Verfahren findet beispielsweise Anwendung bei manipulierten Sensoren.
-    Dieses bieten einen Vorteil gegenüber Redundanz und Diversität, da, auch wenn alle Sensoren kompromittiert sind, immer noch ein Betrieb sichergestellt werden kann.
+    Dies bieten einen Vorteil gegenüber Redundanz und Diversität, da, auch wenn alle Sensoren kompromittiert sind, immer noch ein Betrieb sichergestellt werden kann.
     Die erfolgreichen Ergebnisse des Verfahrens wurden experimentell durch Simulationen und Test in einem Modellfahrzeug nachgewiesen.
 
     \section{Fazit zur aktuellen Sicherheitssituation von \glsentryshort{cps}}
     \label{sec:fazit-security-situation}
-    Das implementieren von Gegenmaßnahmen liegt momentan in der Verantwortung der einzelnen Hersteller von \cps.
+    Das Implementieren von Gegenmaßnahmen liegt momentan in der Verantwortung der einzelnen Hersteller von \cps.
     Mit dem Aufkommen von neuen Konsumgüter für das IoT wird es immer wichtiger, dass Hersteller ein Bewusstsein für Confidentiality, Integrity, Availability, Authenticity, Veracity und Non-repudiation entwickeln.
     Aber nicht nur in neuen Systemen ist dies von großer Wichtigkeit.
     Auch bereits eingesetzte SCADA Systemen müssen im Hinblick auf diese Eigenschaften überarbeitet oder eventuell sogar komplett ausgetauscht werden.
     Die erwähnten Angriffsszenarien stellen nur eine Auswahl von möglichen Angriffen dar, die sich über viele Anwendungsgebiete wie Autos, intelligente Stromnetze oder medizinische Geräte strecken.
-    Die vielen Sicherheitslücken in etwa \cite{HLL+17} belegt ein massives Sicherheitsproblem in dem Bereich der \cps.
+    Die vielen Sicherheitslücken in etwa \cite{HLL+17} belegen ein massives Sicherheitsproblem in dem Bereich der \cps.
 
     Angriffe wie beispielsweise Stuxnet (siehe \nameref{sec:intro}) zu verhindern liegt auch im Interesse von Staaten und Staatenverbünden wie der Europäischen Union.
-    Zu beispielsweise selbstfahrende und intelligenten Autos finden derzeit Diskussionen statt.
+    Zu selbstfahrenden und intelligenten Autos finden beispielsweise derzeit Diskussionen statt.
     Zwar gibt es schon Regelungen zur Abnahme von Autos und Datenschutzgesetze, aber es fehlt noch ein vollständiger rechtlicher Rahmen für diese Autos~\cite{EuropeanCommission2018}.
-    Zudem sieht die europäische Kommission vor allem einen wirtschaftlichen Nutzen in diesen neuen Technologien und will global Wettbewerbsfähig sein~\cite{EuropeanCommission2018}.
-    Der Fokus in der Sicherheit von Autos liegt noch zu sehr auf der Seite der Cyber-Systemen.
-    So wird in~\cite{EuropeanCommission2018} nur wenig die physische Seite von \cps in Autos beleuchtet.
+    Zudem sieht die europäische Kommission vor allem einen wirtschaftlichen Nutzen in diesen neuen Technologien und will global wettbewerbsfähig sein~\cite{EuropeanCommission2018}.
+    Der Fokus in der Sicherheit von Autos liegt noch zu sehr auf der Seite der Cyber-Systeme.
+    Es wird also vor allem auf sichere Kommunikation zwischen Autos und Infrastruktur und dem datenschutzkonformen Sammeln von anonymisierten Informationen zum Straßenverkehr geachtet.
+    Nur eingeschränkt wird in~\cite{EuropeanCommission2018} die physische Seite von \cps in Autos beleuchtet.
+    %At present there is no sector specific approach on the protection of the vehicle against
     Es existiert aktuell noch kein Konzept zum Schutz von Autos gegen Cyberangriffe~\cite{EuropeanCommission2018}.
     Es bleibt abzuwarten, ob bei der Gesetzgebung und der Festlegung von neuen Abnahmekriterien ein Bewusstsein für die aktuelle Sicherheitsproblematik von \cps gebildet wird.
 
-    Abschließend kann gesagt werden, dass aktuelle Forschung zur Sicherung von \cps und die gesetzlichen Rahmen aufeinander abgestimmt werden sollten um einen Schutz der Anwender und Dritter zu gewährleisten.
+    Abschließend kann gesagt werden, dass aktuelle Forschung zur Sicherung von \cps und die gesetzlichen Rahmen aufeinander abgestimmt werden sollten, um einen Schutz der Anwender und Dritter zu gewährleisten.
 
     \newpage
     % ~\nocite{*}
