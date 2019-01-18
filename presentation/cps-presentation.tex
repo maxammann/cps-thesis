@@ -1,0 +1,144 @@
+% standardmäßig im 4:3 Format
+% verwende \documentclass[169]{sikslides} für 16:9
+\documentclass{sikslides}
+
+\usepackage{bm}
+\usepackage{tabu}
+\tabulinesep=1.2mm
+
+\newcommand*{\vcenterimage}[2]{\vcenter{\hbox{\includegraphics[height=#1]{#2}}}}
+\newcommand*{\vcenterarrow}{\vcenter{\hbox{$\bm{\Longrightarrow}$}}}
+
+\title[Security Considerations for CPS]{Security Considerations for Cyber-Physical Systems}
+\subtitle{Seminar \\Cyber-Physical Systems} % Bachelor
+%\subtitle{Seminar \\Safety-Critical Systems} % Master
+%\subtitle{Seminar Grundlagen\\ moderner Prozessorarchitekturen} % Bachelor
+%\subtitle{Seminar Prozessorarchitekturen:\\Aktuelle Forschungstheme} % Master
+\author{Maximilian Ammann}
+\date[01.02.2019]{01. Februar 2019}
+\setbeamercovered{transparent}
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+\begin{document}
+
+    \titleframe
+
+    \begin{frame}
+        \frametitle{Unterschied von Cybersicherheit und Sicherheit in CPS}
+        Anfang Januar: Cybervorfall Doxing ist nicht CPS Sicherheit!
+    \end{frame}
+
+    % erneutes Bauen notwendig, um Gliederung zu aktualisieren
+    \begin{frame}
+        \frametitle{Gliederung}
+%        \tableofcontents[hideallsubsections,pausesections]
+        \tableofcontents[pausesections]
+%        \tableofcontents
+    \end{frame}
+
+%    \sectionframe{Eigenschaften von CPS und Angriffsszenarios}
+    \section{Eigenschaften von CPS und Angriffsszenarios}
+
+    \begin{frame}
+        \frametitle{Von CIA-Dreieck zu CIAANV-Hexagon?!}
+        \centering
+        $\vcenterimage{2.5cm}{../figure/cia}\vcenterarrow\vcenterimage{3.5cm}{../figure/triad}$
+
+        \vspace{40px}
+        $\rightarrow$ Komplexere Situation bei CPS
+    \end{frame}
+
+    \begin{frame}
+        <1>[label=eigenschaften]
+        \frametitle{Eigenschaften}
+
+        \begin{tabu}
+            to \linewidth { | l | X[6,l] | X[1.1,l] | }
+            \hline
+            Eigenschaft: $e$&Ein System hat Eigenschaft $e$ genau dann, wenn~\ldots \\
+            \hline
+            \only<1-3>{\bf}
+            Confidentiality&
+            \only<1-3>{\bf}
+            \ldots nur autorisierte Teilnehmer auf Ressourcen zugreifen können. \\
+            \hline\pause
+            \only<2-3>{\bf}
+            Integrity&
+            \only<2-3>{\bf}
+            \ldots Ressourcen nur von autorisierten Teilnehmern verändert werden können. \\
+            \hline\pause
+            \only<3>{\bf}
+            Authenticity&
+            \only<3>{\bf}
+            \ldots sich beide Kommunikationspartner einig über die Identität des Gegenübers sind. \\
+            \hline\pause
+            \only<4>{\bf}
+            Availability&
+            \only<4>{\bf}
+            \ldots Ressourcen für autorisierte Teilnehmer angemessen verfügbar ist.  \\
+            \hline\pause
+            \only<5>{\bf}
+            Veracity &
+            \only<5>{\bf}
+            \ldots Aussagen des Systems der Wahrhaftigkeit der Wirklichkeit entsprechen. \\
+            \hline
+            %Non-repudiation &
+            %\ldots jedes Ereignis, welches das System beeinflusst, nachvollzogen werden kann. \\
+            %\hline
+        \end{tabu}
+
+        %  \begin{itemize}
+        %  \item Aufzählungspunkt
+        %    \begin{itemize}
+        %    \item Eine Ebene tiefer
+        %    \item ...
+        %    \end{itemize}
+        %  \item Noch ein Punkt
+        %  \end{itemize}
+    \end{frame}
+
+    \subsection{Man-in-the-Middle Angriff}
+    % Continue to Integrity, Authenticity
+    \againframe<2>{eigenschaften}
+    \againframe<3>{eigenschaften}
+
+    \begin{frame}
+        <4>
+        \frametitle{Szenario: Man-in-the-Middle Angriff}
+        Man-in-the-Middle Angriff
+    \end{frame}
+
+    \subsection{Denial-of-Service Angriff}
+    % Continue to Availability
+    \againframe<4>{eigenschaften}
+    \begin{frame}
+        <5>
+        \frametitle{Szenario: Denial-of-Service Angriff}
+        Denial-of-Service Angriff
+    \end{frame}
+
+    \subsection{Angriff auf das physische System}
+    % Continue to Veracity
+    \againframe<5>{eigenschaften}
+    \begin{frame}
+        <6>
+        \frametitle{Szenario: Angriff auf das physische System}
+        Angriff auf das physische System
+    \end{frame}
+
+    % Continue to Non-repudiation
+    % \againframe<6>{eigenschaften}
+
+    \sectionframe{Gegenmaßnahmen}
+    \subsection{Proaktive Maßnahmen: Verhindern von Angriffen}
+    \begin{frame}
+        \frametitle{Proaktive Maßnahmen: Verhindern von Angriffen}
+        Proaktive Maßnahmen: Verhindern von Angriffen
+    \end{frame}
+    \subsection{Reaktive Maßnahmen: Detektion und Wiederherstellung}
+    \begin{frame}
+        \frametitle{Reaktive Maßnahmen: Detektion und Wiederherstellung}
+        Reaktive Maßnahmen: Detektion und Wiederherstellung
+    \end{frame}
+\end{document}
+
