@@ -1,5 +1,3 @@
-% standardmäßig im 4:3 Format
-% verwende \documentclass[169]{sikslides} für 16:9
 \documentclass{sikslides}
 
 \usepackage{bm}
@@ -12,9 +10,6 @@
 
 \title[Security Considerations for CPS]{Security Considerations for Cyber-Physical Systems}
 \subtitle{Seminar \\Cyber-Physical Systems} % Bachelor
-%\subtitle{Seminar \\Safety-Critical Systems} % Master
-%\subtitle{Seminar Grundlagen\\ moderner Prozessorarchitekturen} % Bachelor
-%\subtitle{Seminar Prozessorarchitekturen:\\Aktuelle Forschungstheme} % Master
 \author{Maximilian Ammann}
 \date[01.02.2019]{01. Februar 2019}
 \setbeamercovered{transparent}
@@ -29,11 +24,10 @@
         Anfang Januar: Cybervorfall Doxing ist nicht CPS Sicherheit!
     \end{frame}
 
-    % erneutes Bauen notwendig, um Gliederung zu aktualisieren
     \begin{frame}
         \frametitle{Gliederung}
-        %        \tableofcontents[hideallsubsections,pausesections]
-        %        \tableofcontents[pausesections]
+        % \tableofcontents[hideallsubsections,pausesections]
+        % \tableofcontents[pausesections]
         \tableofcontents
     \end{frame}
 
@@ -105,7 +99,7 @@
         \begin{figure}
             \centering
             \includegraphics[width=4cm]{figure/dos}
-            %            \caption{Abstraktion eines DoS Angriffs}
+            % \caption{Abstraktion eines DoS Angriffs}
         \end{figure}
         \begin{itemize}
             \item Ziel: Mit großer Flut an Informationen die \textbf{Availability} des CPS stören
@@ -131,7 +125,7 @@
         \begin{figure}
             \centering
             \includegraphics[width=4cm]{figure/mitm}
-            %            \caption{Abstraktion eines MITM Angriffs}
+            % \caption{Abstraktion eines MITM Angriffs}
         \end{figure}
         \begin{itemize}
             \item Passiv: Nur lauschen
@@ -163,7 +157,7 @@
         \begin{figure}
             \centering
             \includegraphics[width=4cm]{figure/physical}
-            %            \caption{Abstraktion eines physischen Angriffs}
+            % \caption{Abstraktion eines physischen Angriffs}
         \end{figure}
         \begin{itemize}
             \item Ziel: Verändern der Daten bevor diese an das Cybersystem geschickt werden
