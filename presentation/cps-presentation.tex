@@ -5,6 +5,7 @@
 \usepackage{bm}
 \usepackage{tabu}
 \tabulinesep=1.2mm
+\usepackage{subcaption}
 
 \newcommand*{\vcenterimage}[2]{\vcenter{\hbox{\includegraphics[height=#1]{#2}}}}
 \newcommand*{\vcenterarrow}{\vcenter{\hbox{$\bm{\Longrightarrow}$}}}
@@ -31,13 +32,22 @@
     % erneutes Bauen notwendig, um Gliederung zu aktualisieren
     \begin{frame}
         \frametitle{Gliederung}
-%        \tableofcontents[hideallsubsections,pausesections]
-        \tableofcontents[pausesections]
-%        \tableofcontents
+        %        \tableofcontents[hideallsubsections,pausesections]
+        %        \tableofcontents[pausesections]
+        \tableofcontents
     \end{frame}
 
-%    \sectionframe{Eigenschaften von CPS und Angriffsszenarios}
+    %    \sectionframe{Eigenschaften von CPS und Angriffsszenarios}
     \section{Eigenschaften von CPS und Angriffsszenarios}
+
+    \begin{frame}[label=abstrakt]
+        \frametitle{Abstraktion eines Cyber-physical Systems}
+        \begin{figure}
+            \centering
+            \includegraphics[width=5cm]{../figure/abstrakt}
+            \label{fig:abstrakt}
+        \end{figure}
+    \end{frame}
 
     \begin{frame}
         \frametitle{Von CIA-Dreieck zu CIAANV-Hexagon?!}
@@ -53,32 +63,32 @@
         \frametitle{Eigenschaften}
 
         \begin{tabu}
-            to \linewidth { | l | X[6,l] | X[1.1,l] | }
+            to \linewidth { | X[1.6,l] | X[5,l] | }
             \hline
             Eigenschaft: $e$&Ein System hat Eigenschaft $e$ genau dann, wenn~\ldots \\
             \hline
-            \only<1-3>{\bf}
-            Confidentiality&
-            \only<1-3>{\bf}
-            \ldots nur autorisierte Teilnehmer auf Ressourcen zugreifen können. \\
-            \hline\pause
-            \only<2-3>{\bf}
-            Integrity&
-            \only<2-3>{\bf}
-            \ldots Ressourcen nur von autorisierten Teilnehmern verändert werden können. \\
-            \hline\pause
-            \only<3>{\bf}
-            Authenticity&
-            \only<3>{\bf}
-            \ldots sich beide Kommunikationspartner einig über die Identität des Gegenübers sind. \\
-            \hline\pause
-            \only<4>{\bf}
+            \only<1>{\bf}
             Availability&
+            \only<1>{\bf}
+            \ldots Ressourcen für autorisierte Teilnehmer angemessen verfügbar ist.\pause \\
+            \hline
+            \only<2-4>{\bf}
+            Confidentiality&
+            \only<2-4>{\bf}
+            \ldots nur autorisierte Teilnehmer auf Ressourcen zugreifen können.\pause \\
+            \hline
+            \only<3-4>{\bf}
+            Integrity&
+            \only<3-4>{\bf}
+            \ldots Ressourcen nur von autorisierten Teilnehmern verändert werden können.\pause \\
+            \hline
             \only<4>{\bf}
-            \ldots Ressourcen für autorisierte Teilnehmer angemessen verfügbar ist.  \\
-            \hline\pause
+            Authenticity&
+            \only<4>{\bf}
+            \ldots sich beide Kommunikationspartner einig über die Identität des Gegenübers sind.\pause \\
+            \hline
             \only<5>{\bf}
-            Veracity &
+            Veracity und Plausibility &
             \only<5>{\bf}
             \ldots Aussagen des Systems der Wahrhaftigkeit der Wirklichkeit entsprechen. \\
             \hline
@@ -86,35 +96,62 @@
             %\ldots jedes Ereignis, welches das System beeinflusst, nachvollzogen werden kann. \\
             %\hline
         \end{tabu}
-
-        %  \begin{itemize}
-        %  \item Aufzählungspunkt
-        %    \begin{itemize}
-        %    \item Eine Ebene tiefer
-        %    \item ...
-        %    \end{itemize}
-        %  \item Noch ein Punkt
-        %  \end{itemize}
-    \end{frame}
-
-    \subsection{Man-in-the-Middle Angriff}
-    % Continue to Integrity, Authenticity
-    \againframe<2>{eigenschaften}
-    \againframe<3>{eigenschaften}
-
-    \begin{frame}
-        <4>
-        \frametitle{Szenario: Man-in-the-Middle Angriff}
-        Man-in-the-Middle Angriff
     \end{frame}
 
     \subsection{Denial-of-Service Angriff}
-    % Continue to Availability
-    \againframe<4>{eigenschaften}
     \begin{frame}
         <5>
         \frametitle{Szenario: Denial-of-Service Angriff}
-        Denial-of-Service Angriff
+        \begin{figure}
+            \centering
+            \includegraphics[width=4cm]{figure/dos}
+            %            \caption{Abstraktion eines DoS Angriffs}
+        \end{figure}
+        \begin{itemize}
+            \item Ziel: Mit großer Flut an Informationen die \textbf{Availability} des CPS stören
+            \item Beispiele:
+            \begin{itemize}
+                \item CAN Busse in Autos: Fehlfunktion der Warnlichter, Diebstahlsicherung
+                \item Echtzeitkritische Stromnetze: Störung des Normalbetrieb
+            \end{itemize}
+            \item Bei mehreren Angreifern: Distributed-DoS
+            \item Kabellose Kommunikation meist anfälliger wegen geringer Bandbreite
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Man-in-the-Middle Angriff}
+    % Continue to Confidentiality, Integrity, Authenticity
+    \againframe<2>{eigenschaften}
+    \againframe<3>{eigenschaften}
+    \againframe<4>{eigenschaften}
+
+    \begin{frame}
+        <4>[allowframebreaks]
+        \frametitle{Szenario: Man-in-the-Middle Angriff}
+        \begin{figure}
+            \centering
+            \includegraphics[width=4cm]{figure/mitm}
+            %            \caption{Abstraktion eines MITM Angriffs}
+        \end{figure}
+        \begin{itemize}
+            \item Passiv: Nur lauschen
+            \begin{itemize}
+                \item Verletzung der \textbf{Confidentiality} des CPS
+            \end{itemize}
+            \item Aktiv: Verändern der Daten
+            \begin{itemize}
+                \item Bei fehlender \textbf{Authenticity}: Keine Verifikation der Identität möglich
+                \item Bei fehlender \textbf{Integrity}: Keine überprüfung auf Veränderung der Daten (Prüfsummen!)
+            \end{itemize}
+        \end{itemize}
+        \framebreak
+        \begin{itemize}
+            \item Beispiele:
+            \begin{itemize}
+                \item ARP-Poisoning in IEE 802.11 und Local Area Networks
+                \item Offline Replay Angriffe bei Autos
+            \end{itemize}
+        \end{itemize}
     \end{frame}
 
     \subsection{Angriff auf das physische System}
@@ -123,7 +160,20 @@
     \begin{frame}
         <6>
         \frametitle{Szenario: Angriff auf das physische System}
-        Angriff auf das physische System
+        \begin{figure}
+            \centering
+            \includegraphics[width=4cm]{figure/physical}
+            %            \caption{Abstraktion eines physischen Angriffs}
+        \end{figure}
+        \begin{itemize}
+            \item Ziel: Verändern der Daten bevor diese an das Cybersystem geschickt werden
+            \item \textbf{Authenticity} hilft nicht Veracity sicherzustellen
+            \item Beispiele:
+            \begin{itemize}
+                \item Manipulation von physischen Prozessen führt zu Wechselwirkungen
+                \item Manipulation von Sensoren
+            \end{itemize}
+        \end{itemize}
     \end{frame}
 
     % Continue to Non-repudiation
@@ -140,5 +190,7 @@
         \frametitle{Reaktive Maßnahmen: Detektion und Wiederherstellung}
         Reaktive Maßnahmen: Detektion und Wiederherstellung
     \end{frame}
+
+    \sectionframe{Zusammenfassung}
 \end{document}
 
