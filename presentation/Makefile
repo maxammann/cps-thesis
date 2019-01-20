@@ -1,4 +1,4 @@
-JOB = vortrag
+JOB = cps-presentation
 ENV = TEXINPUTS=include:
 PDFLATEX = pdflatex
 PDFOPTS = -halt-on-error -file-line-error -interaction nonstopmode
@@ -22,5 +22,5 @@ clean:
 	rm -f build/*.pdf
 	-rmdir -p build
 
-.PHONY: clean 
+.PHONY: clean
 

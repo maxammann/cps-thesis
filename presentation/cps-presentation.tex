@@ -175,16 +175,57 @@
 
     \sectionframe{Gegenmaßnahmen}
     \subsection{Proaktive Maßnahmen: Verhindern von Angriffen}
-    \begin{frame}
+    \begin{frame}[allowframebreaks]
         \frametitle{Proaktive Maßnahmen: Verhindern von Angriffen}
-        Proaktive Maßnahmen: Verhindern von Angriffen
+        Proaktive Maßnahmen: Maßnahmen, die vor dem Angriff getroffen werden
+        \vspace{20px}
+        \begin{itemize}
+            \item Authentisierung der Kommunikationspartner durch z.B. Signaturen $\rightarrow$ \textbf{Authenticity}
+            \item Verschlüsselung der Kommunikationsdaten $\rightarrow$ \textbf{Confidentiality}
+            \item Prüfsummen zur Validierung der Kommunikation $\rightarrow$ \textbf{Integrity}
+            \framebreak
+            \item Transportverschlüsselung: TLS für TCP, DTLS für UDP, Logicial Link Transport Protocol für NFC $\rightarrow$ \textbf{Confidentiality, Integrity, Authenticity}
+            \item Redundanzen und Diversität für CPS $\rightarrow$ \textbf{Availability}
+            \item Hardware Security Module: Verhindern Auslesen von Secrets wie Schlüssel
+            \item Verifikation von Programmen: Reduzieren von Lücken durch z.B.\ Code-Audits oder Fuzzing
+            \framebreak
+            \item Trennung von Netzwerken
+            \item Trennung von Privilegien
+            \item Least Privilege-Prinzip
+            \framebreak
+            \item Abschreckung durch Gesetze
+            \item Physische Baumaßnahmen (Allerdings ist ein Cyberangriff sehr viel Wahrscheinlicher)
+        \end{itemize}
     \end{frame}
+
     \subsection{Reaktive Maßnahmen: Detektion und Wiederherstellung}
     \begin{frame}
         \frametitle{Reaktive Maßnahmen: Detektion und Wiederherstellung}
-        Reaktive Maßnahmen: Detektion und Wiederherstellung
+        Proaktive Maßnahmen: Abwehrsystem die auf Angriffe reagieren
+        \begin{itemize}
+            \item Überwachung von Sensoren eines Kraftwerkes $\rightarrow$ \textbf{Veracity}
+            \item Wiederherstellung der physischen und Cybersystemen mithilfe von Checkpoints $\rightarrow$ \textbf{Veracity}
+        \end{itemize}
     \end{frame}
 
-    \sectionframe{Zusammenfassung}
+    \begin{frame}
+        \frametitle{Überwachung von Sensoren}
+        \begin{figure}
+            \centering
+            \begin{subfigure}{0.49\textwidth}
+                \includegraphics[height=3cm]{../figure/entropy_a}
+                \caption{Gefälschte Werte eines Sensors}
+            \end{subfigure}
+            \begin{subfigure}{0.49\textwidth}
+                \includegraphics[height=3cm]{../figure/entropy_b}
+                \caption{Entropie des gesamten Kraftwerks}
+            \end{subfigure}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Fazit}
+
+    \end{frame}
 \end{document}
 
