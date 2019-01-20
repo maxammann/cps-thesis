@@ -12,7 +12,7 @@
 \subtitle{Seminar \\Cyber-Physical Systems} % Bachelor
 \author{Maximilian Ammann}
 \date[01.02.2019]{01. Februar 2019}
-\setbeamercovered{transparent}
+\setbeamercovered{invisible}
 \setbeamertemplate{section in toc}[sections numbered]
 \setbeamertemplate{subsection in toc}[subsections numbered]
 \begin{document}
@@ -56,6 +56,7 @@
         <1>[label=eigenschaften]
         \frametitle{Eigenschaften}
 
+        \begin{overlayarea}{\textwidth}{10cm}
         \begin{tabu}
             to \linewidth { | X[1.6,l] | X[5,l] | }
             \hline
@@ -64,37 +65,37 @@
             \only<1>{\bf}
             Availability&
             \only<1>{\bf}
-            \ldots Ressourcen für autorisierte Teilnehmer angemessen verfügbar ist.\pause \\
+            \ldots Ressourcen für autorisierte Teilnehmer angemessen verfügbar ist. \\
             \hline
             \only<2-4>{\bf}
-            Confidentiality&
+            \uncover<2->{Confidentiality}&
             \only<2-4>{\bf}
-            \ldots nur autorisierte Teilnehmer auf Ressourcen zugreifen können.\pause \\
+            \uncover<2->{\ldots nur autorisierte Teilnehmer auf Ressourcen zugreifen können.}\\
             \hline
             \only<3-4>{\bf}
-            Integrity&
+            \uncover<2->{Integrity}&
             \only<3-4>{\bf}
-            \ldots Ressourcen nur von autorisierten Teilnehmern verändert werden können.\pause \\
+            \uncover<2->{\ldots Ressourcen nur von autorisierten Teilnehmern verändert werden können.} \\
             \hline
             \only<4>{\bf}
-            Authenticity&
+            \uncover<2->{Authenticity}&
             \only<4>{\bf}
-            \ldots sich beide Kommunikationspartner einig über die Identität des Gegenübers sind.\pause \\
+            \uncover<2->{\ldots sich beide Kommunikationspartner einig über die Identität des Gegenübers sind.} \\
             \hline
             \only<5>{\bf}
-            Veracity und Plausibility &
+            \uncover<5>{Veracity und Plausibility} &
             \only<5>{\bf}
-            \ldots Aussagen des Systems der Wahrhaftigkeit der Wirklichkeit entsprechen. \\
+            \uncover<5>{\ldots Aussagen des Systems der Wahrhaftigkeit der Wirklichkeit entsprechen.} \\
             \hline
             %Non-repudiation &
             %\ldots jedes Ereignis, welches das System beeinflusst, nachvollzogen werden kann. \\
             %\hline
         \end{tabu}
+\end{overlayarea}
     \end{frame}
 
     \subsection{Denial-of-Service Angriff}
     \begin{frame}
-        <5>
         \frametitle{Szenario: Denial-of-Service Angriff}
         \begin{figure}
             \centering
@@ -103,11 +104,13 @@
         \end{figure}
         \begin{itemize}
             \item Ziel: Mit großer Flut an Informationen die \textbf{Availability} des CPS stören
+            \pause
             \item Beispiele:
             \begin{itemize}
                 \item CAN Busse in Autos: Fehlfunktion der Warnlichter, Diebstahlsicherung
                 \item Echtzeitkritische Stromnetze: Störung des Normalbetrieb
             \end{itemize}
+            \pause
             \item Bei mehreren Angreifern: Distributed-DoS
             \item Kabellose Kommunikation meist anfälliger wegen geringer Bandbreite
         \end{itemize}
@@ -120,39 +123,45 @@
     \againframe<4>{eigenschaften}
 
     \begin{frame}
-        <4>[allowframebreaks]
         \frametitle{Szenario: Man-in-the-Middle Angriff}
         \begin{figure}
             \centering
             \includegraphics[width=4cm]{figure/mitm}
             % \caption{Abstraktion eines MITM Angriffs}
         \end{figure}
-        \begin{itemize}
-            \item Passiv: Nur lauschen
+        \begin{onlyenv}<1-2>
             \begin{itemize}
-                \item Verletzung der \textbf{Confidentiality} des CPS
+                \item Passiv: Nur lauschen
+                \begin{itemize}
+                    \item Verletzung der \textbf{Confidentiality} des CPS
+                    \pause
+                \end{itemize}
+                \item Aktiv: Verändern der Daten
+                \begin{itemize}
+                    \item Bei fehlender \textbf{Authenticity}: Keine Verifikation der Identität möglich
+                    \item Bei fehlender \textbf{Integrity}: Keine überprüfung auf Veränderung der Daten (Prüfsummen!)
+                \end{itemize}
+                \pause
             \end{itemize}
-            \item Aktiv: Verändern der Daten
+        \end{onlyenv}
+
+        \begin{onlyenv}<3-4>
             \begin{itemize}
-                \item Bei fehlender \textbf{Authenticity}: Keine Verifikation der Identität möglich
-                \item Bei fehlender \textbf{Integrity}: Keine überprüfung auf Veränderung der Daten (Prüfsummen!)
+                \item Beispiele:
+                \begin{itemize}
+                    \item ARP-Poisoning in IEE 802.11 und Local Area Networks
+                    \pause
+                    \item Offline Replay Angriffe bei Autos
+                \end{itemize}
             \end{itemize}
-        \end{itemize}
-        \framebreak
-        \begin{itemize}
-            \item Beispiele:
-            \begin{itemize}
-                \item ARP-Poisoning in IEE 802.11 und Local Area Networks
-                \item Offline Replay Angriffe bei Autos
-            \end{itemize}
-        \end{itemize}
+        \end{onlyenv}
+
     \end{frame}
 
     \subsection{Angriff auf das physische System}
     % Continue to Veracity
     \againframe<5>{eigenschaften}
     \begin{frame}
-        <6>
         \frametitle{Szenario: Angriff auf das physische System}
         \begin{figure}
             \centering
@@ -162,6 +171,7 @@
         \begin{itemize}
             \item Ziel: Verändern der Daten bevor diese an das Cybersystem geschickt werden
             \item \textbf{Authenticity} hilft nicht Veracity sicherzustellen
+            \pause
             \item Beispiele:
             \begin{itemize}
                 \item Manipulation von physischen Prozessen führt zu Wechselwirkungen
@@ -175,36 +185,59 @@
 
     \sectionframe{Gegenmaßnahmen}
     \subsection{Proaktive Maßnahmen: Verhindern von Angriffen}
-    \begin{frame}[allowframebreaks]
+    \begin{frame}
         \frametitle{Proaktive Maßnahmen: Verhindern von Angriffen}
-        Proaktive Maßnahmen: Maßnahmen, die vor dem Angriff getroffen werden
+        \begin{block}{}
+            Proaktive Maßnahmen: Maßnahmen, die vor dem Angriff getroffen werden
+        \end{block}
         \vspace{20px}
-        \begin{itemize}
-            \item Authentisierung der Kommunikationspartner durch z.B. Signaturen $\rightarrow$ \textbf{Authenticity}
-            \item Verschlüsselung der Kommunikationsdaten $\rightarrow$ \textbf{Confidentiality}
-            \item Prüfsummen zur Validierung der Kommunikation $\rightarrow$ \textbf{Integrity}
-            \framebreak
-            \item Transportverschlüsselung: TLS für TCP, DTLS für UDP, Logicial Link Transport Protocol für NFC $\rightarrow$ \textbf{Confidentiality, Integrity, Authenticity}
-            \item Redundanzen und Diversität für CPS $\rightarrow$ \textbf{Availability}
-            \item Hardware Security Module: Verhindern Auslesen von Secrets wie Schlüssel
-            \item Verifikation von Programmen: Reduzieren von Lücken durch z.B.\ Code-Audits oder Fuzzing
-            \framebreak
-            \item Trennung von Netzwerken
-            \item Trennung von Privilegien
-            \item Least Privilege-Prinzip
-            \framebreak
-            \item Abschreckung durch Gesetze
-            \item Physische Baumaßnahmen (Allerdings ist ein Cyberangriff sehr viel Wahrscheinlicher)
-        \end{itemize}
+
+        \begin{onlyenv}<1-3>
+            \begin{itemize}[<+->]
+                \item Authentisierung der Kommunikationspartner durch z.B. Signaturen $\rightarrow$ \textbf{Authenticity}
+                \item Verschlüsselung der Kommunikationsdaten $\rightarrow$ \textbf{Confidentiality}
+                \item Prüfsummen zur Validierung der Kommunikation $\rightarrow$ \textbf{Integrity}
+            \end{itemize}
+        \end{onlyenv}
+
+        \begin{onlyenv}<4-7>
+            \begin{itemize}[<+->]
+                \item Transportverschlüsselung: TLS für TCP, DTLS für UDP, Logicial Link Transport Protocol für NFC $\rightarrow$ \textbf{Confidentiality, Integrity, Authenticity}
+                \item Redundanzen und Diversität für CPS $\rightarrow$ \textbf{Availability}
+                \item Hardware Security Module: Verhindern Auslesen von Secrets wie Schlüssel
+                \item Verifikation von Programmen: Reduzieren von Lücken durch z.B.\ Code-Audits oder Fuzzing
+            \end{itemize}
+        \end{onlyenv}
+
+        \begin{onlyenv}<8>
+            \begin{itemize}
+                \item Trennung von Netzwerken
+                \item Trennung von Privilegien
+                \item Least Privilege-Prinzip
+                \pause
+            \end{itemize}
+        \end{onlyenv}
+
+        \begin{onlyenv}<9>
+            \begin{itemize}
+                \item Abschreckung durch Gesetze
+                \item Physische Baumaßnahmen (Allerdings ist ein Cyberangriff sehr viel Wahrscheinlicher)
+            \end{itemize}
+        \end{onlyenv}
     \end{frame}
 
     \subsection{Reaktive Maßnahmen: Detektion und Wiederherstellung}
     \begin{frame}
         \frametitle{Reaktive Maßnahmen: Detektion und Wiederherstellung}
-        Proaktive Maßnahmen: Abwehrsystem die auf Angriffe reagieren
+        \begin{block}{}
+            Reaktive Maßnahmen: Maßnahmen, die auf Angriffe reagieren
+        \end{block}
         \begin{itemize}
-            \item Überwachung von Sensoren eines Kraftwerkes $\rightarrow$ \textbf{Veracity}
-            \item Wiederherstellung der physischen und Cybersystemen mithilfe von Checkpoints $\rightarrow$ \textbf{Veracity}
+            \item Beispiele:
+            \begin{itemize}
+                \item Überwachung von Sensoren eines Kraftwerkes $\rightarrow$ \textbf{Veracity}
+                \item Wiederherstellung der physischen und Cybersystemen mithilfe von Checkpoints $\rightarrow$ \textbf{Veracity}
+            \end{itemize}
         \end{itemize}
     \end{frame}
 
