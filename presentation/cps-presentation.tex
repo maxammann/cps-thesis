@@ -4,6 +4,7 @@
 \usepackage{tabu}
 \tabulinesep=1.2mm
 \usepackage{subcaption}
+\usepackage{graphicx}
 
 \newcommand*{\vcenterimage}[2]{\vcenter{\hbox{\includegraphics[height=#1]{#2}}}}
 \newcommand*{\vcenterarrow}{\vcenter{\hbox{$\bm{\Longrightarrow}$}}}
@@ -20,15 +21,19 @@
     \titleframe
 
     \begin{frame}
-        \frametitle{Unterschied von Cybersicherheit und Sicherheit in CPS}
-        Anfang Januar: Cybervorfall Doxing ist nicht CPS Sicherheit!
+        \frametitle{Unterschied von Cybersecurity und Cyber-physical Security}
+        \centering
+        \includegraphics[height=6cm]{figure/cyberattack.jpg}
+        \textbf{Cybersecurity $\neq$ Cyber-physical Security}
+
+        \textbf{Security $\neq$ Safety}
     \end{frame}
 
     \begin{frame}
         \frametitle{Gliederung}
-        % \tableofcontents[hideallsubsections,pausesections]
-        % \tableofcontents[pausesections]
-        \tableofcontents
+        \tableofcontents[hideallsubsections,pausesections]
+        %\tableofcontents[pausesections]
+        %\tableofcontents
     \end{frame}
 
     %    \sectionframe{Eigenschaften von CPS und Angriffsszenarios}
@@ -183,8 +188,7 @@
     % Continue to Non-repudiation
     % \againframe<6>{eigenschaften}
 
-    \sectionframe{Gegenmaßnahmen}
-    \subsection{Proaktive Maßnahmen: Verhindern von Angriffen}
+    \sectionframe{Proaktive Maßnahmen: Verhindern von Angriffen}
     \begin{frame}
         \frametitle{Proaktive Maßnahmen: Verhindern von Angriffen}
         \begin{block}{}
@@ -226,7 +230,7 @@
         \end{onlyenv}
     \end{frame}
 
-    \subsection{Reaktive Maßnahmen: Detektion und Wiederherstellung}
+    \sectionframe{Reaktive Maßnahmen: Detektion und Wiederherstellung}
     \begin{frame}
         \frametitle{Reaktive Maßnahmen: Detektion und Wiederherstellung}
         \begin{block}{}
@@ -259,6 +263,14 @@
     \begin{frame}
         \frametitle{Fazit}
 
+        \begin{center}
+               \bf Sicherheit für CPS bedarf spezieller Betrachtung
+        \end{center}
+
+        \begin{itemize}
+            \item Angriffsvektoren sind andere als bei klassischen Cybersystemen
+            \item Man muss CPS oft mehr vertrauen entgegenbringen als Cybersystemen
+        \end{itemize}
     \end{frame}
 \end{document}
 
