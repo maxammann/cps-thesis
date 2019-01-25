@@ -42,8 +42,8 @@
 \usepackage{listings}
 \usepackage{algorithm2e}
 \usepackage{sansmath}
-\usepackage{ulem} 
-\usepackage{lmodern} 
+\usepackage{ulem}
+\usepackage{lmodern}
 
 \usetheme{sikfai}
 
@@ -61,19 +61,19 @@
 
 \newcommand{\sectionframe}[2][]{
     \def\temp{#1}
-    \ifx\temp\empty
-    \section{#2}
-    \else
-    \section{#1}
-    \fi
-    \addtocounter{framenumber}{1}
-    \begin{frame}[noframenumbering]
+%    \ifx\temp\empty
+%    \section{#2}
+%    \else
+%    \section{#1}
+%    \fi
+%    \addtocounter{framenumber}{1}
+    \begin{frame}
         \frametitle{\ }
         \begin{center}
             \Huge{#2}
         \end{center}
     \end{frame}
-    \addtocounter{framenumber}{-1}
+%    \addtocounter{framenumber}{-1}
 }
 
 
